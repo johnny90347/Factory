@@ -38,13 +38,15 @@ class UserInfoViewController: UIViewController {
         
 
 
+    //MARK: - 使用按鈕的互動方法
     
+    //TODO:  登入的方法
     @IBAction func loginButtomPress(_ sender: UIButton) {
         
         Auth.auth().signIn(withEmail: accountTextFiled.text!, password: passwordTextFiled.text!) { (authResult, error) in
             if error != nil{
                 print("登入失敗")
-                self.showAlert()
+                self.showAlert(withTitle: "登入失敗", withMessage: "請重新輸入")
             }else{
                 if let email =  Auth.auth().currentUser?.email{
                     self.userEmail = email
@@ -55,7 +57,7 @@ class UserInfoViewController: UIViewController {
                     self.department = person[1]
                     self.position = person [2]
                 }
-                print("登入成功")
+                self.showAlert(withTitle: "登入成功", withMessage: "您好\(self.position)")
                 self.hiddenComponent()
 
             }
@@ -63,24 +65,22 @@ class UserInfoViewController: UIViewController {
 
     }
     
-    
+    //TODO: 登出的方法
     @IBAction func longoutButtonPress(_ sender: UIButton) {
         
         do{
             try Auth.auth().signOut()
                 print("登出成功")
                 showComponent()
-            
-            
+                self.userName = ""
         }catch{
             print("登出失敗")
         }
-        
     }
     
     
     
-    
+    //TODO: 隱藏登入元件＆顯示登出元件 的方法
     func hiddenComponent(){
         
         self.loginSuccess = true
@@ -95,7 +95,7 @@ class UserInfoViewController: UIViewController {
         
     }
     
-    
+    //TODO:顯示登入元件＆隱藏登出元件 的方法
     func showComponent(){
         self.loginSuccess = false
         self.accountTextFiled.isHidden = false  //顯示帳號欄
@@ -109,11 +109,11 @@ class UserInfoViewController: UIViewController {
         
     }
     
-    
-    func showAlert(){
-        let alert = UIAlertController(title: "帳號或密碼錯誤", message: "請重新輸入", preferredStyle: .alert)
+    //TODO:警告控制器的方法
+    func showAlert(withTitle title:String, withMessage message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "重新輸入", style: .default) { (action) in
+        let action = UIAlertAction(title: "OK", style: .default) { (action) in
             self.accountTextFiled.text = ""
             self.passwordTextFiled.text = ""
         }

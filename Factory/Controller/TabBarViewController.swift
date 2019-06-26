@@ -11,7 +11,9 @@ import UIKit
 class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
 
     var userName:String = ""
-    
+    var department:String = ""
+    var position:String = ""
+    var islongIN:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +28,18 @@ class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
                 
                 let factoryVC = viewControllers?[2] as! UserInfoViewController
 
-                let  name = factoryVC.userName    //抓到使用者名稱
-                    
-                userName = name
+                    userName = factoryVC.userName    //抓到使用者資訊
+                    department = factoryVC.department
+                    position = factoryVC.position
+                
 
-                if factoryVC.userName == "" {  //登入流程控制
-                    LoginAlert()
+                if factoryVC.userName == "" {
+                    LoginAlert()           //登入失敗
+                                    
                 }else{
-                    successLoginAlert()
+                    if islongIN == true {
+                        successLoginAlert()   //登入成功訊息
+                    }
                 }
 
                 
@@ -45,6 +51,7 @@ class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
         //MARK: - 方法
         
         //MARK: 未登入狀態時跳出警告的方法
+        //FIXME: 要改寫成一個控制器就好
         func LoginAlert (){
             
             let alert = UIAlertController(title: "請登入帳號", message: "按下ok進入登入頁面", preferredStyle: .alert)
@@ -57,17 +64,21 @@ class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
             
             present(alert, animated: true, completion: nil)
             
+            islongIN = false
+            
         }
         
         //MARK:登入狀態時跳出警告的方法
         func successLoginAlert (){
-            let alert = UIAlertController(title: "\(userName) 歡迎回來工廠系統", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: "\(userName) 歡迎進入工廠系統", message: "", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "進入畫面", style: .default, handler: nil)
             
             alert.addAction(action)
             
             present(alert, animated: true, completion: nil)
+            
+            islongIN = true
             
         }
         
