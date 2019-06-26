@@ -11,8 +11,12 @@ import FirebaseAuth
 
 class UserInfoViewController: UIViewController {
     
-    var userName:String = ""
+    var userEmail:String = ""
     var loginSuccess:Bool = false
+    var userName:String = ""
+    var department:String = ""
+    var position:String = ""
+    
     
     
     @IBOutlet weak var accountTextFiled: UITextField!
@@ -43,7 +47,13 @@ class UserInfoViewController: UIViewController {
                 self.showAlert()
             }else{
                 if let email =  Auth.auth().currentUser?.email{
-                    self.userName = email
+                    self.userEmail = email
+                    
+                    let staff = Staff()
+                    let person = staff.staffs[email]!
+                    self.userName = person[0]
+                    self.department = person[1]
+                    self.position = person [2]
                 }
                 print("登入成功")
                 self.hiddenComponent()
@@ -81,6 +91,7 @@ class UserInfoViewController: UIViewController {
         self.statusLabel.isHidden = false //顯示狀態列
         self.accountTextFiled.text = ""
         self.passwordTextFiled.text = ""
+        self.statusLabel.text = "您好！\(userName) \(position)"
         
     }
     
@@ -93,6 +104,7 @@ class UserInfoViewController: UIViewController {
         self.longOutButton.isHidden = true //隱藏登出鍵
         self.statusLabel.isHidden = true //隱藏狀態列
         self.accountTextFiled.becomeFirstResponder()
+        
         
         
     }
