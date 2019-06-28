@@ -9,8 +9,3 @@
 import Foundation
 
 
-struct Staff {
-    let staffs:[String:[String]] = ["a@b.com":["鑫文","製造部","專員"],
-                                    "c@d.com":["琬琳","研發部","主管"]
-                                   ]
-}

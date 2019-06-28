@@ -10,10 +10,8 @@ import UIKit
 
 class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
 
-    var userName:String = ""
-    var department:String = ""
-    var position:String = ""
-    var islongIN:Bool = false
+   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,28 +22,7 @@ class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
         //MARK: - TabBarController Delegate
         
         func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-            if viewController == viewControllers?[1]{
-                
-                let factoryVC = viewControllers?[2] as! UserInfoViewController
-
-                    userName = factoryVC.userName    //抓到使用者資訊
-                    department = factoryVC.department
-                    position = factoryVC.position
-                
-
-                if factoryVC.userName == "" {
-                    LoginAlert()           //登入失敗
-                                    
-                }else{
-                    if islongIN == true {
-                        successLoginAlert()   //登入成功訊息
-                    }
-                }
-
-                
-                
-                
-            }
+           
         }
         
         //MARK: - 方法
@@ -64,13 +41,13 @@ class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
             
             present(alert, animated: true, completion: nil)
             
-            islongIN = false
+         
             
         }
         
         //MARK:登入狀態時跳出警告的方法
         func successLoginAlert (){
-            let alert = UIAlertController(title: "\(userName) 歡迎進入工廠系統", message: "", preferredStyle: .alert)
+            let alert = UIAlertController(title: "歡迎進入工廠系統", message: "", preferredStyle: .alert)
             
             let action = UIAlertAction(title: "進入畫面", style: .default, handler: nil)
             
@@ -78,7 +55,7 @@ class TabBarViewController: UITabBarController ,UITabBarControllerDelegate{
             
             present(alert, animated: true, completion: nil)
             
-            islongIN = true
+         
             
         }
         

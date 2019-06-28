@@ -17,6 +17,7 @@
 		0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62904922C380A600446A3F /* UserInfoViewController.swift */; };
 		0A62904C22C3826A00446A3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A62904B22C3826A00446A3F /* GoogleService-Info.plist */; };
 		0A62905222C39C9600446A3F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62905122C39C9600446A3F /* Model.swift */; };
+		0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB00C522C6285900A114AA /* CreateUserTVC.swift */; };
 		8AFC3107C3F67DC41BE2077D /* Pods_Factory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED5D695FE5A59AB4EF5CB47 /* Pods_Factory.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		0A62904922C380A600446A3F /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		0A62904B22C3826A00446A3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A62905122C39C9600446A3F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0ACB00C522C6285900A114AA /* CreateUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserTVC.swift; sourceTree = "<group>"; };
 		4ED5D695FE5A59AB4EF5CB47 /* Pods_Factory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Factory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CEAEDDB9DE8946A36F4AAD6 /* Pods-Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Factory.debug.xcconfig"; path = "Target Support Files/Pods-Factory/Pods-Factory.debug.xcconfig"; sourceTree = "<group>"; };
 		9D95CAC6A6F8B39929D96068 /* Pods-Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Factory.release.xcconfig"; path = "Target Support Files/Pods-Factory/Pods-Factory.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				0A62904722C37D7900446A3F /* FactoryViewController.swift */,
 				0A62904522C37CDA00446A3F /* TabBarViewController.swift */,
 				0A62904922C380A600446A3F /* UserInfoViewController.swift */,
+				0ACB00C522C6285900A114AA /* CreateUserTVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				0A62904822C37D7900446A3F /* FactoryViewController.swift in Sources */,
 				0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */,
 				0A62905222C39C9600446A3F /* Model.swift in Sources */,
+				0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */,
 				0A62904622C37CDA00446A3F /* TabBarViewController.swift in Sources */,
 				0A62903422C37C5000446A3F /* AppDelegate.swift in Sources */,
 			);

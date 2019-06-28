@@ -11,11 +11,9 @@ import FirebaseAuth
 
 class UserInfoViewController: UIViewController {
     
-    var userEmail:String = ""
+
     var loginSuccess:Bool = false
-    var userName:String = ""
-    var department:String = ""
-    var position:String = ""
+
     
     
     
@@ -43,39 +41,12 @@ class UserInfoViewController: UIViewController {
     //TODO:  登入的方法
     @IBAction func loginButtomPress(_ sender: UIButton) {
         
-        Auth.auth().signIn(withEmail: accountTextFiled.text!, password: passwordTextFiled.text!) { (authResult, error) in
-            if error != nil{
-                print("登入失敗")
-                self.showAlert(withTitle: "登入失敗", withMessage: "請重新輸入")
-            }else{
-                if let email =  Auth.auth().currentUser?.email{
-                    self.userEmail = email
-                    
-                    let staff = Staff()
-                    let person = staff.staffs[email]!
-                    self.userName = person[0]
-                    self.department = person[1]
-                    self.position = person [2]
-                }
-                self.showAlert(withTitle: "登入成功", withMessage: "您好\(self.position)")
-                self.hiddenComponent()
-
-            }
-        }
-
+     
     }
     
     //TODO: 登出的方法
     @IBAction func longoutButtonPress(_ sender: UIButton) {
-        
-        do{
-            try Auth.auth().signOut()
-                print("登出成功")
-                showComponent()
-                self.userName = ""
-        }catch{
-            print("登出失敗")
-        }
+      
     }
     
     
@@ -91,7 +62,7 @@ class UserInfoViewController: UIViewController {
         self.statusLabel.isHidden = false //顯示狀態列
         self.accountTextFiled.text = ""
         self.passwordTextFiled.text = ""
-        self.statusLabel.text = "您好！\(userName) \(position)"
+       
         
     }
     
@@ -114,8 +85,8 @@ class UserInfoViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let action = UIAlertAction(title: "OK", style: .default) { (action) in
-            self.accountTextFiled.text = ""
-            self.passwordTextFiled.text = ""
+            
+            
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
