@@ -68,6 +68,11 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
   
     }
     
+    //返回按鈕
+    
+    @IBAction func backButtonPress(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     //MARK: - 設定
@@ -111,18 +116,29 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
                     }
             })
             
-            self.showAlert(withTitle: "建立成功！")
+            self.showAlertSuccessCreated()
         }
     }
     
     
-    //警告控制器
+    //警告控制器 (通用）
     func showAlert(withTitle title:String){
         let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "確認", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    //警告控制器（申請成功專用）
+    func showAlertSuccessCreated(){
+        let alert = UIAlertController(title:"建立成功", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "確認", style: .default) { (action) in
+             self.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     
     
     //MARK: - 性別選單

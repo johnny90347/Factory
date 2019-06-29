@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="QIl-ok-w7P">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414.00000000000011" height="769"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4y1-SQ-44x">
                                 <rect key="frame" x="0.0" y="44" width="414" height="384.5"/>
@@ -72,7 +72,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.31143983689999999" blue="0.33302032339999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="69" id="1Gg-xq-6Ke"/>
                                             <constraint firstItem="0Bm-AP-Q09" firstAttribute="leading" secondItem="4Rp-Xz-U43" secondAttribute="leading" id="4vP-Qn-2jd"/>
@@ -83,12 +83,32 @@
                                             <constraint firstAttribute="trailing" secondItem="6dw-CA-seF" secondAttribute="trailing" id="uRy-wz-d5t"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請登入您的帳號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I2-2S-G0B">
+                                        <rect key="frame" x="121.5" y="84" width="171" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1m-K5-pBB">
+                                        <rect key="frame" x="170" y="215" width="74" height="34"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <state key="normal" title="申請帳號">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="fdQ-8E-P2L" kind="show" id="ecL-tQ-2f7"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="4Rp-Xz-U43" firstAttribute="leading" secondItem="4y1-SQ-44x" secondAttribute="leading" id="2iV-aG-emM"/>
+                                    <constraint firstItem="H1m-K5-pBB" firstAttribute="centerX" secondItem="4y1-SQ-44x" secondAttribute="centerX" id="3Sd-ob-TOj"/>
                                     <constraint firstAttribute="trailing" secondItem="4Rp-Xz-U43" secondAttribute="trailing" id="4lF-Ca-Zlh"/>
                                     <constraint firstItem="4Rp-Xz-U43" firstAttribute="top" secondItem="4y1-SQ-44x" secondAttribute="top" constant="138" id="6mT-t6-P4F"/>
+                                    <constraint firstItem="H1m-K5-pBB" firstAttribute="top" secondItem="4Rp-Xz-U43" secondAttribute="bottom" constant="8" id="bAU-mQ-ss7"/>
+                                    <constraint firstItem="1I2-2S-G0B" firstAttribute="top" secondItem="4y1-SQ-44x" secondAttribute="top" constant="84" id="gS1-3d-2cL"/>
+                                    <constraint firstItem="1I2-2S-G0B" firstAttribute="centerX" secondItem="4y1-SQ-44x" secondAttribute="centerX" id="oPE-tZ-be4"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4d-ks-DxX">
@@ -105,7 +125,7 @@
                                     <action selector="loginButtomPress:" destination="637-dK-HVz" eventType="touchUpInside" id="635-d6-PQD"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14e-sp-M0E">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="14e-sp-M0E">
                                 <rect key="frame" x="0.0" y="768" width="414" height="45"/>
                                 <color key="backgroundColor" red="0.80559412083649995" green="0.32475757672877381" blue="0.31977857158267176" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -142,10 +162,12 @@
                     <tabBarItem key="tabBarItem" title="使用者資料" id="XRB-ai-bqO"/>
                     <connections>
                         <outlet property="accountTextFiled" destination="6dw-CA-seF" id="3hm-Iw-SAw"/>
+                        <outlet property="createdUserButton" destination="H1m-K5-pBB" id="sFI-Tc-qW0"/>
                         <outlet property="loginButton" destination="u4d-ks-DxX" id="e6v-aO-SpH"/>
                         <outlet property="longOutButton" destination="14e-sp-M0E" id="d16-NG-5Sv"/>
                         <outlet property="passwordTextFiled" destination="0Bm-AP-Q09" id="bD1-FC-nUQ"/>
                         <outlet property="topAnimateView" destination="4Rp-Xz-U43" id="uCv-jS-2NE"/>
+                        <outlet property="topLabelOne" destination="1I2-2S-G0B" id="lin-2Z-Cad"/>
                         <outlet property="viewConstraint" destination="6mT-t6-P4F" id="o8s-fC-G1l"/>
                     </connections>
                 </viewController>
@@ -180,6 +202,14 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcE-kz-wtA">
+                                                            <rect key="frame" x="8" y="9" width="47" height="42"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Button" image="back"/>
+                                                            <connections>
+                                                                <action selector="backButtonPress:" destination="fdQ-8E-P2L" eventType="touchUpInside" id="qTQ-53-akY"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.12531235809999999" green="0.1628579497" blue="0.45100766419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
@@ -585,6 +615,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back" width="64" height="64"/>
         <image name="background" width="644" height="963"/>
         <image name="pen" width="64" height="64"/>
     </resources>

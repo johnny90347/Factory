@@ -25,12 +25,13 @@ class UserInfoViewController: UIViewController {
     
     @IBOutlet weak var longOutButton: UIButton!
     
-    
-    
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var topAnimateView: UIView!
     
+    @IBOutlet weak var topLabelOne: UILabel!
+    
+    @IBOutlet weak var createdUserButton: UIButton!
     
 
     override func viewDidLoad() {
@@ -49,27 +50,44 @@ class UserInfoViewController: UIViewController {
     @IBAction func loginButtomPress(_ sender: UIButton) {
         
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 10.0, options: .curveEaseIn, animations: {
-            self.viewConstraint.constant = 0
-//            self.topAnimateView.alpha = 0
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+//        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 5.0, options: .curveEaseIn, animations: {
+//            self.viewConstraint.constant = 0
+//            self.view.layoutIfNeeded()
+//        }, completion: nil)
         
 //        UIView.animate(withDuration: 1) {
 //            self.viewConstraint.constant = 170
 //            self.view.layoutIfNeeded()
 //        }
 //
-//        UIView.animate(withDuration: 1) {
-//            self.viewConstraint.constant = -140
-//            self.view.layoutIfNeeded()
-//
-//        }
+        UIView.animate(withDuration: 1) {   //往上飄 變透明
+            self.viewConstraint.constant = 0
+            self.topAnimateView.alpha = 0
+            self.loginButton.alpha = 0
+            self.createdUserButton.alpha = 0
+            self.longOutButton.alpha = 1
+            self.topLabelOne.text = "您好"
+            self.view.layoutIfNeeded()
+        }
+        print("登入")
+        
+
     }
     
     //TODO: 登出的方法
     @IBAction func longoutButtonPress(_ sender: UIButton) {
         
+        UIView.animate(withDuration: 1) {   //往上飄 變透明
+            self.viewConstraint.constant = 138
+            self.topAnimateView.alpha = 1
+            self.loginButton.alpha = 1
+            self.createdUserButton.alpha = 1
+            self.longOutButton.alpha = 0
+            self.topLabelOne.text = "請輸入您的帳號"
+            self.view.layoutIfNeeded()
+        }
+        
+        print("登出")
        
       
     }
@@ -79,26 +97,14 @@ class UserInfoViewController: UIViewController {
     //TODO: 隱藏登入元件＆顯示登出元件 的方法
     func hiddenComponent(){
         
-        self.loginSuccess = true
-        self.accountTextFiled.isHidden = true  //隱藏帳號欄
-        self.passwordTextFiled.isHidden = true //隱藏密碼欄
-        self.loginButton.isHidden = true //隱藏登入鍵
-        self.longOutButton.isHidden = false //顯示登出鍵
-        self.accountTextFiled.text = ""
-        self.passwordTextFiled.text = ""
+
        
         
     }
     
     //TODO:顯示登入元件＆隱藏登出元件 的方法
     func showComponent(){
-        self.loginSuccess = false
-        self.accountTextFiled.isHidden = false  //顯示帳號欄
-        self.passwordTextFiled.isHidden = false //顯示密碼欄
-        self.loginButton.isHidden = false //顯示登入鍵
-        self.longOutButton.isHidden = true //隱藏登出鍵
-        self.accountTextFiled.becomeFirstResponder()
-        
+
         
         
     }
