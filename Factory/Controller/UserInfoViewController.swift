@@ -41,47 +41,13 @@ class UserInfoViewController: UIViewController {
     
     
     
-//    override func viewWillAppear(_ animated: Bool) {
-//
-//        Auth.auth().addStateDidChangeListener { (auth, user) in
-//            if user != nil{
-//                self.getUserInfo() //如果再登入狀態了話就取得使用者資料
-//            }else{
-//
-//            }
-//        }
-//
-//    }
+
     
-    // 取得使用者資料
-    func getUserInfo(){
-
-        guard let userID = Auth.auth().currentUser?.uid else {return}
-
-        
-        Firestore.firestore().collection("users").document(userID).getDocument { (snapShot, error) in
-            if error != nil{
-                self.showAlert(withTitle: "請稍後再試")
-                return
-            }
-            guard let snapShot = snapShot else {return}
-            guard let data = snapShot.data() else {return}
-                let username = data["userName"] as? String ?? "沒有資料"
-                let sex = data["sex"] as? String ?? "沒有資料"
-                let department = data["department"] as? String ?? "沒有資料"
-                let positionTxt = data["positionTxt"] as? String ?? "沒有資料"
-                let level = data["level"] as? Int ?? 0
-                let createdTime = data["createdTime"] as! Timestamp
-            
-                let userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
-                self.userInfomation = userInfo
-        }
-        
-    }
+  
         
 
 
-    //MARK: - 使用按鈕的互動方法
+    //MARK: -
     
     //TODO:  登入的方法
     @IBAction func loginButtomPress(_ sender: UIButton) {
@@ -90,11 +56,9 @@ class UserInfoViewController: UIViewController {
             if error == nil {
 
                 self.getUserInfo()                  //先取的資訊
-                
                 let alert = UIAlertController(title: "登入成功", message: "", preferredStyle: .alert)
                 let action = UIAlertAction(title: "確認", style: .default, handler: { (action) in
                     DispatchQueue.main.async {
-
                         self.LoginUIConfigure()     //再顯示資訊 （不然會出錯）
                     }
                     
@@ -129,15 +93,44 @@ class UserInfoViewController: UIViewController {
             showAlert(withTitle: "登出失敗")
             return
         }
-        noLoginUIConfigure()
         
-        userInfomation = nil          //把使用者資訊拿掉
+        noLoginUIConfigure()           //轉換成未登入介面
+        
+        userInfomation = nil          //把登入者資訊拿掉
         
         accountTextFiled.text = ""    //帳號密碼欄清空
         passwordTextFiled.text = ""
         
     }
     
+    
+    
+    //MARK:-
+    //TODO:取得使用者資料的方法
+    // 取得使用者資料
+    func getUserInfo(){
+        
+        guard let userID = Auth.auth().currentUser?.uid else {return}
+        
+        Firestore.firestore().collection("users").document(userID).getDocument { (snapShot, error) in
+            if error != nil{
+                self.showAlert(withTitle: "請稍後再試")
+                return
+            }
+            guard let snapShot = snapShot else {return}
+            guard let data = snapShot.data() else {return}
+            let username = data["userName"] as? String ?? "沒有資料"
+            let sex = data["sex"] as? String ?? "沒有資料"
+            let department = data["department"] as? String ?? "沒有資料"
+            let positionTxt = data["positionTxt"] as? String ?? "沒有資料"
+            let level = data["level"] as? Int ?? 0
+            let createdTime = data["createdTime"] as! Timestamp
+            
+            let userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
+            self.userInfomation = userInfo
+        }
+        
+    }
     
     
     //TODO: 未登入狀態介面設定
