@@ -9,11 +9,11 @@
 import UIKit
 import Firebase
 
-class UserInfoViewController: UIViewController {
+class UserInfoViewController: UIViewController,UITextFieldDelegate{
     
     
     var userInfomation:UserInfo?
-    
+    var number = 0    //用來判斷是否是第一次登陸
     
     
     @IBOutlet weak var accountTextFiled: UITextField!
@@ -32,21 +32,44 @@ class UserInfoViewController: UIViewController {
     
     @IBOutlet weak var createdUserButton: UIButton!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        
+        
+        
+        
+    }
+    
+    //FIXME: 有bug 未登出 重新開啟app後 ok按太快時 來不及有資料 不會跳轉頁面
+    override func viewWillAppear(_ animated: Bool) {
+        //確認是否在登入狀態
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                if self.number == 0 {
+                    print("有在登入狀態")
+                    self.getUserInfo()                  //先取的資訊
+                }
+            }else{
+                print("沒有在登入狀態")
+            }
+            
+        }
+        
     }
     
     
     
-
+    //按下鍵盤return 收鍵盤
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
-  
-        
-
-
+    
+    
+    
     //MARK: -
     
     //TODO:  登入的方法
@@ -54,34 +77,32 @@ class UserInfoViewController: UIViewController {
         //登入
         Auth.auth().signIn(withEmail: accountTextFiled.text!, password: passwordTextFiled.text!) { (data, error) in
             if error == nil {
-
+                
                 self.getUserInfo()                  //先取的資訊
                 let alert = UIAlertController(title: "登入成功", message: "", preferredStyle: .alert)
                 let action = UIAlertAction(title: "確認", style: .default, handler: { (action) in
-                    DispatchQueue.main.async {
-                        self.LoginUIConfigure()     //再顯示資訊 （不然會出錯）
-                    }
+                    self.LoginUIConfigure()     //再顯示資訊 （不然會出錯）
                     
                 })
                 alert.addAction(action)
                 
                 self.present(alert, animated: true, completion: nil)
-
+                
             }else{
                 self.showAlert(withTitle: "錯誤的帳號密碼")
                 return
             }
-
+            
         }
         
         
         
-//        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 5.0, options: .curveEaseIn, animations: {
-//            self.viewConstraint.constant = 0
-//            self.view.layoutIfNeeded()
-//        }, completion: nil)
+        //        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 5.0, options: .curveEaseIn, animations: {
+        //            self.viewConstraint.constant = 0
+        //            self.view.layoutIfNeeded()
+        //        }, completion: nil)
         
-
+        
     }
     
     //TODO: 登出的方法
@@ -128,6 +149,7 @@ class UserInfoViewController: UIViewController {
             
             let userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
             self.userInfomation = userInfo
+            self.LoginUIConfigure()     //再顯示資訊 （不然會出錯）
         }
         
     }
@@ -136,22 +158,25 @@ class UserInfoViewController: UIViewController {
     //TODO: 未登入狀態介面設定
     func LoginUIConfigure(){
         
-        guard let username = userInfomation?.userName else {return}
-        guard let department = userInfomation?.department else {return}
-        guard let position = userInfomation?.positionTxt else {return}
-        
         UIView.animate(withDuration: 1) {   //往上飄 變透明
             self.viewConstraint.constant = 0
             self.topAnimateView.alpha = 0
             self.loginButton.alpha = 0
             self.createdUserButton.alpha = 0
             self.longOutButton.alpha = 1
-            self.topLabelOne.text = "歡迎您登入系統\n\n\(username)\n\n\(department)\n\n\(position)"
+            
             self.view.layoutIfNeeded()
         }
+        guard let userInfo = userInfomation else { return }
+        let username = userInfo.userName
+        let department = userInfo.department
+        let position = userInfo.positionTxt
+        
+        self.topLabelOne.text = "歡迎您登入系統\n\n\(username)\n\n\(department)\n\n\(position)"
+        
     }
     
-    //TODO: 登入狀態的介面設定
+    //TODO: 未登入狀態的介面設定
     func noLoginUIConfigure(){
         UIView.animate(withDuration: 1) {   //往上飄 變透明
             self.viewConstraint.constant = 138

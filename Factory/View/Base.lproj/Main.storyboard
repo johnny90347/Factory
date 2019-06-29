@@ -17,7 +17,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.87476575374603271" green="0.40964946150779724" blue="0.9072573184967041" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="公司產品" id="JZY-se-efF"/>
@@ -33,7 +33,7 @@
                     <view key="view" contentMode="scaleToFill" id="hSL-tP-hdN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.87450980389999999" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="Bvj-qw-sWl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="工廠內部" id="sZY-RQ-fQt"/>
@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="QIl-ok-w7P">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414.00000000000011" height="769"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4y1-SQ-44x">
                                 <rect key="frame" x="0.0" y="44" width="414" height="384.5"/>
@@ -64,12 +64,18 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="637-dK-HVz" id="D0t-qh-6vN"/>
+                                                </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請輸入帳號" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6dw-CA-seF">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="637-dK-HVz" id="asW-v5-ORa"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -558,7 +564,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mBk-Yi-qfo">
-                                                    <rect key="frame" x="5" y="5" width="404" height="83.5"/>
+                                                    <rect key="frame" x="5" y="5" width="404" height="76"/>
                                                     <color key="backgroundColor" red="0.2888046205" green="0.4050214291" blue="0.68238514660000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="40"/>
                                                     <state key="normal" title="註冊">
@@ -571,7 +577,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mBk-Yi-qfo" firstAttribute="leading" secondItem="VaK-Gm-8tX" secondAttribute="leading" constant="5" id="Haa-Kc-Eym"/>
-                                                <constraint firstAttribute="bottom" secondItem="mBk-Yi-qfo" secondAttribute="bottom" constant="5" id="ISx-ox-bis"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="mBk-Yi-qfo" secondAttribute="bottomMargin" constant="10" id="ISx-ox-bis"/>
                                                 <constraint firstAttribute="trailing" secondItem="mBk-Yi-qfo" secondAttribute="trailing" constant="5" id="WeW-gh-6sF"/>
                                                 <constraint firstItem="mBk-Yi-qfo" firstAttribute="top" secondItem="VaK-Gm-8tX" secondAttribute="top" constant="5" id="aje-iT-amY"/>
                                             </constraints>

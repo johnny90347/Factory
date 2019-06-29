@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class FactoryViewController: UIViewController {
     
@@ -27,8 +29,26 @@ class FactoryViewController: UIViewController {
                 print("有在登入狀態")
             }else{
                 print("沒有在登入狀態")
+                self.LoginAlert ()
             }
         }
+        
+    }
+    
+    
+    func LoginAlert (){
+        
+        let alert = UIAlertController(title: "請登入帳號", message: "按下ok進入登入頁面", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "登入", style: .default) { (action) in
+           self.tabBarController?.selectedIndex = 2
+        }
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true, completion: nil)
+        
+        
         
     }
     
