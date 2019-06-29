@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="637-dK-HVz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QWa-8t-uKD">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="QIl-ok-w7P">
-                                <rect key="frame" x="0.0" y="44" width="414.00000000000011" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4y1-SQ-44x">
                                 <rect key="frame" x="0.0" y="44" width="414" height="384.5"/>
@@ -83,8 +83,8 @@
                                             <constraint firstAttribute="trailing" secondItem="6dw-CA-seF" secondAttribute="trailing" id="uRy-wz-d5t"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請登入您的帳號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I2-2S-G0B">
-                                        <rect key="frame" x="121.5" y="84" width="171" height="29"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請登入您的帳號" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1I2-2S-G0B">
+                                        <rect key="frame" x="122" y="84" width="170.5" height="29"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -197,14 +197,16 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="59.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎加入冠瑩國際有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BH-1Y-d8h">
-                                                            <rect key="frame" x="79" y="17" width="256.5" height="25.5"/>
+                                                            <rect key="frame" x="79" y="17" width="256" height="25.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcE-kz-wtA">
-                                                            <rect key="frame" x="8" y="9" width="47" height="42"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcE-kz-wtA">
+                                                            <rect key="frame" x="8" y="8" width="49" height="40"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="NcE-kz-wtA" secondAttribute="height" multiplier="49:40" id="AJk-fn-N8y"/>
+                                                            </constraints>
                                                             <state key="normal" title="Button" image="back"/>
                                                             <connections>
                                                                 <action selector="backButtonPress:" destination="fdQ-8E-P2L" eventType="touchUpInside" id="qTQ-53-akY"/>
@@ -213,7 +215,11 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.12531235809999999" green="0.1628579497" blue="0.45100766419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="NcE-kz-wtA" secondAttribute="bottom" constant="11.5" id="33m-zp-aKX"/>
                                                         <constraint firstItem="8BH-1Y-d8h" firstAttribute="centerX" secondItem="svU-8H-ioO" secondAttribute="centerX" id="6LV-Bi-sL0"/>
+                                                        <constraint firstItem="NcE-kz-wtA" firstAttribute="leading" secondItem="svU-8H-ioO" secondAttribute="leading" constant="8" id="QGh-6M-f44"/>
+                                                        <constraint firstItem="8BH-1Y-d8h" firstAttribute="leading" secondItem="NcE-kz-wtA" secondAttribute="trailing" constant="22" id="Qbl-Pe-SjQ"/>
+                                                        <constraint firstItem="NcE-kz-wtA" firstAttribute="top" secondItem="svU-8H-ioO" secondAttribute="top" constant="8" id="nY8-3Y-sNJ"/>
                                                         <constraint firstItem="8BH-1Y-d8h" firstAttribute="centerY" secondItem="svU-8H-ioO" secondAttribute="centerY" id="qcD-Aa-p3i"/>
                                                     </constraints>
                                                 </view>

@@ -48,35 +48,39 @@ class UserInfoViewController: UIViewController {
     
     //TODO:  登入的方法
     @IBAction func loginButtomPress(_ sender: UIButton) {
-        
-        
+        LoginUIConfigure()
 //        UIView.animate(withDuration: 2.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 5.0, options: .curveEaseIn, animations: {
 //            self.viewConstraint.constant = 0
 //            self.view.layoutIfNeeded()
 //        }, completion: nil)
-        
-//        UIView.animate(withDuration: 1) {
-//            self.viewConstraint.constant = 170
-//            self.view.layoutIfNeeded()
-//        }
-//
-        UIView.animate(withDuration: 1) {   //往上飄 變透明
-            self.viewConstraint.constant = 0
-            self.topAnimateView.alpha = 0
-            self.loginButton.alpha = 0
-            self.createdUserButton.alpha = 0
-            self.longOutButton.alpha = 1
-            self.topLabelOne.text = "您好"
-            self.view.layoutIfNeeded()
-        }
-        print("登入")
         
 
     }
     
     //TODO: 登出的方法
     @IBAction func longoutButtonPress(_ sender: UIButton) {
+       noLoginUIConfigure()
         
+    }
+    
+    
+    
+    //TODO: 未登入狀態介面設定
+    func LoginUIConfigure(){
+        
+        UIView.animate(withDuration: 1) {   //往上飄 變透明
+            self.viewConstraint.constant = 0
+            self.topAnimateView.alpha = 0
+            self.loginButton.alpha = 0
+            self.createdUserButton.alpha = 0
+            self.longOutButton.alpha = 1
+            self.topLabelOne.text = "歡迎您登入系統\n\n梁鑫文\n\n經理"
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    //TODO: 登入狀態的介面設定
+    func noLoginUIConfigure(){
         UIView.animate(withDuration: 1) {   //往上飄 變透明
             self.viewConstraint.constant = 138
             self.topAnimateView.alpha = 1
@@ -86,26 +90,6 @@ class UserInfoViewController: UIViewController {
             self.topLabelOne.text = "請輸入您的帳號"
             self.view.layoutIfNeeded()
         }
-        
-        print("登出")
-       
-      
-    }
-    
-    
-    
-    //TODO: 隱藏登入元件＆顯示登出元件 的方法
-    func hiddenComponent(){
-        
-
-       
-        
-    }
-    
-    //TODO:顯示登入元件＆隱藏登出元件 的方法
-    func showComponent(){
-
-        
         
     }
     
