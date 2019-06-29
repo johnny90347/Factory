@@ -7,5 +7,18 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
+struct UserInfo {
+    
+    var userName:String
+    var sex:String
+    var department:String
+    var positionTxt:String
+    var level:Int
+    var createdTime:Timestamp
+    
+}
+
 
 

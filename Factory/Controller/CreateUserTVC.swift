@@ -99,6 +99,7 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
             if error != nil{
                 print("帳號申請失敗\(error!.localizedDescription)")
                 self.showAlert(withTitle: "帳號格式錯誤或帳號已存在")
+        
             }
             
             guard let userID = Auth.auth().currentUser?.uid else{ return }
@@ -113,6 +114,7 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
                     if error != nil{
                     print("建立帳號失敗\(error!.localizedDescription)")
                     self.showAlert(withTitle: "資料建立失敗")
+                        
                     }
             })
             
