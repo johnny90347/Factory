@@ -25,12 +25,19 @@ class UserInfoViewController: UIViewController {
     
     @IBOutlet weak var longOutButton: UIButton!
     
-    @IBOutlet weak var statusLabel: UILabel!
+    
+    
+    @IBOutlet weak var viewConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var topAnimateView: UIView!
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+     
         
     }
         
@@ -41,11 +48,29 @@ class UserInfoViewController: UIViewController {
     //TODO:  登入的方法
     @IBAction func loginButtomPress(_ sender: UIButton) {
         
-     
+        
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 10.0, options: .curveEaseIn, animations: {
+            self.viewConstraint.constant = 0
+//            self.topAnimateView.alpha = 0
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+//        UIView.animate(withDuration: 1) {
+//            self.viewConstraint.constant = 170
+//            self.view.layoutIfNeeded()
+//        }
+//
+//        UIView.animate(withDuration: 1) {
+//            self.viewConstraint.constant = -140
+//            self.view.layoutIfNeeded()
+//
+//        }
     }
     
     //TODO: 登出的方法
     @IBAction func longoutButtonPress(_ sender: UIButton) {
+        
+       
       
     }
     
@@ -59,7 +84,6 @@ class UserInfoViewController: UIViewController {
         self.passwordTextFiled.isHidden = true //隱藏密碼欄
         self.loginButton.isHidden = true //隱藏登入鍵
         self.longOutButton.isHidden = false //顯示登出鍵
-        self.statusLabel.isHidden = false //顯示狀態列
         self.accountTextFiled.text = ""
         self.passwordTextFiled.text = ""
        
@@ -73,7 +97,6 @@ class UserInfoViewController: UIViewController {
         self.passwordTextFiled.isHidden = false //顯示密碼欄
         self.loginButton.isHidden = false //顯示登入鍵
         self.longOutButton.isHidden = true //隱藏登出鍵
-        self.statusLabel.isHidden = true //隱藏狀態列
         self.accountTextFiled.becomeFirstResponder()
         
         

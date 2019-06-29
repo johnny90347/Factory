@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+
+
 
 class CreateUserTVC: UITableViewController, UITextFieldDelegate {
     
@@ -37,22 +40,88 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
     
     @IBAction func registerButtonPress(_ sender: UIButton) {
         
+        if accountTextField.text! != "" &&     //檢查空白
+            passwordTextField.text! != "" &&
+            checkPasswordTxt.text! != "" &&
+            usernameTextFiled.text != "" &&
+            sexTextField.text! != "" &&
+            departmentTxt.text! != "" &&
+            positionTxt.text! != "" {
+            
+            if passwordTextField.text! == checkPasswordTxt.text! {    //重複確認密碼
+                createdUserInfo()
+            }else{
+                showAlert(withTitle: "密碼檢查錯誤")   //密碼前後輸入錯誤
+                
+                passwordTextField.text = ""    //把密碼變空白
+                checkPasswordTxt.text = ""
+            }
+            
+            
+            
+        }else{
+            //有資料還沒填完喔！
+            showAlert(withTitle: "資料還沒填完喔！")
+        }
+        
+       
+  
     }
     
+    
+    
+    //MARK: - 設定
+    
+    //按下鍵盤return 收鍵盤
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-
-   
-
-    
     //設定cell的Header 顏色
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = .blue
+        header.textLabel?.textColor = UIColor(red: 9/255, green: 132/255, blue: 227/255, alpha: 1)
         
+    }
+    
+    
+    //MARK: - 方法
+    
+    //使用者申請 ＆ 資料
+    func createdUserInfo(){
+        Auth.auth().createUser(withEmail: accountTextField.text!, password: passwordTextField.text!) { (authData, error) in
+            if error != nil{
+                print("帳號申請失敗\(error!.localizedDescription)")
+                self.showAlert(withTitle: "帳號格式錯誤或帳號已存在")
+            }
+            
+            guard let userID = Auth.auth().currentUser?.uid else{ return }
+            Firestore.firestore().collection("users").document(userID).setData([
+                "userName" : self.usernameTextFiled.text!,
+                "sex" : self.sexTextField.text!,
+                "department" : self.departmentTxt.text!,
+                "positionTxt" : self.positionTxt.text!,
+                "level" : 3,
+                "createdTime" : FieldValue.serverTimestamp()
+                ], completion: { (error) in
+                    if error != nil{
+                    print("建立帳號失敗\(error!.localizedDescription)")
+                    self.showAlert(withTitle: "資料建立失敗")
+                    }
+            })
+            
+            self.showAlert(withTitle: "建立成功！")
+        }
+    }
+    
+    
+    //警告控制器
+    func showAlert(withTitle title:String){
+        let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "確認", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     
