@@ -13,7 +13,7 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     
     
     var userInfomation:UserInfo?
-    var number = 0    //用來判斷是否是第一次登陸
+   
     
     
     @IBOutlet weak var accountTextFiled: UITextField!
@@ -47,16 +47,11 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
         //確認是否在登入狀態
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                if self.number == 0 {
-                    print("有在登入狀態")
-                    self.getUserInfo()                  //先取的資訊
-                }
+                    self.getUserInfo()
             }else{
                 print("沒有在登入狀態")
             }
-            
         }
-        
     }
     
     
@@ -115,10 +110,8 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
             return
         }
         
-        noLoginUIConfigure()           //轉換成未登入介面
-        
+        noLoginUIConfigure()           //轉換成未登入介面        
         userInfomation = nil          //把登入者資訊拿掉
-        
         accountTextFiled.text = ""    //帳號密碼欄清空
         passwordTextFiled.text = ""
         
@@ -138,14 +131,17 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
                 self.showAlert(withTitle: "請稍後再試")
                 return
             }
-            guard let snapShot = snapShot else {return}
-            guard let data = snapShot.data() else {return}
-            let username = data["userName"] as? String ?? "沒有資料"
-            let sex = data["sex"] as? String ?? "沒有資料"
-            let department = data["department"] as? String ?? "沒有資料"
-            let positionTxt = data["positionTxt"] as? String ?? "沒有資料"
-            let level = data["level"] as? Int ?? 0
-            let createdTime = data["createdTime"] as! Timestamp
+            
+            
+            guard let snapShot = snapShot,
+            let data = snapShot.data(),
+            let username = data["userName"] as? String,
+            let sex = data["sex"] as? String,
+            let department = data["department"] as? String,
+            let positionTxt = data["positionTxt"] as? String,
+            let level = data["level"] as? Int,
+            let createdTime = data["createdTime"] as? Timestamp
+            else {return}
             
             let userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
             self.userInfomation = userInfo
