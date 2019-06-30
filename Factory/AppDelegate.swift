@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 
 
+var userInfomationShare:UserInfo?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,11 +22,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-//          let myDataBase = Database.database().reference()
-//        myDataBase.setValue("HI")
+        getUserInfo()
         
         return true
     }
+    func getUserInfo(){
+
+        guard let userID = Auth.auth().currentUser?.uid else {return}
+
+        Firestore.firestore().collection("users").document(userID).getDocument { (snapShot, error) in
+            if error != nil{
+
+                return
+            }
+
+
+            guard let snapShot = snapShot,
+                let data = snapShot.data(),
+                let username = data["userName"] as? String,
+                let sex = data["sex"] as? String,
+                let department = data["department"] as? String,
+                let positionTxt = data["positionTxt"] as? String,
+                let level = data["level"] as? Int,
+                let createdTime = data["createdTime"] as? Timestamp
+                else {return}
+
+            let userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
+            userInfomationShare = userInfo
+
+        }
+
+    }
+    
+    
+   
+        
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

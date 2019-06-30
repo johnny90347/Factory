@@ -33,14 +33,173 @@
                     <view key="view" contentMode="scaleToFill" id="hSL-tP-hdN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.98039215690000003" green="0.87450980389999999" blue="0.52549019610000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWB-Mm-jwP" userLabel="topView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="冠瑩國際有限公司" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFq-aM-WI7">
+                                        <rect key="frame" x="110" y="15.5" width="194.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.16949835419654846" green="0.23276421427726746" blue="0.47061359882354736" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="EZa-Qd-HSe"/>
+                                    <constraint firstItem="aFq-aM-WI7" firstAttribute="centerX" secondItem="rWB-Mm-jwP" secondAttribute="centerX" id="MOZ-hK-gff"/>
+                                    <constraint firstItem="aFq-aM-WI7" firstAttribute="centerY" secondItem="rWB-Mm-jwP" secondAttribute="centerY" id="clw-qp-WWH"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tcx-4a-TaN">
+                                <rect key="frame" x="0.0" y="104" width="414" height="709"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="IPz-Pf-mSU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="709"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歡迎" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Toz-BZ-d9d">
+                                <rect key="frame" x="183.5" y="114" width="47" height="27.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-ds-8rm">
+                                <rect key="frame" x="30" y="161.5" width="354" height="592"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="mcx-Nx-Th0">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="142"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="研發部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fdd-fW-p76">
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="142"/>
+                                                <color key="backgroundColor" red="0.076783476071469015" green="0.10638209466764015" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQg-aG-MvS">
+                                                <rect key="frame" x="48" y="0.0" width="306" height="142"/>
+                                                <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.54697375290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" backgroundImage="RD"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Fdd-fW-p76" firstAttribute="width" secondItem="fQg-aG-MvS" secondAttribute="width" multiplier="1:7" id="C5l-Th-S6c"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Nj8-rE-LB0">
+                                        <rect key="frame" x="0.0" y="150" width="354" height="142"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="製造部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiL-Gy-zTv">
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="142"/>
+                                                <color key="backgroundColor" red="0.24109787580530517" green="0.2609110760521865" blue="0.60657426222999788" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTL-UR-OMw">
+                                                <rect key="frame" x="48" y="0.0" width="306" height="142"/>
+                                                <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.54697375290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" backgroundImage="Manufacturing"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="xiL-Gy-zTv" firstAttribute="width" secondItem="aTL-UR-OMw" secondAttribute="width" multiplier="1:7" id="QuW-oo-YAh"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="pFa-Zg-hfW">
+                                        <rect key="frame" x="0.0" y="300" width="354" height="142"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="包裝部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KSM-Be-MLL">
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="142"/>
+                                                <color key="backgroundColor" red="0.35523745106058674" green="0.35496266699416557" blue="0.68238514660000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxc-1o-lK7">
+                                                <rect key="frame" x="48" y="0.0" width="306" height="142"/>
+                                                <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.54697375290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" backgroundImage="PD"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="KSM-Be-MLL" firstAttribute="width" secondItem="yxc-1o-lK7" secondAttribute="width" multiplier="1:7" id="2C7-wS-iQ3"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eef-se-aHE">
+                                        <rect key="frame" x="0.0" y="450" width="354" height="142"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="管理部" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wj3-KS-qou">
+                                                <rect key="frame" x="0.0" y="0.0" width="44" height="142"/>
+                                                <color key="backgroundColor" red="0.51726827859512758" green="0.55605084365221069" blue="0.82985104127005083" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qY-HK-szR">
+                                                <rect key="frame" x="48" y="0.0" width="306" height="142"/>
+                                                <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.54697375290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="142" id="ELI-eG-Qri"/>
+                                                </constraints>
+                                                <state key="normal" backgroundImage="AD"/>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="wj3-KS-qou" firstAttribute="width" secondItem="6qY-HK-szR" secondAttribute="width" multiplier="1:7" id="s5v-JP-tr0"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorLeft 2" translatesAutoresizingMaskIntoConstraints="NO" id="KC6-sB-hTZ">
+                                <rect key="frame" x="0.0" y="104" width="207" height="709"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorRight" translatesAutoresizingMaskIntoConstraints="NO" id="npf-TY-tNq">
+                                <rect key="frame" x="207" y="104" width="207" height="709"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Toz-BZ-d9d" firstAttribute="centerX" secondItem="hSL-tP-hdN" secondAttribute="centerX" id="27x-CU-pJq"/>
+                            <constraint firstItem="Bvj-qw-sWl" firstAttribute="bottom" secondItem="npf-TY-tNq" secondAttribute="bottom" id="5Mw-YJ-LS3"/>
+                            <constraint firstItem="J6o-ds-8rm" firstAttribute="leading" secondItem="Bvj-qw-sWl" secondAttribute="leading" constant="30" id="7sS-0u-zrB"/>
+                            <constraint firstItem="Tcx-4a-TaN" firstAttribute="top" secondItem="rWB-Mm-jwP" secondAttribute="bottom" id="Ajt-dk-J3I"/>
+                            <constraint firstItem="npf-TY-tNq" firstAttribute="trailing" secondItem="Bvj-qw-sWl" secondAttribute="trailing" id="BKY-Mt-t4K"/>
+                            <constraint firstItem="KC6-sB-hTZ" firstAttribute="width" secondItem="Tcx-4a-TaN" secondAttribute="width" multiplier="1:2" id="Bnf-RU-ZbV"/>
+                            <constraint firstItem="rWB-Mm-jwP" firstAttribute="trailing" secondItem="Bvj-qw-sWl" secondAttribute="trailing" id="F1U-nJ-j5p"/>
+                            <constraint firstItem="KC6-sB-hTZ" firstAttribute="top" secondItem="rWB-Mm-jwP" secondAttribute="bottom" id="GDN-3e-MxY"/>
+                            <constraint firstItem="npf-TY-tNq" firstAttribute="width" secondItem="Tcx-4a-TaN" secondAttribute="width" multiplier="1:2" id="RlO-nU-mdR"/>
+                            <constraint firstItem="KC6-sB-hTZ" firstAttribute="leading" secondItem="hSL-tP-hdN" secondAttribute="leading" id="T5X-T7-o0l"/>
+                            <constraint firstItem="rWB-Mm-jwP" firstAttribute="leading" secondItem="Bvj-qw-sWl" secondAttribute="leading" id="Yz6-lQ-MjP"/>
+                            <constraint firstItem="npf-TY-tNq" firstAttribute="top" secondItem="rWB-Mm-jwP" secondAttribute="bottom" id="aF2-4a-zLF"/>
+                            <constraint firstItem="J6o-ds-8rm" firstAttribute="centerX" secondItem="hSL-tP-hdN" secondAttribute="centerX" id="czi-ic-bUo"/>
+                            <constraint firstItem="Bvj-qw-sWl" firstAttribute="bottom" secondItem="Tcx-4a-TaN" secondAttribute="bottom" id="iSc-X1-LHv"/>
+                            <constraint firstItem="Bvj-qw-sWl" firstAttribute="trailing" secondItem="Tcx-4a-TaN" secondAttribute="trailing" id="jlY-Xa-zw5"/>
+                            <constraint firstItem="Bvj-qw-sWl" firstAttribute="trailing" secondItem="J6o-ds-8rm" secondAttribute="trailing" constant="30" id="mR2-5Z-mh3"/>
+                            <constraint firstItem="rWB-Mm-jwP" firstAttribute="top" secondItem="Bvj-qw-sWl" secondAttribute="top" id="o3v-2d-i30"/>
+                            <constraint firstItem="Bvj-qw-sWl" firstAttribute="bottom" secondItem="KC6-sB-hTZ" secondAttribute="bottom" id="pPB-hh-7Hq"/>
+                            <constraint firstItem="Tcx-4a-TaN" firstAttribute="leading" secondItem="Bvj-qw-sWl" secondAttribute="leading" id="sHF-yX-Apm"/>
+                            <constraint firstItem="J6o-ds-8rm" firstAttribute="top" secondItem="Toz-BZ-d9d" secondAttribute="bottom" constant="20" id="tnk-vH-zfZ"/>
+                            <constraint firstItem="Toz-BZ-d9d" firstAttribute="top" secondItem="rWB-Mm-jwP" secondAttribute="bottom" constant="10" id="vFa-70-Gbs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bvj-qw-sWl"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="工廠內部" id="sZY-RQ-fQt"/>
+                    <connections>
+                        <outlet property="greetTextLabel" destination="Toz-BZ-d9d" id="HTG-78-Nyo"/>
+                        <outlet property="leftDoorImageView" destination="KC6-sB-hTZ" id="7DS-Jj-d4B"/>
+                        <outlet property="leftDoorLeading" destination="T5X-T7-o0l" id="Qmk-La-zDr"/>
+                        <outlet property="rightDoorImageView" destination="npf-TY-tNq" id="dOs-Tf-oDi"/>
+                        <outlet property="rightDoorTraling" destination="BKY-Mt-t4K" id="iez-WD-e1a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hW1-ef-XYo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="236" y="862"/>
+            <point key="canvasLocation" x="234.78260869565219" y="861.83035714285711"/>
         </scene>
         <!--使用者資料-->
         <scene sceneID="f6F-J8-vIA">
@@ -627,8 +786,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AD" width="497" height="298"/>
+        <image name="Manufacturing" width="367.5" height="222.5"/>
+        <image name="PD" width="350" height="157.5"/>
+        <image name="RD" width="142.5" height="88.5"/>
         <image name="back" width="64" height="64"/>
         <image name="background" width="644" height="963"/>
+        <image name="doorLeft 2" width="147.5" height="636"/>
+        <image name="doorRight" width="151.5" height="638.5"/>
         <image name="pen" width="64" height="64"/>
     </resources>
 </document>
