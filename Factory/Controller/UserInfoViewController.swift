@@ -32,15 +32,23 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     
     @IBOutlet weak var createdUserButton: UIButton!
     
+    @IBOutlet weak var bgImageView: UIImageView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
-        
-        
+  
     }
+    
+
+    //按空白處 收鍵盤
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     
     //FIXME: 有bug 未登出 重新開啟app後 ok按太快時 來不及有資料 不會跳轉頁面
     override func viewWillAppear(_ animated: Bool) {

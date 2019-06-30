@@ -83,6 +83,11 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
         return true
     }
     
+    //按空白處 收鍵盤
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     //設定cell的Header 顏色
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView

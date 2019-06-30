@@ -33,60 +33,92 @@ class FactoryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        leftDoorImageView.layer.cornerRadius = 10
+        
+        leftDoorImageView.layer.cornerRadius = 10 //設定門的圓角
         rightDoorImageView.layer.cornerRadius = 10
     }
     
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-     
-    }
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         //確認是否在登陸狀態
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                 print("有在登入狀態")
-                self.getUserInfo()
+                self.getUserInfo()  //有登入時 門開啟
             }else{
                 print("沒有在登入狀態")
-                self.LoginAlert ()
-                self.doorClose()  //離開畫面時門關上
+                self.LoginAlert () //沒有登入時 轉場登入的畫面
+                self.doorClose()  //沒有登入時 門關起來
                 
             }
         }
     }
     
-    
     override func viewDidDisappear(_ animated: Bool) {
         doorClose()  //離開畫面時門關上
     }
     
+    //MARK:- 按鈕群
+    
+    @IBAction func RDButtonPress(_ sender: UIButton) {
+        guard let department = userInfo?.department,
+            let level = userInfo?.level else {return}
+        
+        if department == "研發部" || level <= 2 {
+            performSegue(withIdentifier: "goToRD", sender: self)
+        }else{
+            commonAlert(withTitle: "您不符合資格")
+        }
+        
+    }
+    
+    @IBAction func MDButtonpress(_ sender: UIButton) {
+        
+    }
+    
+    
+    @IBAction func PDbuttonPress(_ sender: UIButton) {
+    }
+    
+    @IBAction func ADbuttonPress(_ sender: UIButton) {
+    }
+    
+    
+    //MARK:- 到伺服器端 取資料
+    //取得使用者資料
+    func getUserInfo(){
+        
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("users").document(userID).getDocument { (snapshot, error) in
+            if error != nil{
+                print("取得資料失敗")
+                self.commonAlert(withTitle: "網路異常")
+                return
+            }
+            
+            guard let data = snapshot?.data(),
+                let username = data["userName"] as? String,
+                let sex = data["sex"] as? String,
+                let department = data["department"] as? String,
+                let positionTxt = data["positionTxt"] as? String,
+                let level = data["level"] as? Int,
+                let createdTime = data["createdTime"] as? Timestamp
+                else {return}
+            
+            self.userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
+            self.setGreetTxt()
+            self.doorOpenAnimete()
+            
+            
+        }
+        
+    }
     
 
     
     
-    //開啟門 動畫
-    func doorOpenAnimete (){
-        UIView.animate(withDuration: 1.5) {
-            self.leftDoorLeading.constant = -250
-            self.rightDoorTraling.constant = 250
-            self.leftDoorImageView.alpha = 0
-            self.rightDoorImageView.alpha = 0
-            self.view.layoutIfNeeded()
-        }
-    }
-    //關閉門
-    func doorClose(){
-        self.leftDoorLeading.constant = 0
-        self.rightDoorTraling.constant = 0
-        self.leftDoorImageView.alpha = 1
-        self.rightDoorImageView.alpha = 1
-    }
-    
-   
+ 
+    //MARK:- 警告控制器
     //未登入警告
     func LoginAlert (){
         
@@ -110,42 +142,38 @@ class FactoryViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    //取得使用者資料
-    func getUserInfo(){
-        
-        guard let userID = Auth.auth().currentUser?.uid else { return }
-        Firestore.firestore().collection("users").document(userID).getDocument { (snapshot, error) in
-            if error != nil{
-                print("取得資料失敗")
-                self.commonAlert(withTitle: "網路異常")
-                return
-            }
-            
-            guard let data = snapshot?.data(),
-            let username = data["userName"] as? String,
-            let sex = data["sex"] as? String,
-            let department = data["department"] as? String,
-            let positionTxt = data["positionTxt"] as? String,
-            let level = data["level"] as? Int,
-            let createdTime = data["createdTime"] as? Timestamp
-            else {return}
-            
-           self.userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
-            self.setGreetTxt()
-            self.doorOpenAnimete()
-            
-        
-        }
-        
-    }
     
     
+    
+    
+    //MARK: - 畫面設定的方法
+    
+    //設定招呼文字
     func setGreetTxt(){
         guard let name = userInfo?.userName,
             let position = userInfo?.positionTxt
             else{ return }
         greetTextLabel.text = "您好！\(name) \(position)"
     }
+    
+    //開啟門 動畫
+    func doorOpenAnimete (){
+        UIView.animate(withDuration: 1.5) {
+            self.leftDoorLeading.constant = -250
+            self.rightDoorTraling.constant = 250
+            self.leftDoorImageView.alpha = 0
+            self.rightDoorImageView.alpha = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    //關閉門
+    func doorClose(){
+        self.leftDoorLeading.constant = 0
+        self.rightDoorTraling.constant = 0
+        self.leftDoorImageView.alpha = 1
+        self.rightDoorImageView.alpha = 1
+    }
+    
     
 
 
