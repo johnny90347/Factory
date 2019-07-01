@@ -61,29 +61,38 @@ class FactoryViewController: UIViewController {
     
 
     
-    //MARK:- 按鈕群
+    //MARK:- 部門按鈕群
     
     @IBAction func RDButtonPress(_ sender: UIButton) {
-        guard let department = userInfo?.department,
-            let level = userInfo?.level else {return}
-        
-        if department == "研發部" || level <= 2 {
-            performSegue(withIdentifier: "goToRD", sender: self)
-        }else{
-            commonAlert(withTitle: "您不符合資格")
-        }
-        
+        entryCondition(withDepartment: "研發部", segueID: "goToRD")
+
     }
     
     @IBAction func MDButtonpress(_ sender: UIButton) {
-        
+        entryCondition(withDepartment: "製造部", segueID:"goToMD")
     }
     
     
     @IBAction func PDbuttonPress(_ sender: UIButton) {
+        entryCondition(withDepartment: "包裝部", segueID: "goToPD")
     }
     
     @IBAction func ADbuttonPress(_ sender: UIButton) {
+        entryCondition(withDepartment: "管理部", segueID: "goToAD")
+    }
+    
+    //MARK: 進入部門的條件
+    func entryCondition(withDepartment department:String,segueID sgID:String){
+        guard let myDepartment = userInfo?.department,
+            let level = userInfo?.level else {return}
+        
+        if myDepartment == department || level <= 2 {   //登入限制自己的所屬部門or高階級人士
+            performSegue(withIdentifier: sgID, sender: self)
+        }else{
+            commonAlert(withTitle: "抱歉！您不符合資格")
+        }
+        
+        
     }
     
     
@@ -161,7 +170,7 @@ class FactoryViewController: UIViewController {
     
     //開啟門 動畫
     func doorOpenAnimete (){
-        UIView.animate(withDuration: 1.5) {
+        UIView.animate(withDuration: 1.0) {
             self.leftDoorLeading.constant = -250
             self.rightDoorTraling.constant = 250
             self.leftDoorImageView.alpha = 0
@@ -175,6 +184,7 @@ class FactoryViewController: UIViewController {
         self.rightDoorTraling.constant = 0
         self.leftDoorImageView.alpha = 1
         self.rightDoorImageView.alpha = 1
+        self.view.layoutIfNeeded()
     }
     
     

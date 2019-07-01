@@ -48,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FiF-OF-29v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1367" y="1632"/>
+            <point key="canvasLocation" x="-412" y="1632"/>
         </scene>
         <!--冠瑩國際有限公司-->
         <scene sceneID="6L5-HJ-Ss5">
@@ -218,9 +218,9 @@
                         <outlet property="leftDoorLeading" destination="T5X-T7-o0l" id="Qmk-La-zDr"/>
                         <outlet property="rightDoorImageView" destination="npf-TY-tNq" id="dOs-Tf-oDi"/>
                         <outlet property="rightDoorTraling" destination="BKY-Mt-t4K" id="iez-WD-e1a"/>
-                        <segue destination="mMW-am-ZcA" kind="show" id="4ZW-Kw-R3d"/>
-                        <segue destination="AuR-TQ-LST" kind="show" id="3fv-Fu-phb"/>
-                        <segue destination="ZLQ-o4-fAQ" kind="show" id="8pE-gX-xY4"/>
+                        <segue destination="mMW-am-ZcA" kind="show" identifier="goToAD" id="4ZW-Kw-R3d"/>
+                        <segue destination="AuR-TQ-LST" kind="show" identifier="goToPD" id="3fv-Fu-phb"/>
+                        <segue destination="ZLQ-o4-fAQ" kind="show" identifier="goToMD" id="8pE-gX-xY4"/>
                         <segue destination="sS1-5L-Dl2" kind="show" identifier="goToRD" id="4qM-ro-bYf"/>
                     </connections>
                 </viewController>
@@ -834,7 +834,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UVa-t3-ViR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="1632"/>
+            <point key="canvasLocation" x="1571" y="1632"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="uT1-AE-2Ex">
@@ -858,7 +858,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqV-Bl-NLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1225" y="1632"/>
+            <point key="canvasLocation" x="2614" y="1632"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JPj-z0-NkD">
@@ -882,7 +882,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8B-TH-19A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-571.01449275362324" y="1631.9196428571429"/>
+            <point key="canvasLocation" x="571" y="1632"/>
         </scene>
         <!--工廠內部-->
         <scene sceneID="FXh-fG-dnr">
