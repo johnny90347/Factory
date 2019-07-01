@@ -40,6 +40,11 @@ class FactoryViewController: UIViewController {
     
 
     override func viewWillAppear(_ animated: Bool) {
+        doorClose()  //登入畫面之前 先關門 (修改登出後再登入 會沒有動畫的bug)
+       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         //確認是否在登陸狀態
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
@@ -54,9 +59,7 @@ class FactoryViewController: UIViewController {
         }
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        doorClose()  //離開畫面時門關上
-    }
+
     
     //MARK:- 按鈕群
     
