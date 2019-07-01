@@ -26,12 +26,11 @@ struct UserInfo {
 
 struct RDTaskInfo {
     var client:String
-    var 
+    var taskTxt:String
+    var status:Bool
+    var timestamp:Timestamp
 }
 
 
-//"clientName" : clientNameLabel.text!,
-//"taskTxt" : taskTextView.text!,
-//"status" : false,
-//"timestamp" : FieldValue.serverTimestamp()
+
 

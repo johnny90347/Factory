@@ -24,6 +24,25 @@ class RDTaskListCustomCell: UITableViewCell {
         super.awakeFromNib()
         taskStatusView.layer.cornerRadius = 6
         backGroundView.layer.cornerRadius = 6
+        clientNameLabel.textColor = .blue  //客戶名稱變藍色
+        
+    }
+    
+    
+    func configureCell(rdTask:RDTaskInfo) {
+       
+        clientNameLabel.text = rdTask.client //顯示客戶名
+        taskLabel.text = rdTask.taskTxt      //顯示任務
+        let timestap = rdTask.timestamp      //顯示時間
+        
+        
+        let date = timestap.dateValue()  //時間格式化
+        let formatter = DateFormatter()  //時間格式
+        formatter.dateFormat = "yyyy/M/d"
+        dateLabel.text = formatter.string(from: date)  //顯示時間
+        
+        
+        
         
     }
 

@@ -17,11 +17,12 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var taskTextView: UITextView!
     
     
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         taskTextView.text = ""
         textView.textColor = .darkGray
     }
-    
+    //按到空白地方 鍵盤收起來
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
@@ -36,9 +37,9 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
     }
     
     
-    
+    //MARK: 加入代辦任務 按鈕
     @IBAction func addTaskButtonPress(_ sender: UIButton) {
-        
+        //將待辦事項存到叫RD的collection內
         Firestore.firestore().collection("RD").addDocument(data: [
             "clientName" : clientNameLabel.text!,
             "taskTxt" : taskTextView.text!,
