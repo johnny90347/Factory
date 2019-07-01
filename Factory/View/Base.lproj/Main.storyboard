@@ -139,20 +139,92 @@
             </objects>
             <point key="canvasLocation" x="-413.04347826086962" y="1631.9196428571429"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Task View Controller-->
         <scene sceneID="ELr-yg-eay">
             <objects>
-                <viewController id="GH1-aW-QTG" sceneMemberID="viewController">
+                <viewController id="GH1-aW-QTG" customClass="RDAddTaskViewController" customModule="Factory" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ihU-X3-2ib">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1c-nn-tCU">
+                                <rect key="frame" x="20" y="108" width="374" height="685"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="客戶名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="25k-4D-ztC">
+                                        <rect key="frame" x="8" y="39" width="358" height="30"/>
+                                        <color key="backgroundColor" red="0.94537198604060912" green="0.94537198604060912" blue="0.94537198604060912" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="打樣主題與內容...." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UnH-gC-tLX">
+                                        <rect key="frame" x="8" y="120" width="358" height="374"/>
+                                        <color key="backgroundColor" red="0.81922192258883242" green="0.81922192258883242" blue="0.81922192258883242" alpha="0.29601883561643838" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請輸入客戶名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7q-Pi-NNk">
+                                        <rect key="frame" x="8" y="8" width="122" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請輸入研發內容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6NX-eC-34J">
+                                        <rect key="frame" x="8" y="89" width="122" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1x9-81-Kc6">
+                                        <rect key="frame" x="8" y="547" width="358" height="90"/>
+                                        <color key="backgroundColor" red="0.17851086109421155" green="0.80559412080000004" blue="0.55212264752769613" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                        <state key="normal" title="送出">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addTaskButtonPress:" destination="GH1-aW-QTG" eventType="touchUpInside" id="8Z4-1V-aPa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="UnH-gC-tLX" firstAttribute="leading" secondItem="M1c-nn-tCU" secondAttribute="leading" constant="8" id="30y-Zv-z70"/>
+                                    <constraint firstItem="25k-4D-ztC" firstAttribute="leading" secondItem="M1c-nn-tCU" secondAttribute="leading" constant="8" id="3gZ-Jy-PEc"/>
+                                    <constraint firstAttribute="trailing" secondItem="UnH-gC-tLX" secondAttribute="trailing" constant="8" id="5WT-Xo-as2"/>
+                                    <constraint firstItem="j7q-Pi-NNk" firstAttribute="leading" secondItem="M1c-nn-tCU" secondAttribute="leading" constant="8" id="HaD-6x-U9R"/>
+                                    <constraint firstItem="6NX-eC-34J" firstAttribute="leading" secondItem="M1c-nn-tCU" secondAttribute="leading" constant="8" id="ICR-U8-PpT"/>
+                                    <constraint firstAttribute="trailing" secondItem="1x9-81-Kc6" secondAttribute="trailing" constant="8" id="IOy-3T-rRv"/>
+                                    <constraint firstAttribute="bottom" secondItem="UnH-gC-tLX" secondAttribute="bottom" constant="191" id="Q82-mx-3GM"/>
+                                    <constraint firstAttribute="trailing" secondItem="25k-4D-ztC" secondAttribute="trailing" constant="8" id="XCh-4d-FqS"/>
+                                    <constraint firstItem="6NX-eC-34J" firstAttribute="top" secondItem="25k-4D-ztC" secondAttribute="bottom" constant="20" id="cwf-iT-8uk"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="j7q-Pi-NNk" secondAttribute="trailing" constant="20" symbolic="YES" id="dfC-sD-gUx"/>
+                                    <constraint firstItem="1x9-81-Kc6" firstAttribute="top" secondItem="UnH-gC-tLX" secondAttribute="bottom" constant="53" id="eNK-Rg-wrV"/>
+                                    <constraint firstAttribute="bottom" secondItem="1x9-81-Kc6" secondAttribute="bottom" constant="48" id="gDq-D5-GaA"/>
+                                    <constraint firstItem="j7q-Pi-NNk" firstAttribute="top" secondItem="M1c-nn-tCU" secondAttribute="top" constant="8" id="hH3-6L-ia3"/>
+                                    <constraint firstItem="1x9-81-Kc6" firstAttribute="leading" secondItem="M1c-nn-tCU" secondAttribute="leading" constant="8" id="imj-9k-Wdc"/>
+                                    <constraint firstItem="UnH-gC-tLX" firstAttribute="top" secondItem="6NX-eC-34J" secondAttribute="bottom" constant="10" id="mqt-8g-Z2K"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6NX-eC-34J" secondAttribute="trailing" constant="20" symbolic="YES" id="rpp-gH-SSs"/>
+                                    <constraint firstItem="25k-4D-ztC" firstAttribute="top" secondItem="j7q-Pi-NNk" secondAttribute="bottom" constant="10" id="vSU-YV-UBM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="M1c-nn-tCU" firstAttribute="leading" secondItem="Zlq-zC-dJn" secondAttribute="leading" constant="20" id="0JZ-2n-2zg"/>
+                            <constraint firstItem="Zlq-zC-dJn" firstAttribute="trailing" secondItem="M1c-nn-tCU" secondAttribute="trailing" constant="20" id="0ud-iN-KqT"/>
+                            <constraint firstItem="M1c-nn-tCU" firstAttribute="top" secondItem="Zlq-zC-dJn" secondAttribute="top" constant="20" id="TpU-MN-hAC"/>
+                            <constraint firstItem="Zlq-zC-dJn" firstAttribute="bottom" secondItem="M1c-nn-tCU" secondAttribute="bottom" constant="20" id="gmW-2t-qQS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Zlq-zC-dJn"/>
                     </view>
+                    <connections>
+                        <outlet property="clientNameLabel" destination="25k-4D-ztC" id="juT-SN-kQV"/>
+                        <outlet property="taskTextView" destination="UnH-gC-tLX" id="dWs-Ym-1PG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8HK-eY-tCT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-413" y="2328"/>
+            <point key="canvasLocation" x="-413.04347826086962" y="2327.0089285714284"/>
         </scene>
         <!--冠瑩國際有限公司-->
         <scene sceneID="6L5-HJ-Ss5">
@@ -166,7 +238,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="IPz-Pf-mSU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414.00000000000011" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,7 +295,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTL-UR-OMw">
-                                                <rect key="frame" x="48" y="0.0" width="306.00000000000006" height="142"/>
+                                                <rect key="frame" x="48" y="0.0" width="306" height="142"/>
                                                 <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.54697375290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" backgroundImage="Manufacturing"/>
                                                 <connections>
@@ -287,10 +359,10 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorLeft 2" translatesAutoresizingMaskIntoConstraints="NO" id="KC6-sB-hTZ">
-                                <rect key="frame" x="0.0" y="177" width="207" height="636"/>
+                                <rect key="frame" x="0.0" y="797" width="207" height="16"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorRight" translatesAutoresizingMaskIntoConstraints="NO" id="npf-TY-tNq">
-                                <rect key="frame" x="207" y="174.5" width="207" height="638.5"/>
+                                <rect key="frame" x="207" y="797" width="207" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -343,7 +415,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="QIl-ok-w7P">
-                                <rect key="frame" x="0.0" y="44" width="414.00000000000011" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4y1-SQ-44x">
                                 <rect key="frame" x="0.0" y="44" width="414" height="384.5"/>

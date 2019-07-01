@@ -9,6 +9,8 @@
 import Foundation
 import FirebaseFirestore
 
+//使用者資料的Ｍodel
+
 struct UserInfo {
     
     var userName:String
@@ -20,5 +22,16 @@ struct UserInfo {
     
 }
 
+//研發任務的資料
 
+struct RDTaskInfo {
+    var client:String
+    var 
+}
+
+
+//"clientName" : clientNameLabel.text!,
+//"taskTxt" : taskTextView.text!,
+//"status" : false,
+//"timestamp" : FieldValue.serverTimestamp()
 
