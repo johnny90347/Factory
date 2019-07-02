@@ -17,9 +17,11 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
     @IBOutlet weak var taskTextView: UITextView!
     
     
+    @IBOutlet weak var addTaskButton: UIButton!
+    
+    
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        taskTextView.text = ""
         textView.textColor = .darkGray
     }
     //按到空白地方 鍵盤收起來
@@ -31,8 +33,10 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         taskTextView.delegate = self
-        
         taskTextView.textColor = .lightGray
+        
+        addTaskButton.layer.cornerRadius = 20
+        taskTextView.layer.cornerRadius = 10
 
     }
     
@@ -43,7 +47,7 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
         Firestore.firestore().collection("RD").addDocument(data: [
             "clientName" : clientNameLabel.text!,
             "taskTxt" : taskTextView.text!,
-            "status" : false,
+            "status" : 0,
             "timestamp" : FieldValue.serverTimestamp()
         ]) { (error) in
             if error != nil{
@@ -51,7 +55,7 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
                 return
             }else{
                 print("輸入成功")
-                self.navigationController?.popToRootViewController(animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
             
         }

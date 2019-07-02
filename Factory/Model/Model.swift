@@ -27,8 +27,9 @@ struct UserInfo {
 struct RDTaskInfo {
     var client:String
     var taskTxt:String
-    var status:Bool
+    var status:Int
     var timestamp:Timestamp
+    var documentID:String
 }
 
 
