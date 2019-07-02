@@ -15,6 +15,9 @@ class RDTaskListCustomCell: UITableViewCell {
     
     @IBOutlet weak var taskStatusView: UIView!
     
+    @IBOutlet weak var taskStatusLabel: UILabel!
+    
+    
     @IBOutlet weak var backGroundView: UIView!
     
     @IBOutlet weak var taskLabel: UILabel!
@@ -22,6 +25,8 @@ class RDTaskListCustomCell: UITableViewCell {
     @IBOutlet weak var clientNameLabel: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
+    
+    
     
     
     override func awakeFromNib() {
@@ -62,9 +67,15 @@ class RDTaskListCustomCell: UITableViewCell {
         if levelNumber == 0{
             self.taskStatusView.backgroundColor = UIColor(red: 93/255, green: 205/255, blue: 139/255, alpha: 1)
             self.backGroundView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 0.26)
-        }else{
+            self.taskStatusLabel.text = ""
+        }else if levelNumber == 1{
             self.taskStatusView.backgroundColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1)
             self.backGroundView.backgroundColor = UIColor(red: 52/255, green: 152/255, blue: 219/255, alpha: 0.15)
+           
+            self.taskStatusLabel.text = "處理中"
+            self.taskStatusLabel.textColor = .white
+      
+
         }
         
         
