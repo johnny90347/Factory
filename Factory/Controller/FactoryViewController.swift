@@ -31,11 +31,16 @@ class FactoryViewController: UIViewController {
     
     
 
+
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         leftDoorImageView.layer.cornerRadius = 10 //設定門的圓角
         rightDoorImageView.layer.cornerRadius = 10
+ 
+        
     }
     
 

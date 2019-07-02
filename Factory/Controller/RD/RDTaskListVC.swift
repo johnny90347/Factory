@@ -11,16 +11,23 @@ import FirebaseFirestore
 
 class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    var rdTaskLists = [RDTaskInfo]()
+    var rdTaskLists = [RDTaskInfo](){
+        didSet{
+            topLabelAnimate() //如果內容有變 做個動畫
+        }
+    }
     
     var linstener: ListenerRegistration!
     
     
     @IBOutlet weak var taskListTableview: UITableView!
     
-
-
+    @IBOutlet weak var topLabel: UILabel!
     
+    @IBOutlet weak var topView: UIView!
+    
+    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +35,14 @@ class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         taskListTableview.dataSource = self
         
         
+        topViewConfigure()
+        
+
        
       
     }
+    
+ 
     
    
     
@@ -106,6 +118,8 @@ class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             //加到陣列裡面
 
                 self.rdTaskLists.append(rdTask)//再加入新的
+               self.topLabel.text = "共有\(self.rdTaskLists.count)個研發品項" //更新字幕
+               
                 self.taskListTableview.reloadData()
                 
             }
@@ -121,6 +135,31 @@ class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         taskListTableview.estimatedRowHeight = 120
         
     }
+    
+    //MARK: -
+    //MARK:topLabel的動畫
+    func topLabelAnimate(){
+        UIView.animate(withDuration: 0.2) {
+            UIView.setAnimationRepeatCount(3)
+            self.topLabel.alpha = 0
+        }
+        
+        UIView.animate(withDuration: 0.7, delay: 0.5, options:.autoreverse, animations: {
+            
+            self.topLabel.alpha = 1
+        }, completion:nil)
+        
+    }
+    //MARK:topView的美編
+    func topViewConfigure(){
+        topView.layer.borderColor = UIColor.black.cgColor //匡顏色
+        topView.layer.borderWidth = 1
+        topView.layer.shadowColor = UIColor.lightGray.cgColor //陰影顏色
+        topView.layer.shadowOffset = CGSize(width: 5, height: 5) //陰影位置
+        topView.layer.shadowOpacity = 0.7   //陰影透明度
+        topView.layer.cornerRadius = 10
+    }
+    
     
 
 }
