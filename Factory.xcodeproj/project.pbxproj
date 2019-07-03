@@ -12,7 +12,6 @@
 		0A62903922C37C5000446A3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A62903722C37C5000446A3F /* Main.storyboard */; };
 		0A62903B22C37C5100446A3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A62903A22C37C5100446A3F /* Assets.xcassets */; };
 		0A62903E22C37C5100446A3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A62903C22C37C5100446A3F /* LaunchScreen.storyboard */; };
-		0A62904622C37CDA00446A3F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62904522C37CDA00446A3F /* TabBarViewController.swift */; };
 		0A62904822C37D7900446A3F /* FactoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62904722C37D7900446A3F /* FactoryViewController.swift */; };
 		0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62904922C380A600446A3F /* UserInfoViewController.swift */; };
 		0A62904C22C3826A00446A3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A62904B22C3826A00446A3F /* GoogleService-Info.plist */; };
@@ -21,6 +20,10 @@
 		0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB00C522C6285900A114AA /* CreateUserTVC.swift */; };
 		0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */; };
 		0AE9E02B22C9DC29001B6781 /* RDTaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02A22C9DC29001B6781 /* RDTaskListVC.swift */; };
+		0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E1922CC4CF500F71457 /* MDTaskListVC.swift */; };
+		0AEE4E1C22CC4D1D00F71457 /* MDAddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E1B22CC4D1D00F71457 /* MDAddTaskVC.swift */; };
+		0AEE4E1E22CC4D4200F71457 /* MDTaskListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E1D22CC4D4200F71457 /* MDTaskListCustomCell.swift */; };
+		0AEE4E2322CC785300F71457 /* DatePopupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E2222CC785300F71457 /* DatePopupsVC.swift */; };
 		8AFC3107C3F67DC41BE2077D /* Pods_Factory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED5D695FE5A59AB4EF5CB47 /* Pods_Factory.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,7 +35,6 @@
 		0A62903A22C37C5100446A3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A62903D22C37C5100446A3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A62903F22C37C5100446A3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0A62904522C37CDA00446A3F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		0A62904722C37D7900446A3F /* FactoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryViewController.swift; sourceTree = "<group>"; };
 		0A62904922C380A600446A3F /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		0A62904B22C3826A00446A3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -41,6 +43,10 @@
 		0ACB00C522C6285900A114AA /* CreateUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserTVC.swift; sourceTree = "<group>"; };
 		0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListCustomCell.swift; sourceTree = "<group>"; };
 		0AE9E02A22C9DC29001B6781 /* RDTaskListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListVC.swift; sourceTree = "<group>"; };
+		0AEE4E1922CC4CF500F71457 /* MDTaskListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTaskListVC.swift; sourceTree = "<group>"; };
+		0AEE4E1B22CC4D1D00F71457 /* MDAddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAddTaskVC.swift; sourceTree = "<group>"; };
+		0AEE4E1D22CC4D4200F71457 /* MDTaskListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTaskListCustomCell.swift; sourceTree = "<group>"; };
+		0AEE4E2222CC785300F71457 /* DatePopupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePopupsVC.swift; sourceTree = "<group>"; };
 		4ED5D695FE5A59AB4EF5CB47 /* Pods_Factory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Factory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CEAEDDB9DE8946A36F4AAD6 /* Pods-Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Factory.debug.xcconfig"; path = "Target Support Files/Pods-Factory/Pods-Factory.debug.xcconfig"; sourceTree = "<group>"; };
 		9D95CAC6A6F8B39929D96068 /* Pods-Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Factory.release.xcconfig"; path = "Target Support Files/Pods-Factory/Pods-Factory.release.xcconfig"; sourceTree = "<group>"; };
@@ -83,9 +89,9 @@
 				0A62905322C39C9900446A3F /* Model */,
 				0A62904E22C38BC800446A3F /* View */,
 				0A62904D22C38BBB00446A3F /* Controller */,
+				0A62905022C38BE900446A3F /* Supporting */,
 				0A62903F22C37C5100446A3F /* Info.plist */,
 				0A62904B22C3826A00446A3F /* GoogleService-Info.plist */,
-				0A62905022C38BE900446A3F /* Supporting */,
 				0A62903A22C37C5100446A3F /* Assets.xcassets */,
 			);
 			path = Factory;
@@ -96,10 +102,10 @@
 			children = (
 				0A62903522C37C5000446A3F /* ViewController.swift */,
 				0A62904722C37D7900446A3F /* FactoryViewController.swift */,
-				0AA04F7E22CA044200C49003 /* RD */,
-				0A62904522C37CDA00446A3F /* TabBarViewController.swift */,
 				0A62904922C380A600446A3F /* UserInfoViewController.swift */,
 				0ACB00C522C6285900A114AA /* CreateUserTVC.swift */,
+				0AA04F7E22CA044200C49003 /* RD */,
+				0AEE4E2122CC4D6300F71457 /* MD */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -109,7 +115,8 @@
 			children = (
 				0A62903722C37C5000446A3F /* Main.storyboard */,
 				0A62903C22C37C5100446A3F /* LaunchScreen.storyboard */,
-				0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */,
+				0AEE4E1F22CC4D4F00F71457 /* RD */,
+				0AEE4E2022CC4D5900F71457 /* MD */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -136,6 +143,32 @@
 				0AA04F7C22C9FC8300C49003 /* RDAddTaskViewController.swift */,
 			);
 			path = RD;
+			sourceTree = "<group>";
+		};
+		0AEE4E1F22CC4D4F00F71457 /* RD */ = {
+			isa = PBXGroup;
+			children = (
+				0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */,
+			);
+			path = RD;
+			sourceTree = "<group>";
+		};
+		0AEE4E2022CC4D5900F71457 /* MD */ = {
+			isa = PBXGroup;
+			children = (
+				0AEE4E1D22CC4D4200F71457 /* MDTaskListCustomCell.swift */,
+			);
+			path = MD;
+			sourceTree = "<group>";
+		};
+		0AEE4E2122CC4D6300F71457 /* MD */ = {
+			isa = PBXGroup;
+			children = (
+				0AEE4E1922CC4CF500F71457 /* MDTaskListVC.swift */,
+				0AEE4E1B22CC4D1D00F71457 /* MDAddTaskVC.swift */,
+				0AEE4E2222CC785300F71457 /* DatePopupsVC.swift */,
+			);
+			path = MD;
 			sourceTree = "<group>";
 		};
 		6ABBC8410566CBD8D86C5666 /* Frameworks */ = {
@@ -273,14 +306,17 @@
 			files = (
 				0A62903622C37C5000446A3F /* ViewController.swift in Sources */,
 				0AE9E02B22C9DC29001B6781 /* RDTaskListVC.swift in Sources */,
+				0AEE4E1C22CC4D1D00F71457 /* MDAddTaskVC.swift in Sources */,
 				0A62904822C37D7900446A3F /* FactoryViewController.swift in Sources */,
 				0AA04F7D22C9FC8300C49003 /* RDAddTaskViewController.swift in Sources */,
 				0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */,
+				0AEE4E2322CC785300F71457 /* DatePopupsVC.swift in Sources */,
 				0A62905222C39C9600446A3F /* Model.swift in Sources */,
+				0AEE4E1E22CC4D4200F71457 /* MDTaskListCustomCell.swift in Sources */,
 				0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */,
 				0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */,
-				0A62904622C37CDA00446A3F /* TabBarViewController.swift in Sources */,
 				0A62903422C37C5000446A3F /* AppDelegate.swift in Sources */,
+				0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

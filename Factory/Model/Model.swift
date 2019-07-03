@@ -22,14 +22,26 @@ struct UserInfo {
     
 }
 
-//研發任務的資料
+//研發任務的model
 
 struct RDTaskInfo {
-    var client:String
-    var taskTxt:String
-    var status:Int
-    var timestamp:Timestamp
+    var client:String       //客戶名稱
+    var taskTxt:String      //研發內容
+    var status:Int          //狀態
+    var timestamp:Timestamp //創建時間
     var documentID:String
+}
+
+//製造任務的model
+
+struct MDTaskInfo {
+    var shipDate:Timestamp       //出貨日期
+    var client:String            //客人名稱
+    var productName:String       //產品名稱
+    var numberOfKg:String         //幾公斤
+    var device:String            //使用什麼設備做
+    var status:Int               // 狀態
+    var documentID:String   
 }
 
 
