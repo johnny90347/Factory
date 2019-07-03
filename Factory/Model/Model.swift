@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 import FirebaseFirestore
 
 //使用者資料的Ｍodel
@@ -35,7 +36,7 @@ struct RDTaskInfo {
 //製造任務的model
 
 struct MDTaskInfo {
-    var shipDate:Timestamp       //出貨日期
+    var shipDate:String      //出貨日期
     var client:String            //客人名稱
     var productName:String       //產品名稱
     var numberOfKg:String         //幾公斤

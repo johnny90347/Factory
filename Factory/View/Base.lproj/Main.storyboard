@@ -17,7 +17,16 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.87476575374603271" green="0.40964946150779724" blue="0.9072573184967041" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="產品介紹" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdM-Lu-EK2">
+                                <rect key="frame" x="186" y="204" width="70" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="公司產品" id="JZY-se-efF"/>
@@ -265,7 +274,7 @@
             </objects>
             <point key="canvasLocation" x="-413.04347826086962" y="2327.0089285714284"/>
         </scene>
-        <!--Add TaskVC-->
+        <!--新增排程-->
         <scene sceneID="kej-xw-0ZD">
             <objects>
                 <viewController id="2fc-5t-kqR" customClass="MDAddTaskVC" customModule="Factory" customModuleProvider="target" sceneMemberID="viewController">
@@ -273,133 +282,216 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9XZ-94-SuF">
-                                <rect key="frame" x="27" y="104" width="367" height="79"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9XZ-94-SuF">
+                                <rect key="frame" x="27" y="125" width="367" height="79"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="新增製造項目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJ3-EO-RvJ">
-                                        <rect key="frame" x="131" y="29" width="104" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.94814854449999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uGV-jz-fD8">
-                                <rect key="frame" x="27" y="205" width="367" height="530"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="產品名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhh-G4-Jmb">
-                                        <rect key="frame" x="8" y="159" width="70" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="客戶名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bh6-CX-VII">
-                                        <rect key="frame" x="35" y="322" width="296" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="公斤數量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVE-Pl-wTb">
-                                        <rect key="frame" x="8" y="226" width="70" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="客戶名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="enD-r9-uG4">
-                                        <rect key="frame" x="35" y="255" width="296" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="交貨日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1M-sn-lZK">
-                                        <rect key="frame" x="8" y="360" width="70" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="客戶名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiI-ih-bJz">
-                                        <rect key="frame" x="35" y="188" width="296" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="使用設備" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPg-1l-634">
-                                        <rect key="frame" x="8" y="293" width="70" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="客戶名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sOT-oo-Kjt">
-                                        <rect key="frame" x="35" y="121" width="296" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="客戶名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f27-vN-6db">
-                                        <rect key="frame" x="8" y="92" width="70" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39g-vt-0p5">
-                                        <rect key="frame" x="239" y="22" width="92" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="加入製造排程"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="39g-vt-0p5">
+                                        <rect key="frame" x="24" y="13" width="319" height="52"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <state key="normal" title="加入製造排程">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="addTaskButtonPress:" destination="2fc-5t-kqR" eventType="touchUpInside" id="Usb-e7-FTm"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWa-f6-ptR">
-                                        <rect key="frame" x="35" y="389" width="62" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="選擇日期"/>
-                                        <connections>
-                                            <segue destination="dOU-Y7-IM3" kind="presentation" modalPresentationStyle="overCurrentContext" id="LAl-1X-4lq"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請選擇日期" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sK2-af-0I6">
-                                        <rect key="frame" x="35" y="427" width="296" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.94509536027908325" green="0.94508057832717896" blue="0.94509893655776978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.74509803919999995" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.37188434600830078" green="0.80718094110488892" blue="0.55290615558624268" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="39g-vt-0p5" firstAttribute="top" secondItem="9XZ-94-SuF" secondAttribute="top" constant="13" id="E4e-3Q-g7T"/>
+                                    <constraint firstAttribute="trailing" secondItem="39g-vt-0p5" secondAttribute="trailing" constant="24" id="bm5-VF-qhF"/>
+                                    <constraint firstAttribute="bottom" secondItem="39g-vt-0p5" secondAttribute="bottom" constant="14" id="j1T-SK-TG8"/>
+                                    <constraint firstItem="39g-vt-0p5" firstAttribute="leading" secondItem="9XZ-94-SuF" secondAttribute="leading" constant="24" id="qGQ-K8-G0q"/>
+                                    <constraint firstAttribute="height" constant="79" id="v3S-el-Day"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGV-jz-fD8">
+                                <rect key="frame" x="23.5" y="222" width="367" height="452"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="b27-k9-IGK">
+                                        <rect key="frame" x="24" y="26" width="319" height="400"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="FSu-ct-cbk">
+                                                <rect key="frame" x="0.0" y="0.0" width="319" height="64"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="客戶名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f27-vN-6db">
+                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="31.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="客戶名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sOT-oo-Kjt">
+                                                        <rect key="frame" x="0.0" y="32.5" width="319" height="31.5"/>
+                                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="296" id="lFh-Cc-cRQ"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="f27-vN-6db" firstAttribute="width" secondItem="sOT-oo-Kjt" secondAttribute="width" id="f9d-t4-DQ7"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="WY8-7x-T64">
+                                                <rect key="frame" x="0.0" y="84" width="319" height="64"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="產品名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhh-G4-Jmb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="產品名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiI-ih-bJz">
+                                                        <rect key="frame" x="0.0" y="34" width="319" height="30"/>
+                                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="296" id="Qbz-xr-vXU"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="fiI-ih-bJz" firstAttribute="width" secondItem="uhh-G4-Jmb" secondAttribute="width" id="rdA-Rc-SZB"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gMd-w7-ef9">
+                                                <rect key="frame" x="0.0" y="168" width="319" height="64"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="公斤數量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVE-Pl-wTb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex:20kg" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="enD-r9-uG4">
+                                                        <rect key="frame" x="0.0" y="34" width="319" height="30"/>
+                                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="296" id="pWe-8S-5c9"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="enD-r9-uG4" firstAttribute="width" secondItem="eVE-Pl-wTb" secondAttribute="width" id="AVq-0o-Gch"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lb2-R6-8XD">
+                                                <rect key="frame" x="0.0" y="252" width="319" height="64"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="使用設備" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jPg-1l-634">
+                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="30"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="請選擇設備" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bh6-CX-VII">
+                                                        <rect key="frame" x="0.0" y="34" width="319" height="30"/>
+                                                        <color key="backgroundColor" red="0.94509536029999996" green="0.94508057830000003" blue="0.94509893659999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="296" id="WvC-3y-yaw"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="bh6-CX-VII" firstAttribute="width" secondItem="jPg-1l-634" secondAttribute="width" id="HPp-b0-r1M"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="f7a-iU-cmo">
+                                                <rect key="frame" x="0.0" y="336" width="319" height="64"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AII-R9-IRf">
+                                                        <rect key="frame" x="0.0" y="0.0" width="143" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交貨日期" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q1M-sn-lZK">
+                                                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="30"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWa-f6-ptR">
+                                                                <rect key="frame" x="73.5" y="0.0" width="69.5" height="30"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                                <state key="normal" title="選擇日期">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <segue destination="dOU-Y7-IM3" kind="presentation" modalPresentationStyle="overCurrentContext" id="LAl-1X-4lq"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="點上方選擇日期" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sK2-af-0I6">
+                                                        <rect key="frame" x="0.0" y="34" width="319" height="30"/>
+                                                        <color key="backgroundColor" red="0.94509536027908325" green="0.94508057832717896" blue="0.94509893655776978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="296" id="J7P-4r-xhl"/>
+                                                        </constraints>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="uhh-G4-Jmb" firstAttribute="width" secondItem="f27-vN-6db" secondAttribute="width" id="1Im-HJ-1wt"/>
+                                            <constraint firstItem="sK2-af-0I6" firstAttribute="width" secondItem="f27-vN-6db" secondAttribute="width" id="Prn-nK-XjL"/>
+                                            <constraint firstItem="eVE-Pl-wTb" firstAttribute="width" secondItem="f27-vN-6db" secondAttribute="width" id="Z7X-2J-HLR"/>
+                                            <constraint firstItem="jPg-1l-634" firstAttribute="width" secondItem="f27-vN-6db" secondAttribute="width" id="wHu-0S-UXh"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.035294117649999998" green="0.51764705879999995" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="b27-k9-IGK" secondAttribute="trailing" constant="24" id="1C6-Br-DfI"/>
+                                    <constraint firstItem="b27-k9-IGK" firstAttribute="leading" secondItem="uGV-jz-fD8" secondAttribute="leading" constant="24" id="A4X-dY-cCX"/>
+                                    <constraint firstItem="b27-k9-IGK" firstAttribute="centerX" secondItem="uGV-jz-fD8" secondAttribute="centerX" id="H6d-vh-wAn"/>
+                                    <constraint firstAttribute="bottom" secondItem="b27-k9-IGK" secondAttribute="bottom" constant="26" id="Q3q-7q-nfH"/>
+                                    <constraint firstAttribute="width" secondItem="uGV-jz-fD8" secondAttribute="height" multiplier="367:452" id="XVt-4F-ESK"/>
+                                    <constraint firstItem="b27-k9-IGK" firstAttribute="centerY" secondItem="uGV-jz-fD8" secondAttribute="centerY" id="XWO-f4-fab"/>
+                                    <constraint firstItem="b27-k9-IGK" firstAttribute="top" secondItem="uGV-jz-fD8" secondAttribute="top" constant="26" id="dJ4-tE-BLJ"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uGV-jz-fD8" firstAttribute="leading" secondItem="bq0-Pj-LY5" secondAttribute="leading" constant="23.5" id="0Qd-0w-Ac7"/>
+                            <constraint firstItem="uGV-jz-fD8" firstAttribute="top" secondItem="9XZ-94-SuF" secondAttribute="bottom" constant="18" id="DDu-0I-FQf"/>
+                            <constraint firstItem="bq0-Pj-LY5" firstAttribute="trailing" secondItem="9XZ-94-SuF" secondAttribute="trailing" constant="20" id="Qhe-HF-rKe"/>
+                            <constraint firstItem="bq0-Pj-LY5" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="uGV-jz-fD8" secondAttribute="bottom" constant="139" id="X85-cf-4Pg"/>
+                            <constraint firstItem="uGV-jz-fD8" firstAttribute="width" secondItem="9XZ-94-SuF" secondAttribute="width" id="bZJ-Bf-k1h"/>
+                            <constraint firstItem="9XZ-94-SuF" firstAttribute="top" secondItem="bq0-Pj-LY5" secondAttribute="top" constant="37" id="h31-yJ-g98"/>
+                            <constraint firstItem="bq0-Pj-LY5" firstAttribute="trailing" secondItem="uGV-jz-fD8" secondAttribute="trailing" constant="23.5" id="jbm-hI-8Xq"/>
+                            <constraint firstItem="9XZ-94-SuF" firstAttribute="leading" secondItem="bq0-Pj-LY5" secondAttribute="leading" constant="27" id="tF8-6j-5of"/>
+                            <constraint firstItem="f27-vN-6db" firstAttribute="width" secondItem="39g-vt-0p5" secondAttribute="width" id="tug-rW-Dfj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bq0-Pj-LY5"/>
                     </view>
+                    <navigationItem key="navigationItem" title="新增排程" id="hO0-Og-m4b"/>
                     <connections>
+                        <outlet property="bottomView" destination="uGV-jz-fD8" id="D1T-A2-5k1"/>
                         <outlet property="clientNameTxt" destination="sOT-oo-Kjt" id="MaP-P9-pXE"/>
                         <outlet property="deviceTxt" destination="bh6-CX-VII" id="fJX-6I-qMl"/>
                         <outlet property="numberOfKgTxt" destination="enD-r9-uG4" id="sAJ-bd-bWy"/>
                         <outlet property="productNameTxt" destination="fiI-ih-bJz" id="15m-6E-oTT"/>
                         <outlet property="shipDateTxt" destination="sK2-af-0I6" id="37g-O8-RZU"/>
+                        <outlet property="topView" destination="9XZ-94-SuF" id="1kh-EB-9JX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdT-42-WPx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="585.50724637681162" y="2333.0357142857142"/>
+            <point key="canvasLocation" x="571" y="2364"/>
         </scene>
         <!--Date PopupsVC-->
         <scene sceneID="TEz-Xf-x1Y">
@@ -452,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHA-nA-ydN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543.4782608695652" y="2333.0357142857142"/>
+            <point key="canvasLocation" x="586" y="3141"/>
         </scene>
         <!--冠瑩國際有限公司-->
         <scene sceneID="6L5-HJ-Ss5">
@@ -466,7 +558,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="IPz-Pf-mSU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414.00000000000011" height="725"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -523,7 +615,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTL-UR-OMw">
-                                                <rect key="frame" x="48" y="0.0" width="306" height="142"/>
+                                                <rect key="frame" x="48" y="0.0" width="306.00000000000006" height="142"/>
                                                 <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.54697375290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" backgroundImage="Manufacturing"/>
                                                 <connections>
@@ -587,10 +679,10 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorLeft 2" translatesAutoresizingMaskIntoConstraints="NO" id="KC6-sB-hTZ">
-                                <rect key="frame" x="0.0" y="797" width="207" height="16"/>
+                                <rect key="frame" x="0.0" y="177" width="207" height="636"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorRight" translatesAutoresizingMaskIntoConstraints="NO" id="npf-TY-tNq">
-                                <rect key="frame" x="207" y="797" width="207" height="16"/>
+                                <rect key="frame" x="207" y="174.5" width="207" height="638.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -643,7 +735,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="QIl-ok-w7P">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414.00000000000011" height="769"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4y1-SQ-44x">
                                 <rect key="frame" x="0.0" y="44" width="414" height="384.5"/>
@@ -1300,7 +1392,7 @@
                                             <segment title="總排程"/>
                                             <segment title="真空乳化機"/>
                                             <segment title="升降乳化頭"/>
-                                            <segment title="攪拌筒"/>
+                                            <segment title="攪拌桶"/>
                                         </segments>
                                         <color key="tintColor" red="0.12531235809999999" green="0.1628579497" blue="0.45100766419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </segmentedControl>
