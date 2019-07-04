@@ -47,8 +47,12 @@ class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
    
     
     
+    fileprivate func extractedFunc() {
+        setRDTaskListener()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-        setRDTaskListener() //開始監聽
+        extractedFunc() //開始監聽
     }
     
     override func viewDidDisappear(_ animated: Bool) {

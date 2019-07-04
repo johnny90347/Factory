@@ -15,6 +15,8 @@ class DatePopupsVC: UIViewController {
     
     @IBOutlet weak var backGroundView: UIView!
     
+    var date:Date!
+    
     var formattedDate:String {
         let formatter = DateFormatter()
 //        formatter.dateStyle = .medium
@@ -25,7 +27,8 @@ class DatePopupsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        date =  datePicker.date
         backGroundView.layer.cornerRadius = 8
     }
     

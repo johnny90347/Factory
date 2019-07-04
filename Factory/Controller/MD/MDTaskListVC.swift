@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     
-    var taskList = [MDTaskInfo]()
-    
+    var mdTaskLists = [MDTaskInfo]()
+    var mdListener:ListenerRegistration?
     
     @IBOutlet weak var taskListTableView: UITableView!
     
@@ -24,6 +25,17 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
         
         taskListTableView.rowHeight = UITableView.automaticDimension
         taskListTableView.estimatedRowHeight = 120
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setMDTaskListener()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if mdListener != nil{
+            mdListener?.remove()
+        }
     }
     
 
@@ -31,14 +43,68 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
     //MARK: - TableViewDataSorce
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return mdTaskLists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mdCell", for: indexPath) as! MDTaskListCustomCell
-        
+        cell.configureCell(mdTask: mdTaskLists[indexPath.row])
         
         return cell
+    }
+    
+    
+    //MARK: - TableViewDelegate
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            Firestore.firestore().collection("MD").document(mdTaskLists[indexPath.row].documentID).delete { (error) in
+                if error != nil{
+                    print("刪除失敗")
+                }
+            }
+        }
+    }
+    
+    
+    //MARK: - 監聽資料
+    func setMDTaskListener (){
+      mdListener =  Firestore.firestore().collection("MD")
+        .order(by: "status", descending: true)  //狀態level 1的 排上面
+        .order(by: "shipDate")                  //日期數字大的牌下面
+        .addSnapshotListener { (querySnapShop, error) in
+            if error != nil{
+                print("讀取資料失敗")
+                return
+            }
+            self.mdTaskLists.removeAll()   //先刪除原本的排程
+            guard let docoments = querySnapShop?.documents else{ return }  //哪拿到一包文件
+            for document in docoments{    //把每個文件拿出來做點事情
+                let documentID = document.documentID  // 取得documentID
+                
+                let data = document.data() //拿到一個key 一個 value
+                //轉型
+                guard let shipDate = data["shipDate"] as? String,
+                    let client = data["client"] as? String,
+                    let productName = data["productName"] as? String,
+                    let numberOfKg = data["numberOfKg"] as? String,
+                    let device = data["device"] as? String,
+                    let status = data["status"] as? Int
+                    else{return}
+               let mdTask = MDTaskInfo(shipDate: shipDate, client: client, productName: productName, numberOfKg: numberOfKg, device: device, status: status, documentID: documentID)
+                
+                self.mdTaskLists.append(mdTask)
+                self.taskListTableView.reloadData()
+            }
+            
+        }
+
+        
+    }
+    
+    
+    //MARK:- 畫面元件的美化
+    func uiElementConfigure(){
+        
     }
 
 }

@@ -13,7 +13,7 @@ class MDAddTaskVC: UIViewController {
     
     
     var observer:NSObjectProtocol?      //為了要解散 收聽
-   
+    var date:Date?
     
     @IBOutlet weak var clientNameTxt: UITextField!
     
@@ -51,6 +51,7 @@ class MDAddTaskVC: UIViewController {
        observer = NotificationCenter.default.addObserver(forName: .saveDate, object: nil, queue: OperationQueue.main) { (notification) in
             let dateVC = notification.object as! DatePopupsVC
             self.shipDateTxt.text = dateVC.formattedDate
+            self.date = dateVC.date
         }
     }
     
@@ -68,6 +69,7 @@ class MDAddTaskVC: UIViewController {
     @IBAction func addTaskButtonPress(_ sender: UIButton) {
         
         //上傳資料
+        
         Firestore.firestore().collection("MD").addDocument(data:
             ["shipDate" : shipDateTxt.text!,     //交貨日期
                 "client" : clientNameTxt.text!,  //客戶名
@@ -77,7 +79,7 @@ class MDAddTaskVC: UIViewController {
                 "status" : 0                            //狀態 預設 0 代表還沒開始工作
         ]) { (error) in
             if error != nil{
-                self.commonAlert(withTitle: "網路異常")
+                self.commonAlert(withTitle: "輸入異常")
                 return
             }else{
                 self.navigationController?.popViewController(animated: true)
