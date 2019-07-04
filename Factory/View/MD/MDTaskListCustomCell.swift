@@ -53,12 +53,15 @@ class MDTaskListCustomCell: UITableViewCell {
     func configureCell(mdTask:MDTaskInfo) {
         self.mdTask = mdTask
         
-        shipDateLabel.text = mdTask.shipDate   //傳值到cell中的元件
         clientNameLabel.text = mdTask.client
         productNameLabel.text = mdTask.productName
         numberOfKgLabel.text = mdTask.numberOfKg
         
         
+        let date = mdTask.shipDate.dateValue()   //把timestamp 轉 Date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/M/d"       //date 格式
+        shipDateLabel.text = formatter.string(from: date) //date轉字串＋顯示
         
         //畫面設計
         leftStatusView.layer.cornerRadius = 10

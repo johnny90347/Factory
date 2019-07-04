@@ -33,9 +33,17 @@ class DatePopupsVC: UIViewController {
     }
     
     @IBAction func saveDateButtonPress(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        
-        NotificationCenter.default.post(name:.saveDate , object: self)
+       transferInfo()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      transferInfo()
+    }
+    
+    //傳送資料
+    func transferInfo(){
+        dismiss(animated: true, completion: nil)  //畫面撤掉
+        NotificationCenter.default.post(name:.saveDate , object: self)   //post資料
     }
     
 }

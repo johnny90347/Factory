@@ -69,9 +69,9 @@ class MDAddTaskVC: UIViewController {
     @IBAction func addTaskButtonPress(_ sender: UIButton) {
         
         //上傳資料
-        
+        guard let okdate = date else { return }
         Firestore.firestore().collection("MD").addDocument(data:
-            ["shipDate" : shipDateTxt.text!,     //交貨日期
+            ["shipDate" : Timestamp(date: okdate),     //交貨日期
                 "client" : clientNameTxt.text!,  //客戶名
                 "productName" : productNameTxt.text!,   //產品名稱
                 "numberOfKg" : numberOfKgTxt.text!,     //幾公斤
@@ -124,6 +124,8 @@ class MDAddTaskVC: UIViewController {
             }
             alert.addAction(action)
         }
+        let deleteAction = UIAlertAction(title: "退出", style: .destructive, handler: nil)
+        alert.addAction(deleteAction)
         present(alert, animated: true, completion: nil)
         
     }

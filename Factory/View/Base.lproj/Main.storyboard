@@ -1395,6 +1395,9 @@
                                             <segment title="攪拌桶"/>
                                         </segments>
                                         <color key="tintColor" red="0.12531235809999999" green="0.1628579497" blue="0.45100766419999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <connections>
+                                            <action selector="deviceSegment:" destination="ZLQ-o4-fAQ" eventType="valueChanged" id="KOn-7Z-9e9"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                                 <constraints>
@@ -1547,6 +1550,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="taskListTableView" destination="BXQ-ko-b0c" id="rwc-ka-TqQ"/>
+                        <outlet property="taskNumberLabel" destination="miI-wd-6gu" id="hRb-T5-fZm"/>
+                        <outlet property="topView" destination="4Fg-dr-fDN" id="47P-9q-ahW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8B-TH-19A" userLabel="First Responder" sceneMemberID="firstResponder"/>

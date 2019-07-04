@@ -15,7 +15,32 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
     var mdTaskLists = [MDTaskInfo]()
     var mdListener:ListenerRegistration?
     
+    var deviceCatCategory = "total"
+    
+    
     @IBOutlet weak var taskListTableView: UITableView!
+    
+    @IBOutlet weak var topView: UIView!
+    
+    @IBOutlet weak var taskNumberLabel: UILabel!
+    
+    //選取設備segment 切換設備
+    @IBAction func deviceSegment(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            deviceCatCategory =  "total"
+        case 1:
+            deviceCatCategory = "真空乳化機"
+        case 2:
+            deviceCatCategory = "升降乳化頭"
+        default:
+            deviceCatCategory = "攪拌桶"
+        }
+        mdListener!.remove()
+        setMDTaskListener()
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +50,15 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
         
         taskListTableView.rowHeight = UITableView.automaticDimension
         taskListTableView.estimatedRowHeight = 120
+        
+        
+        //UI element的 畫面
+        topView.layer.cornerRadius = 10
+        topView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        topView.layer.shadowColor = UIColor.lightGray.cgColor
+        topView.layer.shadowOpacity = 0.7
+        
+        
     
     }
     
@@ -68,35 +102,80 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
     
     //MARK: - 監聽資料
     func setMDTaskListener (){
-      mdListener =  Firestore.firestore().collection("MD")
-        .order(by: "status", descending: true)  //狀態level 1的 排上面
-        .order(by: "shipDate")                  //日期數字大的牌下面
-        .addSnapshotListener { (querySnapShop, error) in
-            if error != nil{
-                print("讀取資料失敗")
-                return
+        
+        if deviceCatCategory == "total"{
+            mdListener =  Firestore.firestore().collection("MD")
+                .order(by: "status", descending: true)  //狀態level 1的 排上面
+                .order(by: "shipDate")                  //日期數字大的牌下面
+                .addSnapshotListener { (querySnapShop, error) in
+                    if error != nil{
+                        print("讀取資料失敗")
+                        return
+                    }
+                    self.mdTaskLists.removeAll()   //先刪除原本的排程
+                    guard let docoments = querySnapShop?.documents else{ return }  //哪拿到一包文件
+                    for document in docoments{    //把每個文件拿出來做點事情
+                        let documentID = document.documentID  // 取得documentID
+                        
+                        let data = document.data() //拿到一個key 一個 value
+                        //轉型
+                        guard let shipDate = data["shipDate"] as? Timestamp,
+                            let client = data["client"] as? String,
+                            let productName = data["productName"] as? String,
+                            let numberOfKg = data["numberOfKg"] as? String,
+                            let device = data["device"] as? String,
+                            let status = data["status"] as? Int
+                            else{return}
+                        let mdTask = MDTaskInfo(shipDate: shipDate, client: client, productName: productName, numberOfKg: numberOfKg, device: device, status: status, documentID: documentID)
+                        
+                        self.mdTaskLists.append(mdTask)
+                        self.taskNumberLabel.text = "共有\(self.mdTaskLists.count)張訂單"
+                        self.taskListTableView.reloadData()
+                    }
+                    
             }
-            self.mdTaskLists.removeAll()   //先刪除原本的排程
-            guard let docoments = querySnapShop?.documents else{ return }  //哪拿到一包文件
-            for document in docoments{    //把每個文件拿出來做點事情
-                let documentID = document.documentID  // 取得documentID
-                
-                let data = document.data() //拿到一個key 一個 value
-                //轉型
-                guard let shipDate = data["shipDate"] as? String,
-                    let client = data["client"] as? String,
-                    let productName = data["productName"] as? String,
-                    let numberOfKg = data["numberOfKg"] as? String,
-                    let device = data["device"] as? String,
-                    let status = data["status"] as? Int
-                    else{return}
-               let mdTask = MDTaskInfo(shipDate: shipDate, client: client, productName: productName, numberOfKg: numberOfKg, device: device, status: status, documentID: documentID)
-                
-                self.mdTaskLists.append(mdTask)
-                self.taskListTableView.reloadData()
+            
+        }else{
+            mdListener =  Firestore.firestore().collection("MD")
+                .whereField("device", isEqualTo: self.deviceCatCategory)
+                .order(by: "status", descending: true)  //狀態level 1的 排上面
+                .order(by: "shipDate")                  //日期數字大的牌下面
+                .addSnapshotListener { (querySnapShop, error) in
+                    if error != nil{
+                        print("讀取資料失敗")
+                        return
+                    }
+                    self.mdTaskLists.removeAll()   //先刪除原本的排程
+                    guard let docoments = querySnapShop?.documents else{ return }  //哪拿到一包文件
+                    for document in docoments{    //把每個文件拿出來做點事情
+                        let documentID = document.documentID  // 取得documentID
+                        
+                        let data = document.data() //拿到一個key 一個 value
+                        //轉型
+                        guard let shipDate = data["shipDate"] as? Timestamp,
+                            let client = data["client"] as? String,
+                            let productName = data["productName"] as? String,
+                            let numberOfKg = data["numberOfKg"] as? String,
+                            let device = data["device"] as? String,
+                            let status = data["status"] as? Int
+                            else{return}
+                        let mdTask = MDTaskInfo(shipDate: shipDate, client: client, productName: productName, numberOfKg: numberOfKg, device: device, status: status, documentID: documentID)
+                        
+                        self.mdTaskLists.append(mdTask)
+                        
+                        self.taskNumberLabel.text = "共有\(self.mdTaskLists.count)張訂單"
+                        self.taskListTableView.reloadData()
+                    }
+                    
             }
             
         }
+        
+        
+        
+        
+        
+ 
 
         
     }
