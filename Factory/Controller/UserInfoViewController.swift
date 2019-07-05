@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class UserInfoViewController: UIViewController,UITextFieldDelegate{
     
@@ -57,7 +58,7 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
             if user != nil {
                     self.getUserInfo()
             }else{
-                print("沒有在登入狀態")
+               
             }
         }
     }
@@ -75,22 +76,13 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     
     //MARK: -
     
-    //TODO:  登入的方法
+    //TODO:  登入的按鈕
     @IBAction func loginButtomPress(_ sender: UIButton) {
+        
         //登入
         Auth.auth().signIn(withEmail: accountTextFiled.text!, password: passwordTextFiled.text!) { (data, error) in
             if error == nil {
-                
-                self.getUserInfo()                  //先取的資訊
-                let alert = UIAlertController(title: "登入成功", message: "", preferredStyle: .alert)
-                let action = UIAlertAction(title: "確認", style: .default, handler: { (action) in
-                    self.LoginUIConfigure()     //再顯示資訊 （不然會出錯）
-                    
-                })
-                alert.addAction(action)
-                
-                self.present(alert, animated: true, completion: nil)
-                
+                self.getUserInfo()                  //取得用戶資訊
             }else{
                 self.showAlert(withTitle: "錯誤的帳號密碼")
                 return
@@ -112,7 +104,6 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     @IBAction func longoutButtonPress(_ sender: UIButton) {
         do{
             try Auth.auth().signOut()
-            showAlert(withTitle: "您已經登出")
         }catch{
             showAlert(withTitle: "登出失敗")
             return
@@ -131,6 +122,7 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     //TODO:取得使用者資料的方法
     // 取得使用者資料
     func getUserInfo(){
+        SVProgressHUD.show()
         
         guard let userID = Auth.auth().currentUser?.uid else {return}
         
@@ -154,6 +146,7 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
             let userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
             self.userInfomation = userInfo
             self.LoginUIConfigure()     //再顯示資訊 （不然會出錯）
+            
         }
         
     }
@@ -161,6 +154,8 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     
     //TODO: 未登入狀態介面設定
     func LoginUIConfigure(){
+        
+        SVProgressHUD.dismiss()
         
         UIView.animate(withDuration: 1) {   //往上飄 變透明
             self.viewConstraint.constant = 0
@@ -204,6 +199,7 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        SVProgressHUD.dismiss()
     }
     
     

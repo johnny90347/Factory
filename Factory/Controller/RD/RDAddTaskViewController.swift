@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import SVProgressHUD
 
 class RDAddTaskViewController: UIViewController,UITextViewDelegate {
 
@@ -43,6 +44,7 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
     
     //MARK: 加入代辦任務 按鈕
     @IBAction func addTaskButtonPress(_ sender: UIButton) {
+        SVProgressHUD.show()
         //將待辦事項存到叫RD的collection內
         Firestore.firestore().collection("RD").addDocument(data: [
             "clientName" : clientNameLabel.text!,
@@ -52,9 +54,11 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
         ]) { (error) in
             if error != nil{
                 print("輸入失敗")
+                SVProgressHUD.dismiss()
                 return
             }else{
                 print("輸入成功")
+                SVProgressHUD.dismiss()
                 self.navigationController?.popViewController(animated: true)
             }
             

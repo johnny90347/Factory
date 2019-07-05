@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import SVProgressHUD
 
 class MDAddTaskVC: UIViewController {
     
@@ -67,7 +68,7 @@ class MDAddTaskVC: UIViewController {
     //MARK:-
     //MARK: 上傳資料 按鈕
     @IBAction func addTaskButtonPress(_ sender: UIButton) {
-        
+        SVProgressHUD.show()
         //上傳資料
         guard let okdate = date else { return }
         Firestore.firestore().collection("MD").addDocument(data:
@@ -79,10 +80,13 @@ class MDAddTaskVC: UIViewController {
                 "status" : 0                            //狀態 預設 0 代表還沒開始工作
         ]) { (error) in
             if error != nil{
+                SVProgressHUD.dismiss()
                 self.commonAlert(withTitle: "輸入異常")
                 return
             }else{
+                SVProgressHUD.dismiss()
                 self.navigationController?.popViewController(animated: true)
+                
             }
         }
         

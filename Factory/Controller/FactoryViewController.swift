@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import SVProgressHUD
 
 class FactoryViewController: UIViewController {
     
@@ -105,6 +106,8 @@ class FactoryViewController: UIViewController {
     //取得使用者資料
     func getUserInfo(){
         
+        SVProgressHUD.show() //
+        
         guard let userID = Auth.auth().currentUser?.uid else { return }
         Firestore.firestore().collection("users").document(userID).getDocument { (snapshot, error) in
             if error != nil{
@@ -153,6 +156,7 @@ class FactoryViewController: UIViewController {
     
     //通用警告
     func commonAlert(withTitle title:String){
+        SVProgressHUD.dismiss()
         let alert = UIAlertController(title: title, message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "確認", style: .default, handler: nil)
         alert.addAction(action)
@@ -167,6 +171,7 @@ class FactoryViewController: UIViewController {
     
     //設定招呼文字
     func setGreetTxt(){
+        SVProgressHUD.dismiss()
         guard let name = userInfo?.userName,
             let position = userInfo?.positionTxt
             else{ return }
