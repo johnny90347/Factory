@@ -40,7 +40,7 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+
   
     }
     
@@ -51,8 +51,8 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     }
     
     
-    //FIXME: 有bug 未登出 重新開啟app後 ok按太快時 來不及有資料 不會跳轉頁面
     override func viewWillAppear(_ animated: Bool) {
+      
         //確認是否在登入狀態
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
