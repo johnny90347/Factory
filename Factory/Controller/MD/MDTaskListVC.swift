@@ -99,6 +99,18 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
         }
     }
     
+    //動畫
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rotationTransfor = CATransform3DTranslate(CATransform3DIdentity, -300, 0, 0)
+        cell.layer.transform = rotationTransfor
+        
+        
+        UIView.animate(withDuration: 0.3) {
+            cell.layer.transform = CATransform3DIdentity
+            
+        }
+    }
+    
     
     //MARK: - 監聽資料
     func setMDTaskListener (){

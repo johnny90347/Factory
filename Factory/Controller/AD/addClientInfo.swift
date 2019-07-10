@@ -17,9 +17,11 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
     
     @IBOutlet weak var clientNameTxt: UITextField!
     @IBOutlet weak var addressTxt: UITextField!
+    @IBOutlet weak var phoneNumberTxt: UITextField!
     @IBOutlet weak var categoryTxt: UITextField!
     
     @IBOutlet weak var supplementTxtView: UITextView!
+    
     
     
     
@@ -27,9 +29,28 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        uielementConfigure() //一開始先收起來備註欄
         supplementTxtView.delegate = self
+        uielementConfigure() //一開始先收起來備註欄
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectedCategory))
+        categoryTxt.addGestureRecognizer(tap)
+        categoryTxt.isUserInteractionEnabled = true
+    }
+    
+    @objc func selectedCategory(){
+        let alert = UIAlertController(title: "請選擇", message: "", preferredStyle: .actionSheet)
+        
+        let categorys = ["客戶","廠商","其他"]
+        for category in categorys{
+            let action = UIAlertAction(title:category , style: .default) { (action) in
+                self.categoryTxt.text = category
+            }
+            alert.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -43,6 +64,7 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
         Firestore.firestore().collection("AD").addDocument(data: [
             "clientName" : clientNameTxt.text!,
             "address" : addressTxt.text!,
+            "phoneNumber" : phoneNumberTxt.text!,
             "category" : categoryTxt.text!,
             "supplement" : supplementTxtView.text!
         ]) { (error) in

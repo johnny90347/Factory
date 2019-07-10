@@ -48,3 +48,15 @@ struct MDTaskInfo {
 
 
 
+struct ADClientInfo {
+    var clientName:String
+    var address:String
+    var phoneNumber:String
+    var category :String
+    var supplement:String
+    var documentID:String
+}
+
+
+
+

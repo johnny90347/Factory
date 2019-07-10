@@ -89,6 +89,17 @@ class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
 
     }
+    //動畫
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rotationTransfor = CATransform3DTranslate(CATransform3DIdentity, -300, 0, 0)
+        cell.layer.transform = rotationTransfor
+        
+        
+        UIView.animate(withDuration: 0.3) {
+            cell.layer.transform = CATransform3DIdentity
+            
+        }
+    }
     
 
     
