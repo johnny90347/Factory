@@ -21,6 +21,7 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
     @IBOutlet weak var categoryTxt: UITextField!
     
     @IBOutlet weak var supplementTxtView: UITextView!
+    @IBOutlet weak var addClientBtnOutlet: UIButton!  //美觀用
     
     
     
@@ -38,12 +39,14 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
     }
     
     @objc func selectedCategory(){
+        self.view.endEditing(true)
         let alert = UIAlertController(title: "請選擇", message: "", preferredStyle: .actionSheet)
         
         let categorys = ["客戶","廠商","其他"]
         for category in categorys{
             let action = UIAlertAction(title:category , style: .default) { (action) in
                 self.categoryTxt.text = category
+                
             }
             alert.addAction(action)
         }
@@ -81,6 +84,9 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
     }
     
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     
     
@@ -119,6 +125,11 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
     func uielementConfigure(){
         bottonViewHeightCt.constant = 0
         view.layoutIfNeeded()
+        addClientBtnOutlet.layer.cornerRadius = 20
+        addClientBtnOutlet.layer.masksToBounds = true
+        supplementTxtView.layer.cornerRadius = 15
+        
+        
     }
     //MARK:開啟補充視窗
     func supplementViewOpen(){
