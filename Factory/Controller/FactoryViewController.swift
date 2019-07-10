@@ -26,22 +26,34 @@ class FactoryViewController: UIViewController {
     
     @IBOutlet weak var rightDoorImageView: UIImageView!
     
-    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var greetTextLabel: UILabel!
     
     
-
-
+    
+    @IBOutlet weak var rdLabel: UILabel!   //畫面設定用
+    @IBOutlet weak var rdButton: UIButton!
+    
+    @IBOutlet weak var mdLabel: UILabel!
+    @IBOutlet weak var mdButton: UIButton!
+    
+    @IBOutlet weak var pgLabel: UILabel!
+    @IBOutlet weak var pgButton: UIButton!
+    
+    @IBOutlet weak var adLabel: UILabel!
+    @IBOutlet weak var adButton: UIButton!
     
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        leftDoorImageView.layer.cornerRadius = 10 //設定門的圓角
-        rightDoorImageView.layer.cornerRadius = 10
+        leftDoorImageView.layer.cornerRadius = 20 //設定門的圓角
+        rightDoorImageView.layer.cornerRadius = 20
  
         
+        uiElementShapeConfigure()
+        
+       
     }
     
 
@@ -195,6 +207,32 @@ class FactoryViewController: UIViewController {
         self.leftDoorImageView.alpha = 1
         self.rightDoorImageView.alpha = 1
         self.view.layoutIfNeeded()
+    }
+    
+    //畫面元件設定圓角
+    func uiElementShapeConfigure(){
+        
+        rdLabel.layer.cornerRadius = 20
+        rdLabel.layer.masksToBounds = true
+        rdButton.layer.cornerRadius = 15
+        rdButton.layer.masksToBounds = true
+        
+        mdLabel.layer.cornerRadius = 20
+        mdLabel.layer.masksToBounds = true
+        mdButton.layer.cornerRadius = 15
+        mdButton.layer.masksToBounds = true
+        
+        pgLabel.layer.cornerRadius = 20
+        pgLabel.layer.masksToBounds = true
+        pgButton.layer.cornerRadius = 15
+        pgButton.layer.masksToBounds = true
+        
+        adLabel.layer.cornerRadius = 20
+        adLabel.layer.masksToBounds = true
+        adButton.layer.cornerRadius = 15
+        adButton.layer.masksToBounds = true
+        
+        
     }
     
     

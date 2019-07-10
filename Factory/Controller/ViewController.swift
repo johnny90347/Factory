@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     
     func openingAnimate(){
         //動畫內容：先縮小再放大 ->消失
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             self.openImageVie.frame = CGRect(x: 0, y: 0, width: 90, height: 90)
             self.openImageVie.center = self.view.center
             

@@ -30,6 +30,17 @@ class DatePopupsVC: UIViewController {
         
         date =  datePicker.date
         backGroundView.layer.cornerRadius = 8
+        
+        
+        backGroundView.transform = CGAffineTransform(scaleX: 0.3, y: 2.0)  //視窗變形(配合動畫還原）
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //還原變形動畫
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: [.curveEaseOut,.allowUserInteraction], animations: {
+            self.backGroundView.transform = .identity
+        }, completion: nil)
     }
     
     @IBAction func saveDateButtonPress(_ sender: UIButton) {
@@ -42,7 +53,7 @@ class DatePopupsVC: UIViewController {
     
     //傳送資料
     func transferInfo(){
-        dismiss(animated: true, completion: nil)  //畫面撤掉
+        dismiss(animated: false, completion: nil)  //畫面撤掉
         NotificationCenter.default.post(name:.saveDate , object: self)   //post資料
     }
     

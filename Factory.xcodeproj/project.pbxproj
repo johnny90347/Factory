@@ -18,12 +18,14 @@
 		0A62905222C39C9600446A3F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62905122C39C9600446A3F /* Model.swift */; };
 		0AA04F7D22C9FC8300C49003 /* RDAddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA04F7C22C9FC8300C49003 /* RDAddTaskViewController.swift */; };
 		0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB00C522C6285900A114AA /* CreateUserTVC.swift */; };
+		0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA256722D4D92F006A0B9D /* addClientInfo.swift */; };
 		0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */; };
 		0AE9E02B22C9DC29001B6781 /* RDTaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02A22C9DC29001B6781 /* RDTaskListVC.swift */; };
 		0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E1922CC4CF500F71457 /* MDTaskListVC.swift */; };
 		0AEE4E1C22CC4D1D00F71457 /* MDAddTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E1B22CC4D1D00F71457 /* MDAddTaskVC.swift */; };
 		0AEE4E1E22CC4D4200F71457 /* MDTaskListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E1D22CC4D4200F71457 /* MDTaskListCustomCell.swift */; };
 		0AEE4E2322CC785300F71457 /* DatePopupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E2222CC785300F71457 /* DatePopupsVC.swift */; };
+		0AF24E4F22D4A4AD005618F7 /* ADInfoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF24E4E22D4A4AD005618F7 /* ADInfoListVC.swift */; };
 		8AFC3107C3F67DC41BE2077D /* Pods_Factory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ED5D695FE5A59AB4EF5CB47 /* Pods_Factory.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,12 +43,14 @@
 		0A62905122C39C9600446A3F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0AA04F7C22C9FC8300C49003 /* RDAddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDAddTaskViewController.swift; sourceTree = "<group>"; };
 		0ACB00C522C6285900A114AA /* CreateUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserTVC.swift; sourceTree = "<group>"; };
+		0ADA256722D4D92F006A0B9D /* addClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addClientInfo.swift; sourceTree = "<group>"; };
 		0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListCustomCell.swift; sourceTree = "<group>"; };
 		0AE9E02A22C9DC29001B6781 /* RDTaskListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListVC.swift; sourceTree = "<group>"; };
 		0AEE4E1922CC4CF500F71457 /* MDTaskListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTaskListVC.swift; sourceTree = "<group>"; };
 		0AEE4E1B22CC4D1D00F71457 /* MDAddTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDAddTaskVC.swift; sourceTree = "<group>"; };
 		0AEE4E1D22CC4D4200F71457 /* MDTaskListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTaskListCustomCell.swift; sourceTree = "<group>"; };
 		0AEE4E2222CC785300F71457 /* DatePopupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePopupsVC.swift; sourceTree = "<group>"; };
+		0AF24E4E22D4A4AD005618F7 /* ADInfoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADInfoListVC.swift; sourceTree = "<group>"; };
 		4ED5D695FE5A59AB4EF5CB47 /* Pods_Factory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Factory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CEAEDDB9DE8946A36F4AAD6 /* Pods-Factory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Factory.debug.xcconfig"; path = "Target Support Files/Pods-Factory/Pods-Factory.debug.xcconfig"; sourceTree = "<group>"; };
 		9D95CAC6A6F8B39929D96068 /* Pods-Factory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Factory.release.xcconfig"; path = "Target Support Files/Pods-Factory/Pods-Factory.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				0ACB00C522C6285900A114AA /* CreateUserTVC.swift */,
 				0AA04F7E22CA044200C49003 /* RD */,
 				0AEE4E2122CC4D6300F71457 /* MD */,
+				0AF24E4D22D4A45B005618F7 /* AD */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -169,6 +174,15 @@
 				0AEE4E2222CC785300F71457 /* DatePopupsVC.swift */,
 			);
 			path = MD;
+			sourceTree = "<group>";
+		};
+		0AF24E4D22D4A45B005618F7 /* AD */ = {
+			isa = PBXGroup;
+			children = (
+				0AF24E4E22D4A4AD005618F7 /* ADInfoListVC.swift */,
+				0ADA256722D4D92F006A0B9D /* addClientInfo.swift */,
+			);
+			path = AD;
 			sourceTree = "<group>";
 		};
 		6ABBC8410566CBD8D86C5666 /* Frameworks */ = {
@@ -307,11 +321,13 @@
 				0A62903622C37C5000446A3F /* ViewController.swift in Sources */,
 				0AE9E02B22C9DC29001B6781 /* RDTaskListVC.swift in Sources */,
 				0AEE4E1C22CC4D1D00F71457 /* MDAddTaskVC.swift in Sources */,
+				0AF24E4F22D4A4AD005618F7 /* ADInfoListVC.swift in Sources */,
 				0A62904822C37D7900446A3F /* FactoryViewController.swift in Sources */,
 				0AA04F7D22C9FC8300C49003 /* RDAddTaskViewController.swift in Sources */,
 				0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */,
 				0AEE4E2322CC785300F71457 /* DatePopupsVC.swift in Sources */,
 				0A62905222C39C9600446A3F /* Model.swift in Sources */,
+				0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */,
 				0AEE4E1E22CC4D4200F71457 /* MDTaskListCustomCell.swift in Sources */,
 				0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */,
 				0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */,

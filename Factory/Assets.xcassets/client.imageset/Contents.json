@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "client.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "openLogo.png",
       "scale" : "2x"
     },
     {
