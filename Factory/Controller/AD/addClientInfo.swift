@@ -26,7 +26,7 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
     
     
     
-    var supplementOn:Bool = false
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
