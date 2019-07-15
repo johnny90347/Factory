@@ -64,7 +64,9 @@ class FactoryViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //確認是否在登陸狀態
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+        Auth.auth().addStateDidChangeListener { [weak self](auth, user) in
+            guard let self = self else { return }
+
             if user != nil {
                 print("有在登入狀態")
                 self.getUserInfo()  //有登入時 門開啟
@@ -121,7 +123,8 @@ class FactoryViewController: UIViewController {
         SVProgressHUD.show() //
         
         guard let userID = Auth.auth().currentUser?.uid else { return }
-        Firestore.firestore().collection("users").document(userID).getDocument { (snapshot, error) in
+        Firestore.firestore().collection("users").document(userID).getDocument {[weak self] (snapshot, error) in
+            guard let self = self else { return }
             if error != nil{
                 print("取得資料失敗")
                 self.commonAlert(withTitle: "網路異常")

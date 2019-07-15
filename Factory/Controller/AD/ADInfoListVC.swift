@@ -24,7 +24,7 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var category = "total"
     
-    
+    var adDetailVC:adDetailVC?
     
 
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewWillDisappear(_ animated: Bool) {
         if linstener != nil{
-            linstener!.remove()
+           clearedInfo() //離開時清空資訊包括 陣列
             print("離開監聽")
         }
     }
@@ -71,6 +71,9 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     //MARK:- tableview Delegate
     
+    
+    
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{            Firestore.firestore().collection("AD").document(clientInfos[indexPath.row].documentID).delete { (error) in
                 if error != nil{
@@ -84,8 +87,21 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "adDetial", sender: self)
+        
+        adDetailVC?.infoFormADinfoList = clientInfos[indexPath.row]
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "adDetial"{
+            
+            adDetailVC = segue.destination as? adDetailVC
+            
+            
+        }
+    }
+    
     
     
     //動畫
@@ -223,6 +239,15 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             
         }
+    }
+    
+    //MARK:-其他方法
+    
+    //清空array 監聽。  reloadData是因為 修復進入時會閃一下的bug
+    func clearedInfo(){
+        linstener!.remove()
+        clientInfos.removeAll()
+        tableView.reloadData()
     }
     
     

@@ -58,6 +58,8 @@ class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidDisappear(_ animated: Bool) {
         if linstener != nil{
             linstener.remove() //移除監聽
+            rdTaskLists.removeAll()
+            taskListTableview.reloadData()
         }
     }
     
@@ -103,12 +105,17 @@ class RDTaskListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
 
     
+    deinit {
+        print("RDTaskListVC deinit")
+    }
     
     //MARK: -
     //MARK: 監聽collection "RD" 裡全部的資料 的方法
     func setRDTaskListener(){
         linstener =    //放到最上面方便我移除監聽   //照時間排序
         Firestore.firestore().collection("RD")/*.order(by: "timestamp", descending: false)*/.order(by: "status", descending: true).order(by: "timestamp").addSnapshotListener { (querySnapshop, error) in
+            
+
             if error != nil {
                 print("讀取資料失敗")
                 return

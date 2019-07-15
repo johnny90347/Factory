@@ -8,7 +8,7 @@
 
 import UIKit
 import Firebase
-
+import GoogleMaps
 
 //var userInfomationShare:UserInfo?
 
@@ -21,38 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
-        
-//        getUserInfo()
+        GMSServices.provideAPIKey("AIzaSyBRcTGFlhcRlHkZIEHX4agN5NbXmdWvoKs")
+
         
         return true
     }
-//    func getUserInfo(){
-//
-//        guard let userID = Auth.auth().currentUser?.uid else {return}
-//
-//        Firestore.firestore().collection("users").document(userID).getDocument { (snapShot, error) in
-//            if error != nil{
-//
-//                return
-//            }
-//
-//
-//            guard let snapShot = snapShot,
-//                let data = snapShot.data(),
-//                let username = data["userName"] as? String,
-//                let sex = data["sex"] as? String,
-//                let department = data["department"] as? String,
-//                let positionTxt = data["positionTxt"] as? String,
-//                let level = data["level"] as? Int,
-//                let createdTime = data["createdTime"] as? Timestamp
-//                else {return}
-//
-//            let userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level: level, createdTime: createdTime)
-//            userInfomationShare = userInfo
-//
-//        }
 
-//    }
     
     
    

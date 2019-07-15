@@ -49,7 +49,8 @@ class MDAddTaskVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-       observer = NotificationCenter.default.addObserver(forName: .saveDate, object: nil, queue: OperationQueue.main) { (notification) in
+       observer = NotificationCenter.default.addObserver(forName: .saveDate, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            guard let self = self else { return }
             let dateVC = notification.object as! DatePopupsVC
             self.shipDateTxt.text = dateVC.formattedDate
             self.date = dateVC.date

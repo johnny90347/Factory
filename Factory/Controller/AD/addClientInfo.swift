@@ -94,6 +94,7 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
     //展開備註欄
     @IBAction func expansionBtnPressed(_ sender: UIButton) {
         
+        
         if expansionBtn.transform == .identity {
             UIView.animate(withDuration: 0.5) {
                 self.bottonViewHeightCt.constant = self.view.frame.height/3

@@ -1,0 +1,143 @@
+//
+//  ViewController.swift
+//  Factory
+//
+//  Created by 梁鑫文 on 2019/6/26.
+//  Copyright © 2019 HsinWen. All rights reserved.
+//
+
+import UIKit
+import FirebaseFirestore
+import FirebaseAuth
+
+
+
+
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+ 
+    
+    
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    
+    let openingView = UIView()         //做開場動畫的view
+    let openImageVie = UIImageView()
+    
+    
+    
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        openingViewConfigure() //開場畫面
+        
+        setProductListener() //取得產品資訊
+        
+    }
+    
+    
+//    "productName" : self.productNameTxt.text!,
+//    "price" :  self.productPriceTxt.text!,
+//    "picture" : url!.absoluteString
+    
+    
+    //取得產品資訊
+    func setProductListener(){
+        Firestore.firestore().collection("product").addSnapshotListener { (querySnapshot, error) in
+            if error != nil{
+                print(error!.localizedDescription)
+                return
+            }
+            guard let  documents = querySnapshot?.documents else{return}
+            for document in  documents{
+                let documentID = document.documentID
+                let data = document.data()
+                guard
+                let ProductName = data["productName"] as? String,
+                let price = data["price"] as? String,
+                let photoAddress = data["picture"] as? String
+                else{return}
+                
+                
+                
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        openingAnimate()  //開場動畫
+
+        //確認是否在登陸狀態
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                print("有在登入狀態")
+            }else{
+                print("沒有在登入狀態")
+            }
+        }
+        
+    }
+    
+    
+    
+    //MARK:- collectionView 的 datasorce
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell
+        cell.backgroundColor = .red
+        return cell
+    }
+    
+    
+    
+    //MARK:- 開場動畫設置
+    
+    
+    func openingViewConfigure(){
+        //一隻藍色的小鳥圖案
+        openingView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        openingView.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        view.addSubview(openingView)
+        
+        openImageVie.frame = CGRect(x: 0, y: 0, width: 150 , height: 150)
+        openImageVie.image = UIImage(named: "openLogo")
+        openImageVie.center = view.center
+        openingView.addSubview(openImageVie)
+      
+    }
+    
+    
+    
+    func openingAnimate(){
+        //動畫內容：先縮小再放大 ->消失
+        UIView.animate(withDuration: 0.5, animations: {
+            self.openImageVie.frame = CGRect(x: 0, y: 0, width: 90, height: 90)
+            self.openImageVie.center = self.view.center
+            
+        }) { (finished) in
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.openImageVie.frame = CGRect(x: 0, y: 0, width: 1000, height: 1000)
+                self.openImageVie.center = self.view.center
+                self.openingView.alpha = 0
+                
+            })
+            
+        }
+        
+    }
+
+
+}
+

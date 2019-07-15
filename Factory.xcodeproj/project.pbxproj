@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A464FE222D6DCCE00060D18 /* adDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A464FE122D6DCCE00060D18 /* adDetailVC.swift */; };
 		0A62903422C37C5000446A3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62903322C37C5000446A3F /* AppDelegate.swift */; };
 		0A62903622C37C5000446A3F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62903522C37C5000446A3F /* ViewController.swift */; };
 		0A62903922C37C5000446A3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A62903722C37C5000446A3F /* Main.storyboard */; };
@@ -16,7 +17,10 @@
 		0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62904922C380A600446A3F /* UserInfoViewController.swift */; };
 		0A62904C22C3826A00446A3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A62904B22C3826A00446A3F /* GoogleService-Info.plist */; };
 		0A62905222C39C9600446A3F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A62905122C39C9600446A3F /* Model.swift */; };
+		0A91A52D22DC766D00A082E4 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A91A52C22DC766D00A082E4 /* ProductCollectionViewCell.swift */; };
+		0A94D4BB22DC198B00BDFCD8 /* ProductAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A94D4BA22DC198B00BDFCD8 /* ProductAddViewController.swift */; };
 		0AA04F7D22C9FC8300C49003 /* RDAddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA04F7C22C9FC8300C49003 /* RDAddTaskViewController.swift */; };
+		0AAB27C622D734F200538529 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB27C522D734F200538529 /* DetailTableViewController.swift */; };
 		0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB00C522C6285900A114AA /* CreateUserTVC.swift */; };
 		0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA256722D4D92F006A0B9D /* addClientInfo.swift */; };
 		0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */; };
@@ -30,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A464FE122D6DCCE00060D18 /* adDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adDetailVC.swift; sourceTree = "<group>"; };
 		0A62903022C37C5000446A3F /* Factory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Factory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A62903322C37C5000446A3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A62903522C37C5000446A3F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,7 +46,10 @@
 		0A62904922C380A600446A3F /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		0A62904B22C3826A00446A3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A62905122C39C9600446A3F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		0A91A52C22DC766D00A082E4 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		0A94D4BA22DC198B00BDFCD8 /* ProductAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddViewController.swift; sourceTree = "<group>"; };
 		0AA04F7C22C9FC8300C49003 /* RDAddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDAddTaskViewController.swift; sourceTree = "<group>"; };
+		0AAB27C522D734F200538529 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		0ACB00C522C6285900A114AA /* CreateUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserTVC.swift; sourceTree = "<group>"; };
 		0ADA256722D4D92F006A0B9D /* addClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addClientInfo.swift; sourceTree = "<group>"; };
 		0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListCustomCell.swift; sourceTree = "<group>"; };
@@ -104,10 +112,10 @@
 		0A62904D22C38BBB00446A3F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0A62903522C37C5000446A3F /* ViewController.swift */,
 				0A62904722C37D7900446A3F /* FactoryViewController.swift */,
 				0A62904922C380A600446A3F /* UserInfoViewController.swift */,
 				0ACB00C522C6285900A114AA /* CreateUserTVC.swift */,
+				0A94D4B722DC184200BDFCD8 /* Product */,
 				0AA04F7E22CA044200C49003 /* RD */,
 				0AEE4E2122CC4D6300F71457 /* MD */,
 				0AF24E4D22D4A45B005618F7 /* AD */,
@@ -120,8 +128,10 @@
 			children = (
 				0A62903722C37C5000446A3F /* Main.storyboard */,
 				0A62903C22C37C5100446A3F /* LaunchScreen.storyboard */,
+				0A91A52C22DC766D00A082E4 /* ProductCollectionViewCell.swift */,
 				0AEE4E1F22CC4D4F00F71457 /* RD */,
 				0AEE4E2022CC4D5900F71457 /* MD */,
+				0AAB27C422D734A800538529 /* AD */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +151,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0A94D4B722DC184200BDFCD8 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				0A62903522C37C5000446A3F /* ViewController.swift */,
+				0A94D4BA22DC198B00BDFCD8 /* ProductAddViewController.swift */,
+			);
+			path = Product;
+			sourceTree = "<group>";
+		};
 		0AA04F7E22CA044200C49003 /* RD */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +167,14 @@
 				0AA04F7C22C9FC8300C49003 /* RDAddTaskViewController.swift */,
 			);
 			path = RD;
+			sourceTree = "<group>";
+		};
+		0AAB27C422D734A800538529 /* AD */ = {
+			isa = PBXGroup;
+			children = (
+				0AAB27C522D734F200538529 /* DetailTableViewController.swift */,
+			);
+			path = AD;
 			sourceTree = "<group>";
 		};
 		0AEE4E1F22CC4D4F00F71457 /* RD */ = {
@@ -181,6 +208,7 @@
 			children = (
 				0AF24E4E22D4A4AD005618F7 /* ADInfoListVC.swift */,
 				0ADA256722D4D92F006A0B9D /* addClientInfo.swift */,
+				0A464FE122D6DCCE00060D18 /* adDetailVC.swift */,
 			);
 			path = AD;
 			sourceTree = "<group>";
@@ -214,6 +242,7 @@
 				0A62902D22C37C5000446A3F /* Frameworks */,
 				0A62902E22C37C5000446A3F /* Resources */,
 				FDF46498D00552C87C649A79 /* [CP] Embed Pods Frameworks */,
+				FBB0354B6367C65E9EAB73BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -294,6 +323,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FBB0354B6367C65E9EAB73BA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Factory/Pods-Factory-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Factory/Pods-Factory-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Factory/Pods-Factory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FDF46498D00552C87C649A79 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -322,6 +368,7 @@
 				0AE9E02B22C9DC29001B6781 /* RDTaskListVC.swift in Sources */,
 				0AEE4E1C22CC4D1D00F71457 /* MDAddTaskVC.swift in Sources */,
 				0AF24E4F22D4A4AD005618F7 /* ADInfoListVC.swift in Sources */,
+				0A94D4BB22DC198B00BDFCD8 /* ProductAddViewController.swift in Sources */,
 				0A62904822C37D7900446A3F /* FactoryViewController.swift in Sources */,
 				0AA04F7D22C9FC8300C49003 /* RDAddTaskViewController.swift in Sources */,
 				0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */,
@@ -330,9 +377,12 @@
 				0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */,
 				0AEE4E1E22CC4D4200F71457 /* MDTaskListCustomCell.swift in Sources */,
 				0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */,
+				0AAB27C622D734F200538529 /* DetailTableViewController.swift in Sources */,
+				0A464FE222D6DCCE00060D18 /* adDetailVC.swift in Sources */,
 				0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */,
 				0A62903422C37C5000446A3F /* AppDelegate.swift in Sources */,
 				0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */,
+				0A91A52D22DC766D00A082E4 /* ProductCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

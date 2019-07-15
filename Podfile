@@ -10,7 +10,11 @@ target 'Factory' do
 pod 'Firebase/Core'
 pod 'Firebase/Firestore'
 pod 'Firebase/Auth'
+pod 'Firebase/Storage'
 pod 'SVProgressHUD'
+pod 'GoogleMaps'
+pod 'GooglePlaces'
+
 
 inhibit_all_warnings!
 

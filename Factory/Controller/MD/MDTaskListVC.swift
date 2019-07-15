@@ -37,6 +37,7 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
             deviceCatCategory = "攪拌桶"
         }
         mdListener!.remove()
+        mdTaskLists.removeAll()
         setMDTaskListener()
         
     }
@@ -69,6 +70,7 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
     override func viewDidDisappear(_ animated: Bool) {
         if mdListener != nil{
             mdListener?.remove()
+            taskListTableView.reloadData()
         }
     }
     
