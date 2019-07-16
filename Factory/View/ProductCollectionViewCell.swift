@@ -22,6 +22,9 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var addProductButtonOutlet: UIButton!
     
+
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,8 +36,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         addProductButtonOutlet.layer.cornerRadius = 10
         addProductButtonOutlet.layer.masksToBounds = true
-
+        
+        
     }
+    
+    
+   
     
     
     @IBAction func countStepper(_ sender: UIStepper) {

@@ -21,7 +21,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-
+    
     
     
     
@@ -31,15 +31,43 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width ) / 2
-        return CGSize(width: width, height: 350)
-    }
     
+    func showAlert(item:Int){
+        let alert = UIAlertController(title: "你確定要刪除他嗎？", message: "", preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "確定", style: .default) { (action) in
+    Firestore.firestore().collection("product").document(self.productInfos[item].documentID).delete()
+            print("被刪掉了")
+        }
+        alert.addAction(action)
+        let cancelAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+ 
+    @objc func cellOperating(sender:UILongPressGestureRecognizer){
+        
+        
+       let touchPoint = sender.location(in: self.collectionView)
+
+
+        if sender.state == UIGestureRecognizer.State.began{
+
+            if let indexPath = self.collectionView.indexPathForItem(at: touchPoint){
+                showAlert(item: indexPath.item)
+                print(indexPath.item)
+            }
+            
+        }
+    }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+
+        
+        
         
         
         
@@ -96,7 +124,11 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
     }
     
+
+    
     override func viewWillAppear(_ animated: Bool) {
+        
+    
         
         openingAnimate()  //開場動畫
 
@@ -111,10 +143,12 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
     }
     
-    
+  
     
     //MARK:- collectionView 的 datasorce
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
         return productInfos.count
     }
     
@@ -122,8 +156,23 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell
         cell.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
         cell.configureCell(Info: productInfos[indexPath.item])
+        
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(cellOperating(sender:)))
+        longPress.minimumPressDuration = 0.5 //按一秒判斷為長按
+       
+        cell.addGestureRecognizer(longPress)
+        
+        
         return cell
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width ) / 2
+        return CGSize(width: width, height: 350)
+    }
+    
     
     
     

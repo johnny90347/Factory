@@ -202,6 +202,21 @@
                                                                 <action selector="countStepper:" destination="q7R-E2-gMK" eventType="valueChanged" id="a05-hg-Kfe"/>
                                                             </connections>
                                                         </stepper>
+                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEL-xh-QAL">
+                                                            <rect key="frame" x="50" y="280" width="84" height="40"/>
+                                                            <color key="backgroundColor" red="0.1255359352" green="0.1795109808" blue="0.45492881540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="84" id="SB2-gh-HdT"/>
+                                                                <constraint firstAttribute="height" constant="40" id="o7y-QV-dEV"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                            <state key="normal" title="加入購物車">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <connections>
+                                                                <action selector="addBuyListButtonPressed:" destination="q7R-E2-gMK" eventType="touchUpInside" id="Ark-0T-JO8"/>
+                                                            </connections>
+                                                        </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="數量" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nRJ-O1-mPK">
                                                             <rect key="frame" x="16" y="178.5" width="29" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -233,21 +248,6 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEL-xh-QAL">
-                                                            <rect key="frame" x="50" y="280" width="84" height="40"/>
-                                                            <color key="backgroundColor" red="0.1255359352" green="0.1795109808" blue="0.45492881540000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="84" id="SB2-gh-HdT"/>
-                                                                <constraint firstAttribute="height" constant="40" id="o7y-QV-dEV"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                            <state key="normal" title="加入購物車">
-                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </state>
-                                                            <connections>
-                                                                <action selector="addBuyListButtonPressed:" destination="q7R-E2-gMK" eventType="touchUpInside" id="Ark-0T-JO8"/>
-                                                            </connections>
-                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
