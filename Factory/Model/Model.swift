@@ -60,3 +60,14 @@ struct ADClientInfo {
 
 
 
+
+struct ProductInfo {
+    var productName:String
+    var price:String
+    var photoAddress:String
+    var documentID:String
+}
+
+
+
+

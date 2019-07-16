@@ -16,7 +16,8 @@ import FirebaseAuth
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
  
     
-    
+    var productInfos = [ProductInfo]()
+    var lintener:ListenerRegistration?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -38,8 +39,19 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         openingViewConfigure() //開場畫面
         
-        setProductListener() //取得產品資訊
+       
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+         setProductListener() //取得產品資訊
+    }
+       
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if lintener != nil{
+            lintener?.remove()
+        }
     }
     
     
@@ -50,11 +62,12 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     //取得產品資訊
     func setProductListener(){
-        Firestore.firestore().collection("product").addSnapshotListener { (querySnapshot, error) in
+       lintener = Firestore.firestore().collection("product").addSnapshotListener { (querySnapshot, error) in
             if error != nil{
                 print(error!.localizedDescription)
                 return
             }
+            self.productInfos.removeAll()  //每次有更新 先移除原本的array
             guard let  documents = querySnapshot?.documents else{return}
             for document in  documents{
                 let documentID = document.documentID
@@ -65,7 +78,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 let photoAddress = data["picture"] as? String
                 else{return}
                 
-                
+                let info =  ProductInfo(productName: ProductName, price: price, photoAddress: photoAddress, documentID: documentID)
+                self.productInfos.append(info)
+                self.collectionView.reloadData()
                 
             }
         }
@@ -90,12 +105,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     //MARK:- collectionView 的 datasorce
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return productInfos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell
         cell.backgroundColor = .red
+        cell.configureCell(Info: productInfos[indexPath.item])
         return cell
     }
     
