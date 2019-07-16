@@ -18,10 +18,13 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
     
     @IBOutlet weak var productPriceTxt: UITextField!
     
+    @IBOutlet weak var addButtonPress: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        addButtonPress.layer.cornerRadius = addButtonPress.frame.width / 2 
+        addButtonPress.layer.masksToBounds = true
         
         //點擊照片加入圖片
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectedPicture))
