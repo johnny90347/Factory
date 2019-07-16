@@ -13,13 +13,16 @@ import FirebaseAuth
 
 
 
-class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
  
     
     var productInfos = [ProductInfo]()
     var lintener:ListenerRegistration?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+
+    
     
     
     
@@ -28,10 +31,17 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width ) / 2
+        return CGSize(width: width, height: 350)
+    }
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         
         collectionView.delegate = self
@@ -110,7 +120,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell
-        cell.backgroundColor = .red
+        cell.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
         cell.configureCell(Info: productInfos[indexPath.item])
         return cell
     }

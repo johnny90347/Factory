@@ -18,9 +18,22 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var productCountTxt: UITextField!
     
+    @IBOutlet weak var cellBackGroundView: UIView!
+    
+    @IBOutlet weak var addProductButtonOutlet: UIButton!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        cellBackGroundView.layer.cornerRadius = 10
+        productImageView.layer.cornerRadius = 10
+        productImageView.layer.masksToBounds = true
+        productImageView.clipsToBounds = true
+        
+        addProductButtonOutlet.layer.cornerRadius = 10
+        addProductButtonOutlet.layer.masksToBounds = true
+
     }
     
     
