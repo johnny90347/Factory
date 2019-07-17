@@ -100,6 +100,10 @@
                                             <action selector="addProductButtonPressed:" destination="2u1-IB-RfG" eventType="touchUpInside" id="L4E-eG-OrX"/>
                                         </connections>
                                     </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BW4-iQ-XTW">
+                                        <rect key="frame" x="132" y="274" width="150" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </progressView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -142,6 +146,7 @@
                         <outlet property="productImageView" destination="5hc-8d-D7f" id="S6i-mP-SoX"/>
                         <outlet property="productNameTxt" destination="zBi-LD-Yuw" id="d7Z-e8-Sna"/>
                         <outlet property="productPriceTxt" destination="auK-Vz-Iki" id="loM-kK-wg2"/>
+                        <outlet property="progressView" destination="BW4-iQ-XTW" id="I2b-qq-aFi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O96-Ow-Ehf" userLabel="First Responder" sceneMemberID="firstResponder"/>

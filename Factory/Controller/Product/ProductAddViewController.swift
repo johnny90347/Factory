@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 
 class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
@@ -19,6 +20,9 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var productPriceTxt: UITextField!
     
     @IBOutlet weak var addButtonPress: UIButton!
+    
+    @IBOutlet weak var progressView: UIProgressView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +51,7 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
         picker.delegate = self //成為代理
         picker.allowsEditing = true //可以修改照片大小
         present(picker, animated: true, completion: nil) //跳出picker
+    
     }
     
     
@@ -84,17 +89,19 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
     
     //按下按鈕 上傳資料
     @IBAction func addProductButtonPressed(_ sender: UIButton) {
+        SVProgressHUD.show()
         
         //存在storage的child檔名叫pic的下面
         let storeRef = Storage.storage().reference().child("pic")
         //轉換UIImage to DATA 並且 壓縮（會傳送比較快）（compressionQuality = 1 就是原大小）
         if let data = selectedImageFromPicker?.jpegData(compressionQuality: 0.5){
-            storeRef.child(fileName).putData(data, metadata: nil) { (metadata, error) in   //在pic下用檔名 傳送檔案
+          let task = storeRef.child(fileName).putData(data, metadata: nil) { (metadata, error) in   //在pic下用檔名 傳送檔案
                 if error != nil{
                     print("上傳失敗")
                     return
                 }
-                
+            
+            
                 print("上傳成功")
                 //上傳成功後
                 //利用路徑取得下載圖片的url
@@ -107,12 +114,14 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
                         Firestore.firestore().collection("product").addDocument(data: [
                             "productName" : self.productNameTxt.text!,
                             "price" :  self.productPriceTxt.text!,
-                            "picture" : url!.absoluteString
+                            "picture" : url!.absoluteString,
+                            "timeStamp": FieldValue.serverTimestamp()
 
                         ]) { (error) in
                             if error != nil{
                                 return
                             }else{
+                                SVProgressHUD.dismiss()
                                 self.navigationController?.popViewController(animated: true)
                             }
                             
@@ -122,6 +131,11 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
                 })
                 
                 
+            }
+            task.observe(.progress) { (storageTaskSnapshot) in
+                if let progress = storageTaskSnapshot.progress?.fractionCompleted{
+                    self.progressView.progress = Float(progress)
+                }
             }
         }
     }
