@@ -13,7 +13,7 @@ struct PurchasedItem {
     var productName:String
     var price:Int
     var count:Int
-    var image:UIImage
+    var imageAddress:String
 }
 
 protocol ShoppingCarDelegate:NSObjectProtocol {
@@ -38,12 +38,14 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var addProductButtonOutlet: UIButton!
     
+    @IBOutlet weak var stepperOutlet: UIStepper!
+    
+    
 
     weak var delegate:ShoppingCarDelegate?
     weak var alertDelegate:showAlertDelegate?
     
-    //丟上來是為了傳送資料可以傳
-    var imageToCache:UIImage?
+    var photoAddress:String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,9 +64,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
    
     
-    
     @IBAction func countStepper(_ sender: UIStepper) {
+    
         productCountTxt.text = "\(Int(sender.value))"
+        
+        
+        
     }
     
     
@@ -74,13 +79,15 @@ class ProductCollectionViewCell: UICollectionViewCell {
         if productCountTxt.text != "0"{
             guard  let name = productNameLabel.text,
                 let price = priceLabel.text,
-                let count = productCountTxt.text
+                let count = productCountTxt.text,
+                let photoAddress = self.photoAddress
                 else { return }
             
-           let pruchased = PurchasedItem(productName: name, price:Int(price)!, count: Int(count)!,image:imageToCache! )
+            let pruchased = PurchasedItem(productName: name, price:Int(price)!, count: Int(count)!,imageAddress:photoAddress )
             delegate?.pruchasedItemInfo(item: pruchased)
             
             productCountTxt.text = "0"
+            stepperOutlet.value = 0
             
         }else{
             alertDelegate?.showAlert()
@@ -99,6 +106,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         priceLabel.text = Info.price              //價格
         
         let address = Info.photoAddress           //圖片的urlString
+        photoAddress = address
         
         //如果用key:urlString 去快取 Image ,如果image存在了話 就放在imageview並且return ,不再執行下面的下載了
         if let imageFromCache = imageCache.object(forKey: address as AnyObject) as? UIImage{
@@ -114,12 +122,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
                 do{
                     //這個是同步下載資料
                     let data = try Data(contentsOf: url)
-                    self.imageToCache = UIImage(data: data) //data轉圖片
+                    let imageToCache = UIImage(data: data) //data轉圖片
                     
                     //儲存照片到快取裡面。key用urlString  所以一個key(urlString)就有一個 imageData
-                    self.imageCache.setObject(self.imageToCache!, forKey: address as AnyObject)
+                    self.imageCache.setObject(imageToCache!, forKey: address as AnyObject)
                     DispatchQueue.main.async {
-                        self.productImageView.image = self.imageToCache
+                        self.productImageView.image = imageToCache
                     }
                     
                 }catch{

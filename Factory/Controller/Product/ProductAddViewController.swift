@@ -94,7 +94,7 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
         //存在storage的child檔名叫pic的下面
         let storeRef = Storage.storage().reference().child("pic")
         //轉換UIImage to DATA 並且 壓縮（會傳送比較快）（compressionQuality = 1 就是原大小）
-        if let data = selectedImageFromPicker?.jpegData(compressionQuality: 0.5){
+        if let data = selectedImageFromPicker?.jpegData(compressionQuality: 0.01){
           let task = storeRef.child(fileName).putData(data, metadata: nil) { (metadata, error) in   //在pic下用檔名 傳送檔案
                 if error != nil{
                     print("上傳失敗")

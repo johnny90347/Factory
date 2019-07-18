@@ -85,7 +85,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     
-    
     func showAlert(item:Int){
         let alert = UIAlertController(title: "你確定要刪除他嗎？", message: "", preferredStyle: .actionSheet)
         let action = UIAlertAction(title: "確定", style: .default) { (action) in
@@ -106,6 +105,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             if let indexPath = self.collectionView.indexPathForItem(at: touchPoint){
                 showAlert(item: indexPath.item)
                 print(indexPath.item)
+                
             }
             
         }
@@ -115,26 +115,23 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+      setProductListener() //取得產品資訊
         
         
         collectionView.delegate = self
         collectionView.dataSource = self
         openingViewConfigure() //開場畫面
         
-       
+     
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-         setProductListener() //取得產品資訊
-    }
-       
+
     
     override func viewDidDisappear(_ animated: Bool) {
-        if lintener != nil{
-            lintener?.remove()
-        }
+//        if lintener != nil{
+//            lintener?.remove()
+//        }
     }
     
     
@@ -164,7 +161,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 let info =  ProductInfo(productName: ProductName, price: price, photoAddress: photoAddress, documentID: documentID)
                 self.productInfos.append(info)
                 self.collectionView.reloadData()
-                
             }
         }
     }
@@ -173,7 +169,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewWillAppear(_ animated: Bool) {
         
-    
+
         
         openingAnimate()  //開場動畫
 

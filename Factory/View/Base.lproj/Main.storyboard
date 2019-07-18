@@ -325,6 +325,7 @@
                                             <outlet property="productCountTxt" destination="5Tg-mL-QoA" id="y3Y-P2-DBV"/>
                                             <outlet property="productImageView" destination="8SZ-KT-DbS" id="ngT-gD-rWa"/>
                                             <outlet property="productNameLabel" destination="FYP-cr-mdQ" id="lU0-ow-l8w"/>
+                                            <outlet property="stepperOutlet" destination="AbX-VC-X2w" id="Euw-As-zoY"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
