@@ -134,7 +134,7 @@
 				0A62903722C37C5000446A3F /* Main.storyboard */,
 				0A62903C22C37C5100446A3F /* LaunchScreen.storyboard */,
 				0A91A52C22DC766D00A082E4 /* ProductCollectionViewCell.swift */,
-				0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */,
+				0AE4C08622E0642E003ABBA9 /* ShoppingCar */,
 				0AEE4E1F22CC4D4F00F71457 /* RD */,
 				0AEE4E2022CC4D5900F71457 /* MD */,
 				0AAB27C422D734A800538529 /* AD */,
@@ -187,6 +187,14 @@
 			isa = PBXGroup;
 			children = (
 				0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */,
+			);
+			path = ShoppingCar;
+			sourceTree = "<group>";
+		};
+		0AE4C08622E0642E003ABBA9 /* ShoppingCar */ = {
+			isa = PBXGroup;
+			children = (
+				0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */,
 			);
 			path = ShoppingCar;
 			sourceTree = "<group>";

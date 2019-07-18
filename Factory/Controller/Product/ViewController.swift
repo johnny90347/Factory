@@ -13,7 +13,15 @@ import FirebaseAuth
 
 
 
-class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoppingCarDelegate,showAlertDelegate {
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoppingCarDelegate,showAlertDelegate,pruchasedItemsChangeDelegate {
+    
+    
+    
+    func itemChange(_ pruchasedItems: [PurchasedItem]) {
+        self.pruchasedItems = pruchasedItems
+        shoppingCarContentCntLabel.text = "\(pruchasedItems.count)"
+    }
+    
     
     //代理秀出警告控制器的方法
     func showAlert() {
@@ -23,11 +31,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     //購物車  準備裝購物的資料
-    var pruchasedItems:[PurchasedItem] = []{
-        didSet{
-            showAlert(message: "已加入購物車")   //購物車內容增加時 提醒
-        }
-    }
+    var pruchasedItems:[PurchasedItem] = []
         
     
     
@@ -37,6 +41,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         pruchasedItems.append(item)
         shoppingCarContentCntLabel.text = "\(pruchasedItems.count)"
+        showAlert(message: "已加入購物車")
         print(pruchasedItems)
         
     }
@@ -75,6 +80,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         if segue.identifier == "gotoShoppingCar"{
            let vc = segue.destination as! ShoppingCarVC
             vc.pruchasedItemsFormVC = pruchasedItems
+            vc.itemChangeDelegate = self
         }
     }
     

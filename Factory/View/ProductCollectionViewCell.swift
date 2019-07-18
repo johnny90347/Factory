@@ -13,6 +13,7 @@ struct PurchasedItem {
     var productName:String
     var price:Int
     var count:Int
+    var image:UIImage
 }
 
 protocol ShoppingCarDelegate:NSObjectProtocol {
@@ -40,6 +41,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
 
     weak var delegate:ShoppingCarDelegate?
     weak var alertDelegate:showAlertDelegate?
+    
     //丟上來是為了傳送資料可以傳
     var imageToCache:UIImage?
     
@@ -75,7 +77,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
                 let count = productCountTxt.text
                 else { return }
             
-           let pruchased = PurchasedItem(productName: name, price:Int(price)!, count: Int(count)!)
+           let pruchased = PurchasedItem(productName: name, price:Int(price)!, count: Int(count)!,image:imageToCache! )
             delegate?.pruchasedItemInfo(item: pruchased)
             
             productCountTxt.text = "0"
