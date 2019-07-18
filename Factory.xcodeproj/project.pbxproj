@@ -23,6 +23,8 @@
 		0AAB27C622D734F200538529 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB27C522D734F200538529 /* DetailTableViewController.swift */; };
 		0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB00C522C6285900A114AA /* CreateUserTVC.swift */; };
 		0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA256722D4D92F006A0B9D /* addClientInfo.swift */; };
+		0AE4C08122E052C3003ABBA9 /* ShoppingCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */; };
+		0AE4C08522E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */; };
 		0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */; };
 		0AE9E02B22C9DC29001B6781 /* RDTaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02A22C9DC29001B6781 /* RDTaskListVC.swift */; };
 		0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEE4E1922CC4CF500F71457 /* MDTaskListVC.swift */; };
@@ -52,6 +54,8 @@
 		0AAB27C522D734F200538529 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		0ACB00C522C6285900A114AA /* CreateUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserTVC.swift; sourceTree = "<group>"; };
 		0ADA256722D4D92F006A0B9D /* addClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addClientInfo.swift; sourceTree = "<group>"; };
+		0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarVC.swift; sourceTree = "<group>"; };
+		0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarTableViewCell.swift; sourceTree = "<group>"; };
 		0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListCustomCell.swift; sourceTree = "<group>"; };
 		0AE9E02A22C9DC29001B6781 /* RDTaskListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListVC.swift; sourceTree = "<group>"; };
 		0AEE4E1922CC4CF500F71457 /* MDTaskListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTaskListVC.swift; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				0A62904722C37D7900446A3F /* FactoryViewController.swift */,
 				0A62904922C380A600446A3F /* UserInfoViewController.swift */,
 				0ACB00C522C6285900A114AA /* CreateUserTVC.swift */,
+				0AE4C08222E052C7003ABBA9 /* ShoppingCar */,
 				0A94D4B722DC184200BDFCD8 /* Product */,
 				0AA04F7E22CA044200C49003 /* RD */,
 				0AEE4E2122CC4D6300F71457 /* MD */,
@@ -129,6 +134,7 @@
 				0A62903722C37C5000446A3F /* Main.storyboard */,
 				0A62903C22C37C5100446A3F /* LaunchScreen.storyboard */,
 				0A91A52C22DC766D00A082E4 /* ProductCollectionViewCell.swift */,
+				0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */,
 				0AEE4E1F22CC4D4F00F71457 /* RD */,
 				0AEE4E2022CC4D5900F71457 /* MD */,
 				0AAB27C422D734A800538529 /* AD */,
@@ -175,6 +181,14 @@
 				0AAB27C522D734F200538529 /* DetailTableViewController.swift */,
 			);
 			path = AD;
+			sourceTree = "<group>";
+		};
+		0AE4C08222E052C7003ABBA9 /* ShoppingCar */ = {
+			isa = PBXGroup;
+			children = (
+				0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */,
+			);
+			path = ShoppingCar;
 			sourceTree = "<group>";
 		};
 		0AEE4E1F22CC4D4F00F71457 /* RD */ = {
@@ -373,6 +387,7 @@
 				0AA04F7D22C9FC8300C49003 /* RDAddTaskViewController.swift in Sources */,
 				0A62904A22C380A600446A3F /* UserInfoViewController.swift in Sources */,
 				0AEE4E2322CC785300F71457 /* DatePopupsVC.swift in Sources */,
+				0AE4C08122E052C3003ABBA9 /* ShoppingCarVC.swift in Sources */,
 				0A62905222C39C9600446A3F /* Model.swift in Sources */,
 				0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */,
 				0AEE4E1E22CC4D4200F71457 /* MDTaskListCustomCell.swift in Sources */,
@@ -383,6 +398,7 @@
 				0A62903422C37C5000446A3F /* AppDelegate.swift in Sources */,
 				0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */,
 				0A91A52D22DC766D00A082E4 /* ProductCollectionViewCell.swift in Sources */,
+				0AE4C08522E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

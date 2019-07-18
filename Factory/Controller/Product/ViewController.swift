@@ -13,8 +13,36 @@ import FirebaseAuth
 
 
 
-class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
- 
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoppingCarDelegate,showAlertDelegate {
+    
+    //代理秀出警告控制器的方法
+    func showAlert() {
+        showAlert(message: "數量不能是0")
+    }
+    
+    
+    
+    //購物車  準備裝購物的資料
+    var pruchasedItems:[PurchasedItem] = []{
+        didSet{
+            showAlert(message: "已加入購物車")   //購物車內容增加時 提醒
+        }
+    }
+        
+    
+    
+    
+    //從cell傳來購物名單 要加入到上面的購物車
+    func pruchasedItemInfo(item: PurchasedItem) {
+        
+        pruchasedItems.append(item)
+        shoppingCarContentCntLabel.text = "\(pruchasedItems.count)"
+        print(pruchasedItems)
+        
+    }
+    
+    @IBOutlet weak var shoppingCarContentCntLabel: UILabel!
+    
     
     var productInfos = [ProductInfo]()
     var lintener:ListenerRegistration?
@@ -32,6 +60,26 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     
+    //進入購物車的按鈕
+    
+    @IBAction func gotoShoppingCarButtonPressed(_ sender: UIButton) {
+        if pruchasedItems.count != 0{
+             performSegue(withIdentifier: "gotoShoppingCar", sender: self)
+        }else{
+            showAlert(message: "你才沒有買東西呢！")
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoShoppingCar"{
+           let vc = segue.destination as! ShoppingCarVC
+            vc.pruchasedItemsFormVC = pruchasedItems
+        }
+    }
+    
+    
+    
     func showAlert(item:Int){
         let alert = UIAlertController(title: "你確定要刪除他嗎？", message: "", preferredStyle: .actionSheet)
         let action = UIAlertAction(title: "確定", style: .default) { (action) in
@@ -46,12 +94,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
  
     @objc func cellOperating(sender:UILongPressGestureRecognizer){
         
-        
+        //點擊的點
        let touchPoint = sender.location(in: self.collectionView)
-
-
         if sender.state == UIGestureRecognizer.State.began{
-
             if let indexPath = self.collectionView.indexPathForItem(at: touchPoint){
                 showAlert(item: indexPath.item)
                 print(indexPath.item)
@@ -64,17 +109,11 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
 
-        
-        
-        
-        
         
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         openingViewConfigure() //開場畫面
         
        
@@ -160,9 +199,10 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(cellOperating(sender:)))
         longPress.minimumPressDuration = 0.5 //按一秒判斷為長按
-       
         cell.addGestureRecognizer(longPress)
         
+        cell.delegate = self
+        cell.alertDelegate = self
         
         return cell
     }
@@ -211,6 +251,15 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             
         }
         
+    }
+    
+    
+    
+    func showAlert(message:String){
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "確認", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 
 

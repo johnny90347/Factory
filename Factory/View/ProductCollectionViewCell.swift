@@ -8,6 +8,21 @@
 
 import UIKit
 
+
+struct PurchasedItem {
+    var productName:String
+    var price:Int
+    var count:Int
+}
+
+protocol ShoppingCarDelegate:NSObjectProtocol {
+    func pruchasedItemInfo(item:PurchasedItem)
+}
+
+protocol showAlertDelegate:NSObjectProtocol {
+    func showAlert()
+}
+
 class ProductCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var productImageView: UIImageView!
@@ -23,8 +38,10 @@ class ProductCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addProductButtonOutlet: UIButton!
     
 
-    
-    
+    weak var delegate:ShoppingCarDelegate?
+    weak var alertDelegate:showAlertDelegate?
+    //丟上來是為了傳送資料可以傳
+    var imageToCache:UIImage?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -50,7 +67,27 @@ class ProductCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func addBuyListButtonPressed(_ sender: UIButton) {
-        print("被按到拉")
+        
+        //輸入的數字不能是0
+        if productCountTxt.text != "0"{
+            guard  let name = productNameLabel.text,
+                let price = priceLabel.text,
+                let count = productCountTxt.text
+                else { return }
+            
+           let pruchased = PurchasedItem(productName: name, price:Int(price)!, count: Int(count)!)
+            delegate?.pruchasedItemInfo(item: pruchased)
+            
+            productCountTxt.text = "0"
+            
+        }else{
+            alertDelegate?.showAlert()
+        }
+        
+        
+      
+        
+        
     }
     //新增一個快取 目的是解決 每次滾到cell時 就要重新下載一次照片
     let imageCache = NSCache<AnyObject, AnyObject>()
@@ -75,12 +112,12 @@ class ProductCollectionViewCell: UICollectionViewCell {
                 do{
                     //這個是同步下載資料
                     let data = try Data(contentsOf: url)
-                    let imageToCache = UIImage(data: data) //data轉圖片
+                    self.imageToCache = UIImage(data: data) //data轉圖片
                     
                     //儲存照片到快取裡面。key用urlString  所以一個key(urlString)就有一個 imageData
-                    self.imageCache.setObject(imageToCache!, forKey: address as AnyObject)
+                    self.imageCache.setObject(self.imageToCache!, forKey: address as AnyObject)
                     DispatchQueue.main.async {
-                        self.productImageView.image = imageToCache
+                        self.productImageView.image = self.imageToCache
                     }
                     
                 }catch{
@@ -91,5 +128,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    
+  
     
 }
