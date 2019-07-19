@@ -37,9 +37,12 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     }
     
     
+    private var listener:AuthStateDidChangeListenerHandle?
+    
     override func viewDidAppear(_ animated: Bool) {
         //確認是否在登入狀態
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+       listener = Auth.auth().addStateDidChangeListener { [weak self](auth, user) in
+        guard let self = self else { return }
             if user != nil {
                 print("有在登陸中")
                 self.getUserInfo()
@@ -49,8 +52,14 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         }
         calculateTotalPrice()
     }
-    
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let listener = listener else { return }
+        Auth.auth().removeStateDidChangeListener(listener)
+    }
+    deinit {
+        print("SHoppingCarVC deinit")
+    }
     //MARK:-
     //按下寄信的按鈕
     @IBAction func sendEmailButtonPressed(_ sender: UIButton) {
@@ -108,7 +117,8 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     
     func getUserInfo(){
         guard let userID = Auth.auth().currentUser?.uid else{return}
-        Firestore.firestore().collection("users").document(userID).getDocument { (documentsnapshot, error) in
+        Firestore.firestore().collection("users").document(userID).getDocument { [weak self](documentsnapshot, error) in
+            guard let self = self else { return }
             if error != nil{
                 print("取得資料失敗")
                 return

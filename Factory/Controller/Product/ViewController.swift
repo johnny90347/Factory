@@ -164,7 +164,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     //取得產品資訊
     func setProductListener(){
-       lintener = Firestore.firestore().collection("product").order(by: "timeStamp", descending: true).addSnapshotListener { (querySnapshot, error) in
+       lintener = Firestore.firestore().collection("product").order(by: "timeStamp", descending: true).addSnapshotListener {[weak self] (querySnapshot, error) in
+            guard let self = self else {return}
             if error != nil{
                 print(error!.localizedDescription)
                 return

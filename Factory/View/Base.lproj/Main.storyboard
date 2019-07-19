@@ -482,13 +482,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QkI-mO-4xA"/>
                     </view>
-                    <navigationItem key="navigationItem" title="購物車清單" id="2Nc-eF-ZPP">
-                        <barButtonItem key="leftBarButtonItem" title="上一頁" id="PxP-Gu-WfD">
-                            <connections>
-                                <action selector="backButtonPress:" destination="tFV-zO-Mfo" id="ROq-Ma-QHD"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="購物車清單" id="2Nc-eF-ZPP"/>
                     <connections>
                         <outlet property="tableView" destination="Gov-wv-zMp" id="fea-Ps-vDs"/>
                         <outlet property="totalPriceLabel" destination="5vT-mL-VRA" id="7t7-rA-b8h"/>
