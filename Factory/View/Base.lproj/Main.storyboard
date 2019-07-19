@@ -456,6 +456,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amY-P8-8O0">
+                                        <rect key="frame" x="341" y="41" width="31" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="寄信"/>
+                                        <connections>
+                                            <action selector="sendEmailButtonPressed:" destination="tFV-zO-Mfo" eventType="touchUpInside" id="5MA-0o-7Og"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -1035,7 +1043,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="IPz-Pf-mSU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414.00000000000011" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1092,7 +1100,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aTL-UR-OMw">
-                                                <rect key="frame" x="48" y="0.0" width="306.00000000000006" height="142"/>
+                                                <rect key="frame" x="48" y="0.0" width="306" height="142"/>
                                                 <color key="backgroundColor" red="0.36289287219999999" green="0.80559412080000004" blue="0.54697375290000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" backgroundImage="Manufacturing"/>
                                                 <connections>
@@ -1156,10 +1164,10 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorLeft 2" translatesAutoresizingMaskIntoConstraints="NO" id="KC6-sB-hTZ">
-                                <rect key="frame" x="0.0" y="177" width="207" height="636"/>
+                                <rect key="frame" x="0.0" y="797" width="207" height="16"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doorRight" translatesAutoresizingMaskIntoConstraints="NO" id="npf-TY-tNq">
-                                <rect key="frame" x="207" y="174.5" width="207" height="638.5"/>
+                                <rect key="frame" x="207" y="797" width="207" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1220,7 +1228,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="QIl-ok-w7P">
-                                <rect key="frame" x="0.0" y="44" width="414.00000000000011" height="769"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4y1-SQ-44x">
                                 <rect key="frame" x="0.0" y="44" width="414" height="384.5"/>

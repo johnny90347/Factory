@@ -7,15 +7,16 @@
 //
 
 import UIKit
-
+import MessageUI
+import Firebase
 
 protocol pruchasedItemsChangeDelegate:NSObjectProtocol {
     func itemChange(_ pruchasedItems:[PurchasedItem])
 }
 
-class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate {
   
-    
+    var userInfo:UserInfo?
     
     var pruchasedItemsFormVC = [PurchasedItem]()
     
@@ -32,9 +33,101 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-       
+      
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //確認是否在登入狀態
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if user != nil {
+                print("有在登陸中")
+                self.getUserInfo()
+            }else{
+                
+            }
+        }
+        calculateTotalPrice()
+    }
+    
+    
+    //MARK:-
+    //按下寄信的按鈕
+    @IBAction func sendEmailButtonPressed(_ sender: UIButton) {
+        guard let  user = userInfo else {return}
+        
+        if (MFMailComposeViewController.canSendMail()){
+            let mailController = MFMailComposeViewController()
+            print("可以寄信")
+            mailController.mailComposeDelegate = self
+          
+            let subject:String = "廠內訂單 來自 - \(user.department) \(user.userName) \(user.positionTxt) "
+            
+            var messageBody:String = "訂貨內容:\n\n"
+            
+            for item in pruchasedItemsFormVC {
+                let name = item.productName
+                let price = item.price
+                let count = item.count
+                let buyItem = "品名:\(name)   價格:\(price)   數量:\(count) \n\n"
+                messageBody += buyItem
+            }
+            
+            let totalPrice = totalPriceLabel.text
+            messageBody += "\(totalPrice!)"
+            
+            mailController.setSubject(subject)
+            mailController.setToRecipients(["johnny90347@gmail.com"])
+            mailController.setMessageBody(messageBody, isHTML: false)
+            self.present(mailController, animated: true, completion: nil)
+        }
+        else{
+            print("不可以寄信")
+        }
+        
+    }
+    //MARK: mailComposeDelegate
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        switch result.rawValue{
+            case MFMailComposeResult.cancelled.rawValue: print("取消")
+            case MFMailComposeResult.sent.rawValue: print("寄出")
+             case MFMailComposeResult.saved.rawValue: print("存檔")
+            case MFMailComposeResult.failed.rawValue: print("失敗")
+            
+        default:
+            print("都不是")
+        }
+        
+        self.dismiss(animated: false, completion: nil)
+        
+      
+    }
+    
+    
+    func getUserInfo(){
+        guard let userID = Auth.auth().currentUser?.uid else{return}
+        Firestore.firestore().collection("users").document(userID).getDocument { (documentsnapshot, error) in
+            if error != nil{
+                print("取得資料失敗")
+                return
+            }
+            guard let snapshot = documentsnapshot else{return}
+            guard let data = snapshot.data(),
+                let username = data["userName"] as? String,
+                let sex = data["sex"] as? String,
+                let department = data["department"] as? String,
+                let positionTxt = data["positionTxt"] as? String,
+                let level = data["level"] as? Int,
+                let createdTime = data["createdTime"] as? Timestamp
+            else{return}
+            self.userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level:level , createdTime: createdTime)
+            
+        }
+    }
+    
+    
+    
      //計算總價格的方法
     func calculateTotalPrice (){
         var total = 0
@@ -46,10 +139,6 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate 
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        calculateTotalPrice()
-     
-    }
     
     
     //MARK:-

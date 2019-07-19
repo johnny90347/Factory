@@ -35,13 +35,6 @@ class ShoppingCarTableViewCell: UITableViewCell {
         
         let urlString = item.imageAddress
         
-//        let imageCache = NSCache<AnyObject, AnyObject>()
-//
-//        if let imageFromCache = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
-//                productPhotoImageView.image = imageFromCache
-//            return
-//        }
-//
         
         guard let url = URL(string: urlString) else {return}
         let task =  URLSession.shared.dataTask(with: url) { (data, urlResponse, error) in
