@@ -12,18 +12,7 @@ import FirebaseAuth
 
 
 
-
-extension ViewController {
-    
-}
-
-
-
-class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoppingCarDelegate,showAlertDelegate,pruchasedItemsChangeDelegate {
-    
-    //判斷使用者是否在線上 (進入購物車時會用到）
-    var userIsOnline:Bool = false
-    
+extension ViewController:ShoppingCarDelegate,showAlertDelegate,pruchasedItemsChangeDelegate {
     
     //代理 實作的方法 - 使用者進入購物車 刪除物品後,把購物清單傳回來
     func itemChange(_ shoppingCarVC:ShoppingCarVC,_ pruchasedItems: [PurchasedItem]) {
@@ -31,36 +20,32 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         shoppingCarContentCntLabel.text = "\(pruchasedItems.count)"
     }
     
+    //從cell傳來購物名單 要加入到上面的購物車
+    func pruchasedItemInfo(item: PurchasedItem) {
+        pruchasedItems.append(item)     //append到購物清單
+        shoppingCarContentCntLabel.text = "\(pruchasedItems.count)"  //顯示有幾筆資料
+        showAlert(message: "已加入購物車")   //跳出通知
+    }
     
     //代理秀出警告控制器的方法
+    //FIXME: 用找到最前面的 controller 來解決 （上網找）
     func showAlert() {
         showAlert(message: "數量不能是0")
     }
     
     
+}
+
+
+
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
-    //購物車  準備裝購物的資料
-    var pruchasedItems:[PurchasedItem] = []
-        
+    
+    //MARK: - outlet區
     
     
-    
-    //從cell傳來購物名單 要加入到上面的購物車
-    func pruchasedItemInfo(item: PurchasedItem) {
-        
-        pruchasedItems.append(item)
-        shoppingCarContentCntLabel.text = "\(pruchasedItems.count)"
-        showAlert(message: "已加入購物車")
-        print(pruchasedItems)
-        
-    }
     
     @IBOutlet weak var shoppingCarContentCntLabel: UILabel!
-    
-    
-    var productInfos = [ProductInfo]()
-    var lintener:ListenerRegistration?
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     
@@ -68,18 +53,72 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     
+    //MARK: - 宣告變數常數區
+    
+    var pruchasedItems:[PurchasedItem] = []  //購物清單  裝購物的資料 一開始是空的
+    
+    var productInfos = [ProductInfo]()  //儲存從伺服器存下來的資料
+    
+    var lintener:ListenerRegistration?  //監聽使用者資料
+    
+    var userIsOnline:Bool = false  //判斷使用者是否在線上 (進入購物車時會用到）
+    
     let openingView = UIView()         //做開場動畫的view
-    let openImageVie = UIImageView()
+    let openImageVie = UIImageView()   //做開場動畫的view
+    
+    var authListener:AuthStateDidChangeListenerHandle! //監聽使用者在不在線上
+    
+    
+    
+    //MARK: - 生命週期區
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        setProductListener() //取得產品資訊
+        openingViewConfigure() //開場畫面
+    }
+    
+  
+    override func viewWillAppear(_ animated: Bool) {
+        openingAnimate()  //開場動畫
+        
+       authListener = Auth.auth().addStateDidChangeListener {[weak self] (auth, user) in
+        guard let self = self else {return}
+            if user != nil {
+                self.userIsOnline = true
+            }else{
+                self.userIsOnline = false
+            }
+        }
+    }
+    
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(authListener) //取消監聽使用者
+        print("viewcontroller disappear")
+    }
+    
+    
+    deinit {
+        print("Viewcontroller deinit")
+    }
     
     
     
     
+    
+    
+    //MARK: - 連結到storyboard的互動區
+
     //進入購物車的按鈕
     
     @IBAction func gotoShoppingCarButtonPressed(_ sender: UIButton) {
         
         //確認是否在登陸狀態
-        
         if userIsOnline == false{
               showAlert(message: "要登入才可以買東西喔！")
         }else{
@@ -88,14 +127,50 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             }else{
                 self.showAlert(message: "你才沒有買東西呢！")
             }
-            
-            
         }
-
-     
-        
     }
-       
+    
+    
+    
+    
+    
+    
+    //MARK:- collectionView 的 datasorce
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        
+        return productInfos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell
+        cell.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
+        cell.configureCell(Info: productInfos[indexPath.item])
+        
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(cellOperating(sender:)))
+        longPress.minimumPressDuration = 0.5 //按一秒判斷為長按
+        cell.addGestureRecognizer(longPress)
+        
+        cell.delegate = self
+        cell.alertDelegate = self
+        
+        return cell
+    }
+    
+    //MARK:- collectionView 的 delegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width ) / 2
+        return CGSize(width: width, height: 350)
+    }
+    
+    
+    
+    
+    
+    
+    //MARK: - 方法區
+    
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -107,9 +182,21 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    //警告控制器
     func showAlert(item:Int){
         let alert = UIAlertController(title: "你確定要刪除他嗎？", message: "", preferredStyle: .actionSheet)
-        let action = UIAlertAction(title: "確定", style: .default) { (action) in
+        let action = UIAlertAction(title: "確定", style: .default) {[weak self] (action) in
+            guard let self = self else {return}
     Firestore.firestore().collection("product").document(self.productInfos[item].documentID).delete()
             print("被刪掉了")
         }
@@ -118,10 +205,19 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
+    
+    
+    //警告控制器 通用
+    func showAlert(message:String){
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "確認", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
  
     @objc func cellOperating(sender:UILongPressGestureRecognizer){
-        
-        //點擊的點
+        //點擊
        let touchPoint = sender.location(in: self.collectionView)
         if sender.state == UIGestureRecognizer.State.began{
             if let indexPath = self.collectionView.indexPathForItem(at: touchPoint){
@@ -134,34 +230,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-      setProductListener() //取得產品資訊
-        
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        openingViewConfigure() //開場畫面
-        
-        
-        
-    }
-    
-
-    
-    override func viewDidDisappear(_ animated: Bool) {
-//        if lintener != nil{
-//            lintener?.remove()
-//        }
-    }
-    
-    
-//    "productName" : self.productNameTxt.text!,
-//    "price" :  self.productPriceTxt.text!,
-//    "picture" : url!.absoluteString
-    
-    
     //取得產品資訊
     func setProductListener(){
        lintener = Firestore.firestore().collection("product").order(by: "timeStamp", descending: true).addSnapshotListener {[weak self] (querySnapshot, error) in
@@ -190,60 +258,13 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
 
     
-    override func viewWillAppear(_ animated: Bool) {
-         openingAnimate()  //開場動畫
-        
-        
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user != nil {
-                self.userIsOnline = true
-            }else{
-                self.userIsOnline = false
-            }
-        
-       
-
-        }
-        
-    }
+   
     
   
     
-    //MARK:- collectionView 的 datasorce
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        
-        return productInfos.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productCell", for: indexPath) as! ProductCollectionViewCell
-        cell.backgroundColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
-        cell.configureCell(Info: productInfos[indexPath.item])
-        
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(cellOperating(sender:)))
-        longPress.minimumPressDuration = 0.5 //按一秒判斷為長按
-        cell.addGestureRecognizer(longPress)
-        
-        cell.delegate = self
-        cell.alertDelegate = self
-        
-        return cell
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width ) / 2
-        return CGSize(width: width, height: 350)
-    }
-    
-    
-    
+   
     
     //MARK:- 開場動畫設置
-    
-    
     func openingViewConfigure(){
         //一隻藍色的小鳥圖案
         openingView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -256,9 +277,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         openingView.addSubview(openImageVie)
       
     }
-    
-    
-    
+
     func openingAnimate(){
         //動畫內容：先縮小再放大 ->消失
         UIView.animate(withDuration: 0.5, animations: {
@@ -280,12 +299,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     
-    func showAlert(message:String){
-        let alert = UIAlertController(title: message, message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "確認", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
+   
 
 
 }

@@ -56,6 +56,9 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         super.viewWillDisappear(animated)
         guard let listener = listener else { return }
         Auth.auth().removeStateDidChangeListener(listener)
+        
+        itemChangeDelegate?.itemChange(self,pruchasedItemsFormVC)
+       
     }
     deinit {
         print("SHoppingCarVC deinit")
@@ -155,8 +158,7 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //MARK:-
     @IBAction func backButtonPress(_ sender: UIBarButtonItem) {
         
-        itemChangeDelegate?.itemChange(self,pruchasedItemsFormVC)
-       navigationController?.popViewController(animated: true)
+       
         
     }
     
