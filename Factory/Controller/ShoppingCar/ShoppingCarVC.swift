@@ -11,7 +11,7 @@ import MessageUI
 import Firebase
 
 protocol pruchasedItemsChangeDelegate:NSObjectProtocol {
-    func itemChange(_ pruchasedItems:[PurchasedItem])
+    func itemChange(_ shoppingCarVC:ShoppingCarVC, _ pruchasedItems:[PurchasedItem])
 }
 
 class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate {
@@ -54,6 +54,7 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //MARK:-
     //按下寄信的按鈕
     @IBAction func sendEmailButtonPressed(_ sender: UIButton) {
+        
         guard let  user = userInfo else {return}
         
         if (MFMailComposeViewController.canSendMail()){
@@ -144,8 +145,9 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     //MARK:-
     @IBAction func backButtonPress(_ sender: UIBarButtonItem) {
         
-        itemChangeDelegate?.itemChange(pruchasedItemsFormVC)
-        navigationController?.popViewController(animated: true)
+        itemChangeDelegate?.itemChange(self,pruchasedItemsFormVC)
+       navigationController?.popViewController(animated: true)
+        
     }
     
     

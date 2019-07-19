@@ -13,11 +13,20 @@ import FirebaseAuth
 
 
 
+extension ViewController {
+    
+}
+
+
+
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoppingCarDelegate,showAlertDelegate,pruchasedItemsChangeDelegate {
     
+    //判斷使用者是否在線上 (進入購物車時會用到）
+    var userIsOnline:Bool = false
     
     
-    func itemChange(_ pruchasedItems: [PurchasedItem]) {
+    //代理 實作的方法 - 使用者進入購物車 刪除物品後,把購物清單傳回來
+    func itemChange(_ shoppingCarVC:ShoppingCarVC,_ pruchasedItems: [PurchasedItem]) {
         self.pruchasedItems = pruchasedItems
         shoppingCarContentCntLabel.text = "\(pruchasedItems.count)"
     }
@@ -68,12 +77,25 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     //進入購物車的按鈕
     
     @IBAction func gotoShoppingCarButtonPressed(_ sender: UIButton) {
-        if pruchasedItems.count != 0{
-             performSegue(withIdentifier: "gotoShoppingCar", sender: self)
+        
+        //確認是否在登陸狀態
+        
+        if userIsOnline == false{
+              showAlert(message: "要登入才可以買東西喔！")
         }else{
-            showAlert(message: "你才沒有買東西呢！")
+            if self.pruchasedItems.count != 0{
+                self.performSegue(withIdentifier: "gotoShoppingCar", sender: self)
+            }else{
+                self.showAlert(message: "你才沒有買東西呢！")
+            }
+            
+            
         }
+
+     
+        
     }
+       
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -122,7 +144,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         collectionView.dataSource = self
         openingViewConfigure() //開場畫面
         
-     
+        
         
     }
     
@@ -168,18 +190,18 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
 
     
     override func viewWillAppear(_ animated: Bool) {
+         openingAnimate()  //開場動畫
         
-
         
-        openingAnimate()  //開場動畫
-
-        //確認是否在登陸狀態
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
-                print("有在登入狀態")
+                self.userIsOnline = true
             }else{
-                print("沒有在登入狀態")
+                self.userIsOnline = false
             }
+        
+       
+
         }
         
     }

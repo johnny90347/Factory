@@ -347,14 +347,14 @@
                     <navigationItem key="navigationItem" title="購買" id="PEU-ej-17o">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jhK-tM-Gx0">
                             <connections>
-                                <segue destination="2u1-IB-RfG" kind="show" id="fKF-Y5-fAK"/>
+                                <segue destination="2u1-IB-RfG" kind="show" id="FKe-7C-1bO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="vYU-Vw-g4S" id="yN1-hm-0rC"/>
                         <outlet property="shoppingCarContentCntLabel" destination="AeB-Z0-dzf" id="mYb-Rq-tbM"/>
-                        <segue destination="tFV-zO-Mfo" kind="show" identifier="gotoShoppingCar" id="MVx-yl-GhK"/>
+                        <segue destination="tFV-zO-Mfo" kind="show" identifier="gotoShoppingCar" id="53N-mB-53R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
