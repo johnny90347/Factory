@@ -16,16 +16,32 @@ protocol pruchasedItemsChangeDelegate:NSObjectProtocol {
 
 class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,MFMailComposeViewControllerDelegate {
   
-    var userInfo:UserInfo?
-    
-    var pruchasedItemsFormVC = [PurchasedItem]()
+   
     
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var totalPriceLabel: UILabel!
     
+    @IBOutlet weak var userInfoLabel: UILabel!
+
+    @IBOutlet weak var sendEmailButtonOutlet: UIButton!
+    
+    
+    
+    
+    
+    
+    //MARK: - 宣告區
+    var userInfo:UserInfo?
+    
+    var pruchasedItemsFormVC = [PurchasedItem]()
+    
     weak var itemChangeDelegate:pruchasedItemsChangeDelegate?
+    
+    private var listener:AuthStateDidChangeListenerHandle?
+    
+    //MARK: - 生命週期區
     
 
     override func viewDidLoad() {
@@ -33,12 +49,14 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         
         tableView.dataSource = self
         tableView.delegate = self
+        
+        sendEmailButtonOutlet.layer.cornerRadius = 12
+        sendEmailButtonOutlet.layer.masksToBounds = true
+        
       
     }
     
-    
-    private var listener:AuthStateDidChangeListenerHandle?
-    
+
     override func viewDidAppear(_ animated: Bool) {
         //確認是否在登入狀態
        listener = Auth.auth().addStateDidChangeListener { [weak self](auth, user) in
@@ -63,15 +81,21 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     deinit {
         print("SHoppingCarVC deinit")
     }
+    
+    
+    
+    
     //MARK:-
     //按下寄信的按鈕
     @IBAction func sendEmailButtonPressed(_ sender: UIButton) {
         
         guard let  user = userInfo else {return}
         
-        if (MFMailComposeViewController.canSendMail()){
-            let mailController = MFMailComposeViewController()
+        if (MFMailComposeViewController.canSendMail()){          //如果mail可以用了話
             print("可以寄信")
+            
+            let mailController = MFMailComposeViewController()
+            
             mailController.mailComposeDelegate = self
           
             let subject:String = "廠內訂單 來自 - \(user.department) \(user.userName) \(user.positionTxt) "
@@ -99,7 +123,9 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         }
         
     }
-    //MARK: mailComposeDelegate
+    
+    
+    //MARK: mailComposeDelegate 發mial用
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         switch result.rawValue{
@@ -137,6 +163,10 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
             else{return}
             self.userInfo = UserInfo(userName: username, sex: sex, department: department, positionTxt: positionTxt, level:level , createdTime: createdTime)
             
+            guard let userInfo = self.userInfo else {return}
+            
+            self.userInfoLabel.text = "\(userInfo.userName)\(userInfo.positionTxt)的 購物清單"  
+            
         }
     }
     
@@ -155,12 +185,7 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
     
     
     
-    //MARK:-
-    @IBAction func backButtonPress(_ sender: UIBarButtonItem) {
-        
-       
-        
-    }
+
     
     
     //MARK: - tableView dataSorce

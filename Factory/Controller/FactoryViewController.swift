@@ -26,11 +26,9 @@ class FactoryViewController: UIViewController {
     
     @IBOutlet weak var rightDoorImageView: UIImageView!
     
-    
     @IBOutlet weak var greetTextLabel: UILabel!
     
-    
-    
+
     @IBOutlet weak var rdLabel: UILabel!   //畫面設定用
     @IBOutlet weak var rdButton: UIButton!
     
@@ -50,10 +48,8 @@ class FactoryViewController: UIViewController {
         leftDoorImageView.layer.cornerRadius = 20 //設定門的圓角
         rightDoorImageView.layer.cornerRadius = 20
  
-        
         uiElementShapeConfigure()
         
-       
     }
     
 

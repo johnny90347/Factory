@@ -75,7 +75,8 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{            Firestore.firestore().collection("AD").document(clientInfos[indexPath.row].documentID).delete { (error) in
+        if editingStyle == .delete{            Firestore.firestore().collection("AD").document(clientInfos[indexPath.row].documentID).delete {(error) in
+           
                 if error != nil{
                     return
                 }
@@ -157,7 +158,9 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //在firebase取資料
     func getClientInfo(){
         if category == "total"{
-            linstener = Firestore.firestore().collection("AD").addSnapshotListener { (querySnapshot, error) in
+            linstener = Firestore.firestore().collection("AD").addSnapshotListener {
+                [weak self](querySnapshot, error) in
+                guard let self = self else {return}
                 if error != nil{
                     print("取得資料失敗")
                     return
@@ -181,7 +184,8 @@ class ADInfoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 }
             }
         }else{
-            linstener = Firestore.firestore().collection("AD").whereField("category", isEqualTo: self.category).addSnapshotListener { (querySnapshot, error) in
+            linstener = Firestore.firestore().collection("AD").whereField("category", isEqualTo: self.category).addSnapshotListener {[weak self] (querySnapshot, error) in
+                guard let self = self else {return}
                 if error != nil{
                     print("取得資料失敗")
                     return

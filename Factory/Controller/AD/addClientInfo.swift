@@ -44,7 +44,8 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
         
         let categorys = ["客戶","廠商","其他"]
         for category in categorys{
-            let action = UIAlertAction(title:category , style: .default) { (action) in
+            let action = UIAlertAction(title:category , style: .default) {[weak self] (action) in
+                guard let self = self else {return}
                 self.categoryTxt.text = category
                 
             }
@@ -70,7 +71,8 @@ class addClientInfo: UIViewController ,UITextViewDelegate{
             "phoneNumber" : phoneNumberTxt.text!,
             "category" : categoryTxt.text!,
             "supplement" : supplementTxtView.text!
-        ]) { (error) in
+        ]) { [weak self](error) in
+            guard let self = self else {return}
             if error != nil{
                 return
             }else{

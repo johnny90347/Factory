@@ -79,7 +79,8 @@ class MDAddTaskVC: UIViewController {
                 "numberOfKg" : numberOfKgTxt.text!,     //幾公斤
                 "device" : deviceTxt.text!,             //用什麼設備做
                 "status" : 0                            //狀態 預設 0 代表還沒開始工作
-        ]) { (error) in
+        ]) {[weak self] (error) in
+            guard let self = self else {return}
             if error != nil{
                 SVProgressHUD.dismiss()
                 self.commonAlert(withTitle: "輸入異常")

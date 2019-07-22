@@ -51,7 +51,8 @@ class RDAddTaskViewController: UIViewController,UITextViewDelegate {
             "taskTxt" : taskTextView.text!,
             "status" : 0,
             "timestamp" : FieldValue.serverTimestamp()
-        ]) { (error) in
+        ]) {[weak self] (error) in
+            guard let self = self else {return}
             if error != nil{
                 print("輸入失敗")
                 SVProgressHUD.dismiss()

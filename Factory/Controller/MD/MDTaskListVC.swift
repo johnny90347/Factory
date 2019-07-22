@@ -121,7 +121,8 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
             mdListener =  Firestore.firestore().collection("MD")
                 .order(by: "status", descending: true)  //狀態level 1的 排上面
                 .order(by: "shipDate")                  //日期數字大的牌下面
-                .addSnapshotListener { (querySnapShop, error) in
+                .addSnapshotListener {[weak self] (querySnapShop, error) in
+                    guard let self = self else {return}
                     if error != nil{
                         print("讀取資料失敗")
                         return
@@ -154,7 +155,8 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
                 .whereField("device", isEqualTo: self.deviceCatCategory)
                 .order(by: "status", descending: true)  //狀態level 1的 排上面
                 .order(by: "shipDate")                  //日期數字大的牌下面
-                .addSnapshotListener { (querySnapShop, error) in
+                .addSnapshotListener {[weak self] (querySnapShop, error) in
+                    guard let self = self else {return}
                     if error != nil{
                         print("讀取資料失敗")
                         return

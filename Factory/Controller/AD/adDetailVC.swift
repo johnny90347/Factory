@@ -48,7 +48,8 @@ class adDetailVC: UIViewController,CLLocationManagerDelegate {
         let geocoder = CLGeocoder()
         guard let address = infoFormADinfoList?.address else{return}
         geocoder.geocodeAddressString(address, completionHandler: {
-            (placemarks:[CLPlacemark]?, error:Error?) -> Void in
+           [weak self] (placemarks:[CLPlacemark]?, error:Error?) -> Void in
+            guard let self = self else {return}
             
             if error != nil {
                print("错误：\(error!.localizedDescription))")

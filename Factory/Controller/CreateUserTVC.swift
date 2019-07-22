@@ -100,7 +100,8 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
     
     //使用者申請 ＆ 資料
     func createdUserInfo(){
-        Auth.auth().createUser(withEmail: accountTextField.text!, password: passwordTextField.text!) { (authData, error) in
+        Auth.auth().createUser(withEmail: accountTextField.text!, password: passwordTextField.text!) {[weak self] (authData, error) in
+            guard let self = self else {return}
             if error != nil{
                 print("帳號申請失敗\(error!.localizedDescription)")
                 self.showAlert(withTitle: "帳號格式錯誤或帳號已存在")
@@ -115,7 +116,8 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
                 "positionTxt" : self.positionTxt.text!,
                 "level" : 3,
                 "createdTime" : FieldValue.serverTimestamp()
-                ], completion: { (error) in
+                ], completion: {[weak self] (error) in
+                    guard let self = self else {return}
                     if error != nil{
                     print("建立帳號失敗\(error!.localizedDescription)")
                     self.showAlert(withTitle: "資料建立失敗")
@@ -162,7 +164,8 @@ class CreateUserTVC: UITableViewController, UITextFieldDelegate {
         let sexs = ["男生","女生"]
         let alert = UIAlertController(title: "性別", message: "請選擇您的性別", preferredStyle: .actionSheet)
         for sex in sexs {
-            let action = UIAlertAction(title:sex, style: .default) { (action) in
+            let action = UIAlertAction(title:sex, style: .default) {[weak self] (action) in
+                guard let self = self else {return}
                 self.sexTextField.text = sex
             }
             alert.addAction(action)

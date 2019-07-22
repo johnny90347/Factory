@@ -24,6 +24,16 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var progressView: UIProgressView!
     
     
+    
+    //MARK: - 宣告區
+    
+    var selectedImageFromPicker:UIImage?   //選到的照片
+    var fileName = "image.JPG"             //建立一個檔案名 （上傳用）
+    
+    
+    
+    //MARK: - 生命週期區
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +44,6 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
         let tap = UITapGestureRecognizer(target: self, action: #selector(selectedPicture))
         productImageView.addGestureRecognizer(tap)
         productImageView.isUserInteractionEnabled = true
-        
-    
-        
-        
-
         
     }
     
@@ -55,8 +60,7 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
     }
     
     
-     var selectedImageFromPicker:UIImage?   //選到的照片
-     var fileName = "image.JPG"             //建立一個檔案名 （上傳用）
+ 
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -95,7 +99,9 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
         let storeRef = Storage.storage().reference().child("pic")
         //轉換UIImage to DATA 並且 壓縮（會傳送比較快）（compressionQuality = 1 就是原大小）
         if let data = selectedImageFromPicker?.jpegData(compressionQuality: 0.01){
-          let task = storeRef.child(fileName).putData(data, metadata: nil) { (metadata, error) in   //在pic下用檔名 傳送檔案
+          let task = storeRef.child(fileName).putData(data, metadata: nil) {[weak self] (metadata, error) in
+            guard let self = self else{return}
+            //在pic下用檔名 傳送檔案
                 if error != nil{
                     print("上傳失敗")
                     return
@@ -105,7 +111,8 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
                 print("上傳成功")
                 //上傳成功後
                 //利用路徑取得下載圖片的url
-                storeRef.child(self.fileName).downloadURL(completion: { (url, error) in
+                storeRef.child(self.fileName).downloadURL(completion: {[weak self] (url, error) in
+                    guard let self = self else {return}
                     if error != nil{
                         print("url失敗")
                     }else{
@@ -132,7 +139,8 @@ class ProductAddViewController: UIViewController,UIImagePickerControllerDelegate
                 
                 
             }
-            task.observe(.progress) { (storageTaskSnapshot) in
+            task.observe(.progress) {[weak self] (storageTaskSnapshot) in
+                guard let self = self else {return}
                 if let progress = storageTaskSnapshot.progress?.fractionCompleted{
                     self.progressView.progress = Float(progress)
                 }

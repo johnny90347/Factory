@@ -80,7 +80,8 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     @IBAction func loginButtomPress(_ sender: UIButton) {
         
         //登入
-        Auth.auth().signIn(withEmail: accountTextFiled.text!, password: passwordTextFiled.text!) { (data, error) in
+        Auth.auth().signIn(withEmail: accountTextFiled.text!, password: passwordTextFiled.text!) {[weak self] (data, error) in
+            guard let self = self else {return}
             if error == nil {
                 self.getUserInfo()                  //取得用戶資訊
             }else{
@@ -126,7 +127,9 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
         
         guard let userID = Auth.auth().currentUser?.uid else {return}
         
-        Firestore.firestore().collection("users").document(userID).getDocument { (snapShot, error) in
+        Firestore.firestore().collection("users").document(userID).getDocument {
+            [weak self](snapShot, error) in
+            guard let self = self else{return}
             if error != nil{
                 self.showAlert(withTitle: "請稍後再試")
                 return
