@@ -55,7 +55,6 @@ class FactoryViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         doorClose()  //登入畫面之前 先關門 (修改登出後再登入 會沒有動畫的bug)
-       
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,12 +89,13 @@ class FactoryViewController: UIViewController {
     
     
     @IBAction func PDbuttonPress(_ sender: UIButton) {
-        entryCondition(withDepartment: "包裝部", segueID: "goToPD")
+        performSegue(withIdentifier: "goToPD", sender: self)
     }
     
     @IBAction func ADbuttonPress(_ sender: UIButton) {
         entryCondition(withDepartment: "管理部", segueID: "goToAD")
     }
+   
     
     //MARK: 進入部門的條件
     func entryCondition(withDepartment department:String,segueID sgID:String){

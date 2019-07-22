@@ -130,15 +130,20 @@ class ShoppingCarVC: UIViewController,UITableViewDataSource,UITableViewDelegate,
         
         switch result.rawValue{
             case MFMailComposeResult.cancelled.rawValue: print("取消")
+            self.dismiss(animated: false, completion: nil)
             case MFMailComposeResult.sent.rawValue: print("寄出")
-             case MFMailComposeResult.saved.rawValue: print("存檔")
+            pruchasedItemsFormVC.removeAll()
+            self.dismiss(animated: false, completion: nil)
+             navigationController?.popViewController(animated: true)
+            case MFMailComposeResult.saved.rawValue: print("存檔")
+            self.dismiss(animated: false, completion: nil)
             case MFMailComposeResult.failed.rawValue: print("失敗")
+            self.dismiss(animated: false, completion: nil)
             
         default:
             print("都不是")
         }
         
-        self.dismiss(animated: false, completion: nil)
         
       
     }

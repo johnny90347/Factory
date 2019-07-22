@@ -68,6 +68,10 @@ struct ProductInfo {
     var documentID:String
 }
 
-
+struct AnnouncementInfo {
+    var announcer:String
+    var contentTxt:String
+    var timeStamp:Timestamp
+}
 
 

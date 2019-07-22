@@ -23,6 +23,9 @@
 		0AAB27C622D734F200538529 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB27C522D734F200538529 /* DetailTableViewController.swift */; };
 		0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB00C522C6285900A114AA /* CreateUserTVC.swift */; };
 		0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA256722D4D92F006A0B9D /* addClientInfo.swift */; };
+		0ADD77DC22E5C72900D6335F /* AnnouncementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD77DB22E5C72900D6335F /* AnnouncementVC.swift */; };
+		0AE34B0D22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift */; };
+		0AE34B1022E5D5C500B9D5ED /* addAnnouncementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE34B0F22E5D5C500B9D5ED /* addAnnouncementVC.swift */; };
 		0AE4C08122E052C3003ABBA9 /* ShoppingCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */; };
 		0AE4C08522E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */; };
 		0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */; };
@@ -54,6 +57,9 @@
 		0AAB27C522D734F200538529 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 		0ACB00C522C6285900A114AA /* CreateUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserTVC.swift; sourceTree = "<group>"; };
 		0ADA256722D4D92F006A0B9D /* addClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addClientInfo.swift; sourceTree = "<group>"; };
+		0ADD77DB22E5C72900D6335F /* AnnouncementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementVC.swift; sourceTree = "<group>"; };
+		0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		0AE34B0F22E5D5C500B9D5ED /* addAnnouncementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addAnnouncementVC.swift; sourceTree = "<group>"; };
 		0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarVC.swift; sourceTree = "<group>"; };
 		0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarTableViewCell.swift; sourceTree = "<group>"; };
 		0AE9E02222C9D294001B6781 /* RDTaskListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RDTaskListCustomCell.swift; sourceTree = "<group>"; };
@@ -124,6 +130,7 @@
 				0AA04F7E22CA044200C49003 /* RD */,
 				0AEE4E2122CC4D6300F71457 /* MD */,
 				0AF24E4D22D4A45B005618F7 /* AD */,
+				0ADD77DD22E5C72F00D6335F /* Announcement */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -138,6 +145,7 @@
 				0AEE4E1F22CC4D4F00F71457 /* RD */,
 				0AEE4E2022CC4D5900F71457 /* MD */,
 				0AAB27C422D734A800538529 /* AD */,
+				0AE34B0E22E5D2EF00B9D5ED /* Announcement */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +189,23 @@
 				0AAB27C522D734F200538529 /* DetailTableViewController.swift */,
 			);
 			path = AD;
+			sourceTree = "<group>";
+		};
+		0ADD77DD22E5C72F00D6335F /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				0ADD77DB22E5C72900D6335F /* AnnouncementVC.swift */,
+				0AE34B0F22E5D5C500B9D5ED /* addAnnouncementVC.swift */,
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		0AE34B0E22E5D2EF00B9D5ED /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+				0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift */,
+			);
+			path = Announcement;
 			sourceTree = "<group>";
 		};
 		0AE4C08222E052C7003ABBA9 /* ShoppingCar */ = {
@@ -401,10 +426,13 @@
 				0AEE4E1E22CC4D4200F71457 /* MDTaskListCustomCell.swift in Sources */,
 				0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */,
 				0AAB27C622D734F200538529 /* DetailTableViewController.swift in Sources */,
+				0AE34B1022E5D5C500B9D5ED /* addAnnouncementVC.swift in Sources */,
 				0A464FE222D6DCCE00060D18 /* adDetailVC.swift in Sources */,
 				0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */,
 				0A62903422C37C5000446A3F /* AppDelegate.swift in Sources */,
+				0AE34B0D22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift in Sources */,
 				0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */,
+				0ADD77DC22E5C72900D6335F /* AnnouncementVC.swift in Sources */,
 				0A91A52D22DC766D00A082E4 /* ProductCollectionViewCell.swift in Sources */,
 				0AE4C08522E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift in Sources */,
 			);

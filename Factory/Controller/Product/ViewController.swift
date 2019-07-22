@@ -38,7 +38,7 @@ extension ViewController:ShoppingCarDelegate,showAlertDelegate,pruchasedItemsCha
 
 
 
-class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate{
     
     
     //MARK: - outlet區
@@ -47,6 +47,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     @IBOutlet weak var shoppingCarContentCntLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     
     
@@ -68,7 +70,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     var authListener:AuthStateDidChangeListenerHandle! //監聽使用者在不在線上
     
-    
+   
     
     //MARK: - 生命週期區
     
@@ -77,9 +79,14 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        scrollView.delegate = self
         
         setProductListener() //取得產品資訊
         openingViewConfigure() //開場畫面
+        
+        
+        
+        
     }
     
   
@@ -94,6 +101,17 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 self.userIsOnline = false
             }
         }
+    }
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        
+        //autolayout的原因 才要放在這
+        creatImageView()
+        
+        
     }
     
     
@@ -128,6 +146,24 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
                 self.showAlert(message: "你才沒有買東西呢！")
             }
         }
+    }
+    
+    
+    
+    @IBAction func pageControlChange(_ sender: UIPageControl) {
+        let currentPageNumber = sender.currentPage
+        let width = scrollView.frame.width
+        scrollView.contentOffset = CGPoint(x: width * CGFloat(currentPageNumber), y: 0)
+    }
+    
+    
+    
+    
+    //MARK: - scroll View delegate
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
+        pageControl.currentPage = Int(pageNumber)
+        
     }
     
     
@@ -182,7 +218,24 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     
-    
+    //在scrollView上 添加imageView
+    func creatImageView(){
+        var images = ["0","1","2"]
+        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+        for index in 0..<images.count{
+            frame.origin.x = scrollView.frame.size.width * CGFloat(index)
+            frame.size = scrollView.frame.size
+            
+            let imageView = UIImageView(frame: frame)
+            imageView.image = UIImage(named: images[index])
+            imageView.contentMode = .scaleAspectFill
+            self.scrollView.addSubview(imageView)
+            
+        }
+        
+        scrollView.contentSize = CGSize(width: (scrollView.frame.size.width)*CGFloat(images.count), height: scrollView.frame.size.height)
+        
+    }
     
     
     
