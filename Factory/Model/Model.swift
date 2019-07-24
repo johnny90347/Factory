@@ -72,6 +72,7 @@ struct AnnouncementInfo {
     var announcer:String
     var contentTxt:String
     var timeStamp:Timestamp
+    var userID:String
 }
 
 

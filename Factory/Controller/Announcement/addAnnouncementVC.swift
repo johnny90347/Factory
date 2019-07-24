@@ -50,12 +50,13 @@ class addAnnouncementVC: UIViewController {
     @IBAction func addAnnouncementButtonPressed(_ sender: UIButton) {
     
         SVProgressHUD.show()
-        
+        guard let userID = Auth.auth().currentUser?.uid else {return}
         guard let userInfo = self.userInfo else {return}
         Firestore.firestore().collection("announcement").addDocument(data: [
             "announcer" : "\(userInfo.userName)-\(userInfo.positionTxt)",
             "contentTxt" : contentTextView.text!,
-            "timeStamp" : FieldValue.serverTimestamp()
+            "timeStamp" : FieldValue.serverTimestamp(),
+            "userID" : userID
         ]) {[weak self] (error) in
             guard let self = self else{return}
             if error != nil{

@@ -49,6 +49,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     
     
     
@@ -201,9 +202,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     
-    
-    
-    
+
+   
     
     //MARK: - 方法區
     

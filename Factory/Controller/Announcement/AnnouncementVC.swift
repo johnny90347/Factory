@@ -23,12 +23,18 @@ class AnnouncementVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         tableView.dataSource = self
         tableView.delegate = self
         
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         setAnoListener()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         listener.remove()
     }
+    
+    
     
     
     //MARK: - tableViewDataSocre
@@ -61,10 +67,11 @@ class AnnouncementVC: UIViewController,UITableViewDataSource,UITableViewDelegate
             let data = document.data()
              guard let announcer = data["announcer"] as? String,
                 let contentTxt = data["contentTxt"] as? String,
-                let timeStamp = data["timeStamp"] as? Timestamp
+                let timeStamp = data["timeStamp"] as? Timestamp,
+                let userID = data["userID"] as? String
                 else{return}
                 
-               let anoTxt = AnnouncementInfo(announcer: announcer, contentTxt: contentTxt, timeStamp: timeStamp)
+                let anoTxt = AnnouncementInfo(announcer: announcer, contentTxt: contentTxt, timeStamp: timeStamp , userID:userID )
                 self.announcements.append(anoTxt)
                 self.tableView.reloadData()
                 
