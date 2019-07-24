@@ -108,8 +108,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         photoAddress = address
         
         
-        productImageView.image = nil              //沒有圖片時 先設定nil
-        //走到這邊就是 key:urlString 取不到值
+        productImageView.image = nil         //沒有圖片時 先設定nil
         if let url = URL(string: address){
             
            let task = URLSession.shared.dataTask(with: url) {[weak self] (data, urlResponse, error) in

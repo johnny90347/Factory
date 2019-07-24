@@ -47,12 +47,12 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     @IBOutlet weak var shoppingCarContentCntLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var scrollView: UIScrollView!
+//    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var topView: UIView!
     
     
-    
+    let topIntroductionView = UIView()
     
     
     
@@ -77,22 +77,36 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        scrollView.delegate = self
+//        scrollView.delegate = self
         
         setProductListener() //取得產品資訊
-        openingViewConfigure() //開場畫面
         
         
+        self.collectionView.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
         
+        
+    }
+    var translation:CGFloat = 0
+
+    
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+         translation = scrollView.contentOffset.y + 200
+
+          topIntroductionView.frame = CGRect(x:0, y: 120 - translation, width: topIntroductionView.frame.width, height: 200)
         
     }
     
   
     override func viewWillAppear(_ animated: Bool) {
-        openingAnimate()  //開場動畫
+        
+        
+        
         
        authListener = Auth.auth().addStateDidChangeListener {[weak self] (auth, user) in
         guard let self = self else {return}
@@ -108,10 +122,25 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidAppear(_ animated: Bool) {
         
-        
         //autolayout的原因 才要放在這
-        creatImageView()
+        //        creatImageView()
         
+        //生出一個View 這是要順著collectionView往上推而伸縮的
+        topIntroductionView.frame = CGRect(x: 0, y: topView.frame.maxY, width: view.frame.width, height: 200)
+        topIntroductionView.backgroundColor = .blue
+        view.addSubview(topIntroductionView)
+        view.insertSubview(topIntroductionView, belowSubview: topView)
+        topIntroductionView.layer.masksToBounds = true
+        let imageView = UIImageView()
+        imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
+        topIntroductionView.addSubview(imageView)
+        imageView.image = UIImage(named: "1")
+        imageView.contentMode = .scaleAspectFill
+        
+        
+       
+        openingViewConfigure() //開場畫面
+        openingAnimate()  //開場動畫
         
     }
     
@@ -151,21 +180,21 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     
     
-    @IBAction func pageControlChange(_ sender: UIPageControl) {
-        let currentPageNumber = sender.currentPage
-        let width = scrollView.frame.width
-        scrollView.contentOffset = CGPoint(x: width * CGFloat(currentPageNumber), y: 0)
-    }
+//    @IBAction func pageControlChange(_ sender: UIPageControl) {
+//        let currentPageNumber = sender.currentPage
+//        let width = scrollView.frame.width
+//        scrollView.contentOffset = CGPoint(x: width * CGFloat(currentPageNumber), y: 0)
+//    }
     
     
     
     
     //MARK: - scroll View delegate
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
-        pageControl.currentPage = Int(pageNumber)
-        
-    }
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        let pageNumber = scrollView.contentOffset.x / scrollView.frame.size.width
+//        pageControl.currentPage = Int(pageNumber)
+//
+//    }
     
     
     
@@ -218,24 +247,24 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     
-    //在scrollView上 添加imageView
-    func creatImageView(){
-        var images = ["0","1","2"]
-        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-        for index in 0..<images.count{
-            frame.origin.x = scrollView.frame.size.width * CGFloat(index)
-            frame.size = scrollView.frame.size
-            
-            let imageView = UIImageView(frame: frame)
-            imageView.image = UIImage(named: images[index])
-            imageView.contentMode = .scaleAspectFill
-            self.scrollView.addSubview(imageView)
-            
-        }
-        
-        scrollView.contentSize = CGSize(width: (scrollView.frame.size.width)*CGFloat(images.count), height: scrollView.frame.size.height)
-        
-    }
+//    //在scrollView上 添加imageView
+//    func creatImageView(){
+//        var images = ["0","1","2"]
+//        var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+//        for index in 0..<images.count{
+//            frame.origin.x = scrollView.frame.size.width * CGFloat(index)
+//            frame.size = scrollView.frame.size
+//
+//            let imageView = UIImageView(frame: frame)
+//            imageView.image = UIImage(named: images[index])
+//            imageView.contentMode = .scaleAspectFill
+//            self.scrollView.addSubview(imageView)
+//
+//        }
+//
+//        scrollView.contentSize = CGSize(width: (scrollView.frame.size.width)*CGFloat(images.count), height: scrollView.frame.size.height)
+//
+//    }
     
     
     

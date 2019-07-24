@@ -161,35 +161,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IpU-yy-cQ2">
-                                <rect key="frame" x="0.0" y="88" width="414" height="58"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeB-Z0-dzf">
-                                        <rect key="frame" x="381" y="19" width="11" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buh-MR-KSl">
-                                        <rect key="frame" x="281" y="14" width="92" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="購物車的物品">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="gotoShoppingCarButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Agi-TF-gYG"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.24596315622329712" green="0.29612374305725098" blue="0.52943789958953857" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="bIk-T0-xXD"/>
-                                </constraints>
-                                <viewLayoutGuide key="safeArea" id="hxo-s1-3CY"/>
-                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vYU-Vw-g4S">
-                                <rect key="frame" x="0.0" y="370" width="414" height="443"/>
+                                <rect key="frame" x="0.0" y="146" width="414" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ea6-2b-cwZ">
                                     <size key="itemSize" width="200" height="400"/>
@@ -329,41 +302,40 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n19-TT-SUb">
-                                <rect key="frame" x="0.0" y="146" width="414" height="224"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IpU-yy-cQ2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="58"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xPQ-Mh-6fr">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="224"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeB-Z0-dzf">
+                                        <rect key="frame" x="381" y="19" width="11" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <viewLayoutGuide key="safeArea" id="vgi-0z-bki"/>
-                                    </scrollView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="MGM-hX-k2n">
-                                        <rect key="frame" x="0.0" y="187" width="414" height="37"/>
-                                        <color key="pageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="currentPageIndicatorTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buh-MR-KSl">
+                                        <rect key="frame" x="281" y="14" width="92" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="購物車的物品">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
-                                            <action selector="pageControlChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="d9l-hp-PVu"/>
+                                            <action selector="gotoShoppingCarButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Agi-TF-gYG"/>
                                         </connections>
-                                    </pageControl>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.64705882349999999" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.24596315622329712" green="0.29612374305725098" blue="0.52943789958953857" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstItem="MGM-hX-k2n" firstAttribute="leading" secondItem="n19-TT-SUb" secondAttribute="leading" id="0Ga-XU-MUt"/>
-                                    <constraint firstAttribute="trailing" secondItem="MGM-hX-k2n" secondAttribute="trailing" id="2iT-xR-0sz"/>
-                                    <constraint firstAttribute="bottom" secondItem="MGM-hX-k2n" secondAttribute="bottom" id="i67-45-Yvl"/>
-                                    <constraint firstAttribute="height" constant="224" id="sol-OY-Eih"/>
+                                    <constraint firstAttribute="height" constant="58" id="bIk-T0-xXD"/>
                                 </constraints>
+                                <viewLayoutGuide key="safeArea" id="hxo-s1-3CY"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IpU-yy-cQ2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2fb-3e-FfP"/>
-                            <constraint firstItem="vYU-Vw-g4S" firstAttribute="top" secondItem="n19-TT-SUb" secondAttribute="bottom" id="Hnx-AU-Xo0"/>
-                            <constraint firstItem="n19-TT-SUb" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ipo-Lu-CY3"/>
+                            <constraint firstItem="vYU-Vw-g4S" firstAttribute="top" secondItem="IpU-yy-cQ2" secondAttribute="bottom" id="3Bb-fV-71j"/>
                             <constraint firstItem="vYU-Vw-g4S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="KZq-wL-PLK"/>
-                            <constraint firstItem="n19-TT-SUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="P8h-1X-wDH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vYU-Vw-g4S" secondAttribute="bottom" id="WXd-i3-oHT"/>
-                            <constraint firstItem="n19-TT-SUb" firstAttribute="top" secondItem="IpU-yy-cQ2" secondAttribute="bottom" id="o4G-WZ-XP0"/>
                             <constraint firstItem="IpU-yy-cQ2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="plo-z8-OYO"/>
                             <constraint firstItem="vYU-Vw-g4S" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="pzw-2S-nfb"/>
                             <constraint firstItem="IpU-yy-cQ2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xPS-78-AFS"/>
@@ -380,10 +352,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="vYU-Vw-g4S" id="yN1-hm-0rC"/>
-                        <outlet property="pageControl" destination="MGM-hX-k2n" id="DcT-kw-wzH"/>
-                        <outlet property="scrollView" destination="xPQ-Mh-6fr" id="He2-Qn-vQF"/>
-                        <outlet property="scrollViewHeightConstraint" destination="sol-OY-Eih" id="v9O-x9-4rK"/>
                         <outlet property="shoppingCarContentCntLabel" destination="AeB-Z0-dzf" id="mYb-Rq-tbM"/>
+                        <outlet property="topView" destination="IpU-yy-cQ2" id="qyG-1G-rRe"/>
                         <segue destination="tFV-zO-Mfo" kind="show" identifier="gotoShoppingCar" id="53N-mB-53R"/>
                     </connections>
                 </viewController>
