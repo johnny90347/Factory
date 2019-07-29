@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SDWebImage
+
 
 class ShoppingCarTableViewCell: UITableViewCell {
     
@@ -37,23 +39,24 @@ class ShoppingCarTableViewCell: UITableViewCell {
         
         
         guard let url = URL(string: urlString) else {return}
-        let task =  URLSession.shared.dataTask(with: url) {[weak self] (data, urlResponse, error) in
-            guard let self = self else {return}
-            if error != nil{
-                return
-            }
-        if let data = data{
-            if let image = UIImage(data: data) {
-//                imageCache.setObject(image, forKey:urlString as AnyObject )
-                DispatchQueue.main.async {
-                    self.productPhotoImageView.image = image
-                }
-            }
-            
-        }
-        
-        }
-        task.resume()
+        productPhotoImageView.sd_setImage(with: url, completed: nil)
+//        let task =  URLSession.shared.dataTask(with: url) {[weak self] (data, urlResponse, error) in
+//            guard let self = self else {return}
+//            if error != nil{
+//                return
+//            }
+//        if let data = data{
+//            if let image = UIImage(data: data) {
+////                imageCache.setObject(image, forKey:urlString as AnyObject )
+//                DispatchQueue.main.async {
+//                    self.productPhotoImageView.image = image
+//                }
+//            }
+//
+//        }
+//
+//        }
+//        task.resume()
     }
 
 }

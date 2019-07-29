@@ -79,12 +79,28 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         super.viewDidLoad()
        
         
+        topIntroductionView.frame = CGRect(x: 0, y: topView.frame.maxY, width: view.frame.width, height: 200)
+        topIntroductionView.backgroundColor = .blue
+        view.addSubview(topIntroductionView)
+        view.insertSubview(topIntroductionView, belowSubview: topView)
+        topIntroductionView.layer.masksToBounds = true
+        let imageView = UIImageView()
+        imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
+        topIntroductionView.addSubview(imageView)
+        imageView.image = UIImage(named: "1")
+        imageView.contentMode = .scaleAspectFill
+        
+        
+        
+        
         collectionView.delegate = self
         collectionView.dataSource = self
 //        scrollView.delegate = self
         
         setProductListener() //取得產品資訊
         
+        openingViewConfigure() //開場畫面
+        openingAnimate()  //開場動畫
         
         self.collectionView.contentInset = UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
         
@@ -122,25 +138,17 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     override func viewDidAppear(_ animated: Bool) {
         
+//        collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
+        
         //autolayout的原因 才要放在這
         //        creatImageView()
         
         //生出一個View 這是要順著collectionView往上推而伸縮的
-        topIntroductionView.frame = CGRect(x: 0, y: topView.frame.maxY, width: view.frame.width, height: 200)
-        topIntroductionView.backgroundColor = .blue
-        view.addSubview(topIntroductionView)
-        view.insertSubview(topIntroductionView, belowSubview: topView)
-        topIntroductionView.layer.masksToBounds = true
-        let imageView = UIImageView()
-        imageView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
-        topIntroductionView.addSubview(imageView)
-        imageView.image = UIImage(named: "1")
-        imageView.contentMode = .scaleAspectFill
+ 
         
         
        
-        openingViewConfigure() //開場畫面
-        openingAnimate()  //開場動畫
+
         
     }
     
@@ -173,7 +181,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
             if self.pruchasedItems.count != 0{
                 self.performSegue(withIdentifier: "gotoShoppingCar", sender: self)
             }else{
-                self.showAlert(message: "你才沒有買東西呢！")
+                self.showAlert(message: "購物車是空的喔")
             }
         }
     }

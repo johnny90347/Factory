@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 
 struct PurchasedItem {
@@ -98,7 +99,7 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         
     }
-    //新增一個快取 目的是解決 每次滾到cell時 就要重新下載一次照片
+    
     
     func configureCell(Info:ProductInfo){
         productNameLabel.text = Info.productName  //產品名子
@@ -109,26 +110,35 @@ class ProductCollectionViewCell: UICollectionViewCell {
         
         
         productImageView.image = nil         //沒有圖片時 先設定nil
-        if let url = URL(string: address){
-            
-           let task = URLSession.shared.dataTask(with: url) {[weak self] (data, urlResponse, error) in
-                guard let self = self else {return}
-                if error != nil{
-                    print("下載圖片失敗")
-                    return
-                }
-                guard let okData = data else{return}
-                let image = UIImage(data: okData)
-                DispatchQueue.main.async {
-                    self.productImageView.image = image
-                }
-   
-            }
-          task.resume()
-            
         
-            }
-          
+        if let url = URL(string: address) {
+            
+            productImageView.sd_setImage(with: url, completed: nil)
+            
+        }
+       
+        
+//        if let url = URL(string: address){
+//
+//           let task = URLSession.shared.dataTask(with: url) {[weak self] (data, urlResponse, error) in
+//                guard let self = self else {return}
+//                if error != nil{
+//                    print("下載圖片失敗")
+//                    self.productImageView.image = nil
+//                    return
+//                }
+//                guard let okData = data else{return}
+//                let image = UIImage(data: okData)
+//                DispatchQueue.main.async {
+//                    self.productImageView.image = image
+//                }
+//
+//            }
+//          task.resume()
+//
+//
+//            }
+        
         
     }
     

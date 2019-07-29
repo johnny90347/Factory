@@ -181,7 +181,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DqX-n7-C0x">
                                                     <rect key="frame" x="8" y="8" width="184" height="334"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8SZ-KT-DbS">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8SZ-KT-DbS">
                                                             <rect key="frame" x="8" y="8" width="168" height="111.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FYP-cr-mdQ">
@@ -1317,7 +1317,7 @@
             </objects>
             <point key="canvasLocation" x="1481.1594202898552" y="857.8125"/>
         </scene>
-        <!--使用者資料-->
+        <!--User Info View Controller-->
         <scene sceneID="f6F-J8-vIA">
             <objects>
                 <viewController id="637-dK-HVz" customClass="UserInfoViewController" customModule="Factory" customModuleProvider="target" sceneMemberID="viewController">
@@ -1440,7 +1440,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TtL-Jk-l7z"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="使用者資料" id="XRB-ai-bqO"/>
+                    <tabBarItem key="tabBarItem" title="" image="user@2x" id="XRB-ai-bqO">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="accountTextFiled" destination="6dw-CA-seF" id="3hm-Iw-SAw"/>
                         <outlet property="bgImageView" destination="QIl-ok-w7P" id="9y3-Eq-MYc"/>
@@ -1887,7 +1889,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="QWa-8t-uKD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mev-ws-Wz6">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -2720,11 +2722,13 @@
             </objects>
             <point key="canvasLocation" x="569.56521739130437" y="1631.9196428571429"/>
         </scene>
-        <!--工廠內部-->
+        <!--Navigation Controller-->
         <scene sceneID="FXh-fG-dnr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wSR-xW-ikN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="工廠內部" id="sZY-RQ-fQt"/>
+                    <tabBarItem key="tabBarItem" title="" image="factory@2x" id="sZY-RQ-fQt">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bQy-JK-GPC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2743,11 +2747,14 @@
             </objects>
             <point key="canvasLocation" x="571.01449275362324" y="857.8125"/>
         </scene>
-        <!--公司產品-->
+        <!--Navigation Controller-->
         <scene sceneID="E3c-Cq-WDj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YfB-5H-TPZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="公司產品" id="JZY-se-efF"/>
+                    <tabBarItem key="tabBarItem" title="" image="shoppingcar@2x" id="JZY-se-efF">
+                        <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ROP-e8-WjX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -2777,8 +2784,11 @@
         <image name="cloud-upload" width="128" height="128"/>
         <image name="doorLeft 2" width="147.5" height="636"/>
         <image name="doorRight" width="151.5" height="638.5"/>
+        <image name="factory@2x" width="42.666667938232422" height="42.666667938232422"/>
         <image name="pen" width="64" height="64"/>
         <image name="question" width="64" height="51.5"/>
+        <image name="shoppingcar@2x" width="42.666667938232422" height="42.666667938232422"/>
         <image name="up" width="64" height="64"/>
+        <image name="user@2x" width="42.666667938232422" height="42.666667938232422"/>
     </resources>
 </document>

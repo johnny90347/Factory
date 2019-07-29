@@ -14,6 +14,7 @@ pod 'Firebase/Storage'
 pod 'SVProgressHUD'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
+pod 'SDWebImage'
 
 
 inhibit_all_warnings!

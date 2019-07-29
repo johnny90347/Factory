@@ -28,7 +28,7 @@ class DatePopupsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        date =  datePicker.date
+        
         backGroundView.layer.cornerRadius = 8
         
         
@@ -44,6 +44,8 @@ class DatePopupsVC: UIViewController {
     }
     
     @IBAction func saveDateButtonPress(_ sender: UIButton) {
+        date =  datePicker.date
+       
        transferInfo()
     }
     
