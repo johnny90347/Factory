@@ -40,12 +40,10 @@ class AnnouncementTableViewCell: UITableViewCell {
         timeLabel.text = formatter.string(from: date)
         
         
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        if Txt.userID == uid{
-            backGroundView.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-//            backGroundView.transform = CGAffineTransform(rotationAngle: .pi)
-//            backGroundView.transform = CGAffineTransform(scaleX: -1, y: 1)
-        }
+//        guard let uid = Auth.auth().currentUser?.uid else {return}
+//        if Txt.userID == uid{
+//            backGroundView.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+//        }
         
     }
  

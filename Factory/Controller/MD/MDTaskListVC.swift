@@ -187,13 +187,6 @@ class MDTaskListVC: UIViewController,UITableViewDataSource, UITableViewDelegate 
             
         }
         
-        
-        
-        
-        
- 
-
-        
     }
     
     

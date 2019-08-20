@@ -15,7 +15,7 @@ class FactoryViewController: UIViewController {
     
     
     var userInfo:UserInfo?
-    
+    var listener:AuthStateDidChangeListenerHandle!
 
     
     @IBOutlet weak var leftDoorLeading: NSLayoutConstraint!
@@ -59,7 +59,7 @@ class FactoryViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //確認是否在登陸狀態
-        Auth.auth().addStateDidChangeListener { [weak self](auth, user) in
+      listener = Auth.auth().addStateDidChangeListener { [weak self](auth, user) in
             guard let self = self else { return }
 
             if user != nil {
@@ -72,6 +72,10 @@ class FactoryViewController: UIViewController {
                 
             }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(listener)
     }
     
 

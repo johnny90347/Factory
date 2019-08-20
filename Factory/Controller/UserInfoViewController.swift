@@ -14,7 +14,7 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     
     
     var userInfomation:UserInfo?
-   
+    var listener:AuthStateDidChangeListenerHandle!
     
     
     @IBOutlet weak var accountTextFiled: UITextField!
@@ -54,13 +54,16 @@ class UserInfoViewController: UIViewController,UITextFieldDelegate{
     override func viewWillAppear(_ animated: Bool) {
       
         //確認是否在登入狀態
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+       listener = Auth.auth().addStateDidChangeListener { (auth, user) in
             if user != nil {
                     self.getUserInfo()
             }else{
                
             }
         }
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        Auth.auth().removeStateDidChangeListener(listener)
     }
     
     
