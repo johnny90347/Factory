@@ -24,7 +24,7 @@
 		0ACB00C622C6285900A114AA /* CreateUserTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB00C522C6285900A114AA /* CreateUserTVC.swift */; };
 		0ADA256822D4D92F006A0B9D /* addClientInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA256722D4D92F006A0B9D /* addClientInfo.swift */; };
 		0ADD77DC22E5C72900D6335F /* AnnouncementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD77DB22E5C72900D6335F /* AnnouncementVC.swift */; };
-		0AE34B0D22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift */; };
+		0AE34B0D22E5D2E300B9D5ED /* AnnouncementTableViewCellOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCellOne.swift */; };
 		0AE34B1022E5D5C500B9D5ED /* addAnnouncementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE34B0F22E5D5C500B9D5ED /* addAnnouncementVC.swift */; };
 		0AE4C08122E052C3003ABBA9 /* ShoppingCarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */; };
 		0AE4C08522E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */; };
@@ -58,7 +58,7 @@
 		0ACB00C522C6285900A114AA /* CreateUserTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserTVC.swift; sourceTree = "<group>"; };
 		0ADA256722D4D92F006A0B9D /* addClientInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addClientInfo.swift; sourceTree = "<group>"; };
 		0ADD77DB22E5C72900D6335F /* AnnouncementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementVC.swift; sourceTree = "<group>"; };
-		0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCellOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCellOne.swift; sourceTree = "<group>"; };
 		0AE34B0F22E5D5C500B9D5ED /* addAnnouncementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addAnnouncementVC.swift; sourceTree = "<group>"; };
 		0AE4C08022E052C3003ABBA9 /* ShoppingCarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarVC.swift; sourceTree = "<group>"; };
 		0AE4C08422E05F3E003ABBA9 /* ShoppingCarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCarTableViewCell.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 		0AE34B0E22E5D2EF00B9D5ED /* Announcement */ = {
 			isa = PBXGroup;
 			children = (
-				0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift */,
+				0AE34B0C22E5D2E300B9D5ED /* AnnouncementTableViewCellOne.swift */,
 			);
 			path = Announcement;
 			sourceTree = "<group>";
@@ -430,7 +430,7 @@
 				0A464FE222D6DCCE00060D18 /* adDetailVC.swift in Sources */,
 				0AE9E02422C9D294001B6781 /* RDTaskListCustomCell.swift in Sources */,
 				0A62903422C37C5000446A3F /* AppDelegate.swift in Sources */,
-				0AE34B0D22E5D2E300B9D5ED /* AnnouncementTableViewCell.swift in Sources */,
+				0AE34B0D22E5D2E300B9D5ED /* AnnouncementTableViewCellOne.swift in Sources */,
 				0AEE4E1A22CC4CF500F71457 /* MDTaskListVC.swift in Sources */,
 				0ADD77DC22E5C72900D6335F /* AnnouncementVC.swift in Sources */,
 				0A91A52D22DC766D00A082E4 /* ProductCollectionViewCell.swift in Sources */,

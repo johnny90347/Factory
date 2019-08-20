@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class AnnouncementVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
    
@@ -22,6 +23,8 @@ class AnnouncementVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(AnnouncementTableViewCellOne.self, forCellReuseIdentifier: "announcementCell")
+        tableView.register(AnnouncementTableViewCellTwo.self, forCellReuseIdentifier: "announcementCellTwo")
         
         
     }
@@ -43,19 +46,38 @@ class AnnouncementVC: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "announcementCell", for: indexPath) as! AnnouncementTableViewCell
         
-        cell.cellConfigure(Txt: announcements[indexPath.row])
-        
-        
-        return cell
-        
+        let uid = Auth.auth().currentUser?.uid
+            
+           let userID = announcements[indexPath.row].userID
+            
+            if uid != userID {
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "announcementCell", for: indexPath) as! AnnouncementTableViewCellOne
+                
+                cell.info = announcements[indexPath.row]
+                
+                
+                return cell
+                
+                
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "announcementCellTwo", for: indexPath) as! AnnouncementTableViewCellTwo
+                
+                cell.info = announcements[indexPath.row]
+                
+                
+                return cell
+            }
+            
+            
+      
     }
     
 
     //MARK: - 監聽公告欄內容
     func setAnoListener(){
-       listener = Firestore.firestore().collection("announcement").addSnapshotListener { [weak self](querySnapshot, error) in
+       listener = Firestore.firestore().collection("announcement").order(by: "timeStamp").addSnapshotListener { [weak self](querySnapshot, error) in
         guard let self = self else {return}
             if error != nil {
                 return
